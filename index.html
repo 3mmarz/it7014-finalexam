@@ -2100,6 +2100,143 @@ body[data-route="home"] .countdown{display:block}
 
 
 /* ══════════════════════════════════════════════════════════
+   TRAPS MAIN BUTTON — below cta-grid
+   ══════════════════════════════════════════════════════════ */
+.traps-below-cta{
+  display:flex;justify-content:center;
+  margin:18px auto 0;max-width:1100px;
+}
+.traps-main-btn{
+  position:relative;overflow:hidden;
+  display:inline-flex;align-items:center;gap:12px;
+  padding:14px 36px;border-radius:14px;border:none;cursor:pointer;
+  font:700 15px/1 'Geist','Inter',system-ui,sans-serif;
+  letter-spacing:.06em;text-transform:uppercase;
+  color:#fff;
+  background:linear-gradient(135deg,#1a0a2e 0%,#2d1050 40%,#1a0a2e 100%);
+  border:1px solid rgba(155,140,255,.35);
+  box-shadow:0 0 0 1px rgba(155,140,255,.12), 0 8px 28px -8px rgba(155,140,255,.45);
+  transition:transform .25s var(--ease-spring), box-shadow .25s var(--ease), border-color .25s var(--ease);
+  animation:trapsGlow 3s ease-in-out infinite;
+}
+.traps-main-btn:hover{
+  transform:translateY(-3px) scale(1.025);
+  box-shadow:0 0 0 1px rgba(155,140,255,.5), 0 16px 40px -10px rgba(155,140,255,.7);
+  border-color:rgba(155,140,255,.7);
+}
+.traps-main-btn:active{transform:translateY(0) scale(0.98)}
+@keyframes trapsGlow{
+  0%,100%{box-shadow:0 0 0 1px rgba(155,140,255,.12), 0 8px 28px -8px rgba(155,140,255,.45)}
+  50%{box-shadow:0 0 0 2px rgba(155,140,255,.35), 0 12px 36px -6px rgba(155,140,255,.7), 0 0 60px -20px rgba(155,140,255,.5)}
+}
+.traps-btn-lock{
+  width:18px;height:18px;flex-shrink:0;
+  color:#c3a6ff;
+  filter:drop-shadow(0 0 4px rgba(155,140,255,.8));
+}
+.traps-btn-shine{
+  position:absolute;inset:0;
+  background:linear-gradient(105deg, transparent 40%, rgba(255,255,255,.08) 50%, transparent 60%);
+  animation:trapsShine 3s ease-in-out infinite;
+  pointer-events:none;
+}
+@keyframes trapsShine{
+  0%,100%{transform:translateX(-100%)}
+  50%{transform:translateX(200%)}
+}
+
+/* ══════════════════════════════════════════════════════════
+   VIDEOS SECTION
+   ══════════════════════════════════════════════════════════ */
+.vid-layout{
+  display:grid;
+  grid-template-columns:1fr 380px;
+  gap:24px;align-items:start;
+}
+@media(max-width:860px){
+  .vid-layout{grid-template-columns:1fr;grid-template-rows:auto auto}
+}
+.vid-player-col{position:sticky;top:80px}
+@media(max-width:860px){.vid-player-col{position:static}}
+.vid-player-box{
+  width:100%;aspect-ratio:16/9;border-radius:16px;overflow:hidden;
+  background:var(--bg-2);border:1px solid var(--line);
+  display:flex;align-items:center;justify-content:center;
+}
+.vid-player-placeholder{
+  display:flex;flex-direction:column;align-items:center;gap:14px;
+  color:var(--fg-faint);font-size:13.5px;font-family:'Geist Mono',monospace;
+}
+.vid-placeholder-icon{width:48px;height:48px;opacity:.4}
+.vid-player-embed{width:100%;height:100%}
+.vid-player-embed iframe{width:100%;height:100%;border:none;display:block}
+.vid-now-playing{
+  margin-top:10px;padding:10px 14px;border-radius:10px;
+  background:var(--bg-2);border:1px solid var(--line);
+  display:flex;align-items:center;gap:8px;font-size:13px;
+}
+.vid-np-label{color:var(--fg-faint);font-family:'Geist Mono',monospace;letter-spacing:.06em;flex-shrink:0}
+.vid-np-title{color:var(--fg);font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.vid-list-col{display:flex;flex-direction:column;gap:14px}
+.vid-topic{
+  border:1px solid var(--line);border-radius:14px;overflow:hidden;
+  background:var(--bg-1);
+}
+.vid-topic-head{
+  display:flex;align-items:center;gap:12px;
+  padding:12px 16px;border-bottom:1px solid var(--line);
+  background:var(--bg-2);
+}
+.vid-topic-tag{
+  font-family:'Geist Mono',monospace;font-size:11px;font-weight:700;
+  letter-spacing:.1em;text-transform:uppercase;
+  color:var(--accent);padding:3px 8px;border-radius:6px;
+  background:rgba(122,162,255,.1);border:1px solid rgba(122,162,255,.2);
+  flex-shrink:0;
+}
+.vid-topic-name{font-size:13.5px;font-weight:600;color:var(--fg)}
+.vid-parts{display:flex;flex-direction:column;gap:0}
+.vid-part-btn{
+  display:flex;align-items:center;gap:12px;
+  width:100%;border:none;background:transparent;cursor:pointer;
+  padding:12px 16px;text-align:left;color:var(--fg);
+  font:500 14px/1.4 'Geist','Inter',system-ui,sans-serif;
+  border-bottom:1px solid var(--line);
+  transition:background .18s var(--ease);
+  position:relative;
+}
+.vid-part-btn:last-child{border-bottom:none}
+.vid-part-btn:hover{background:rgba(122,162,255,.06)}
+.vid-part-btn.active{background:rgba(122,162,255,.1);border-left:3px solid var(--accent)}
+.vid-part-check{
+  width:20px;height:20px;border-radius:50%;
+  border:1.5px solid rgba(255,255,255,.12);
+  display:grid;place-items:center;
+  font-size:10px;font-weight:700;color:#5ee4a3;
+  flex-shrink:0;opacity:0;transition:opacity .2s,background .2s,border-color .2s;
+}
+.vid-part-check.done{
+  opacity:1;background:rgba(94,228,163,.15);
+  border-color:rgba(94,228,163,.4);
+}
+.vid-part-num{
+  font-family:'Geist Mono',monospace;font-size:10px;font-weight:700;
+  letter-spacing:.08em;color:var(--fg-faint);text-transform:uppercase;
+  flex-shrink:0;min-width:36px;
+}
+.vid-part-title{flex:1;font-size:13.5px;color:var(--fg)}
+.vid-part-arrow{
+  font-size:10px;color:var(--fg-faint);flex-shrink:0;
+  transition:color .18s,transform .18s;
+}
+.vid-part-btn:hover .vid-part-arrow{color:var(--accent);transform:scale(1.3)}
+.vid-part-btn.active .vid-part-arrow{color:var(--accent)}
+.vid-placeholder-msg{
+  padding:24px;text-align:center;color:var(--fg-faint);
+  font-size:13px;font-family:'Geist Mono',monospace;
+}
+
+/* ══════════════════════════════════════════════════════════
    GOLD MASTER ADDITIONS
    ══════════════════════════════════════════════════════════ */
 
@@ -2847,19 +2984,8 @@ section.is-collapsed > .asrar-sec-body{grid-template-rows:0fr;opacity:0}
           This is merely a highly educated prediction based on the provided base materials. The real exam may differ completely, so always rely on your primary study materials first!
         </span>
       </div>
-      <a class="top-discord-btn" href="https://discord.gg/rYJknEfA" target="_blank" rel="noopener">
-        <span class="tdb-pulse" aria-hidden="true"></span>
-        <svg class="tdb-logo" viewBox="0 0 71 55" fill="currentColor" aria-hidden="true"><path d="M60.105 4.898A58.55 58.55 0 0 0 45.653.415a.22.22 0 0 0-.232.111c-.624 1.11-1.317 2.56-1.803 3.7a54.005 54.005 0 0 0-16.213 0c-.486-1.164-1.2-2.59-1.83-3.7a.228.228 0 0 0-.232-.111A58.385 58.385 0 0 0 10.89 4.898a.207.207 0 0 0-.094.082c-9.198 13.74-11.717 27.142-10.481 40.378a.245.245 0 0 0 .093.166c6.066 4.456 11.945 7.16 17.715 8.95a.23.23 0 0 0 .25-.082 41.93 41.93 0 0 0 3.626-5.902.225.225 0 0 0-.123-.312 38.772 38.772 0 0 1-5.539-2.64.228.228 0 0 1-.022-.378c.372-.279.744-.569 1.1-.862a.22.22 0 0 1 .229-.03c11.62 5.305 24.198 5.305 35.681 0a.22.22 0 0 1 .232.028c.357.293.728.585 1.103.864a.228.228 0 0 1-.02.378 36.384 36.384 0 0 1-5.54 2.637.227.227 0 0 0-.121.315 47.072 47.072 0 0 0 3.624 5.9.227.227 0 0 0 .25.084c5.798-1.79 11.677-4.494 17.743-8.95a.228.228 0 0 0 .093-.164c1.48-15.305-2.48-28.596-10.49-40.376a.18.18 0 0 0-.093-.084Zm-36.38 32.4c-3.497 0-6.38-3.21-6.38-7.156s2.826-7.156 6.38-7.156c3.583 0 6.438 3.24 6.38 7.156 0 3.946-2.825 7.156-6.38 7.156Zm23.59 0c-3.498 0-6.38-3.21-6.38-7.156s2.825-7.156 6.38-7.156c3.582 0 6.437 3.24 6.38 7.156 0 3.946-2.798 7.156-6.38 7.156Z"></path></svg>
-        Join <b>poly it</b><span class="tdb-arrow">→</span>
-      </a>
     </div>
 
-    <div class="laptop-tip">
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-    <rect x="2" y="3" width="20" height="14" rx="2"/><polyline points="8 21 12 17 16 21"/>
-  </svg>
-  <span>💡 <b>Optimization Tip:</b> For the smoothest, lag-free experience during 105-question simulations, we highly recommend using a <b>Laptop / Desktop browser</b>.</span>
-</div>
 <section class="hero">
       <span class="eyebrow"><span class="pulse"></span> Final · Wed June 3, 2026 · Weeks 8–12</span>
       <h1>
@@ -2908,70 +3034,28 @@ section.is-collapsed > .asrar-sec-body{grid-template-rows:0fr;opacity:0}
         <span class="t">Study Notes <span class="subtle">· EN</span></span>
         <span class="d">The Ultimate Master Notes — Weeks 8–12 + Huawei comparison grids.</span>
       </button>
-      <button class="cta cta-ar" data-route="notes-ar" dir="rtl" style="--glow:rgba(155,140,255,.45)">
-        <span class="arrow" style="right:auto;left:22px">→</span>
-        <span class="num" dir="ltr">04 · REVIEW</span>
-        <span class="t">ملاحظات الدراسة <span class="subtle">· AR</span></span>
-        <span class="d">نفس الملاحظات بالعربية مع الحفاظ على المصطلحات التقنية بالإنجليزية.</span>
+      <button class="cta" data-route="videos" style="--glow:rgba(255,160,30,.45)">
+        <span class="arrow">→</span>
+        <span class="num">04 · WATCH</span>
+        <span class="t">Videos</span>
+        <span class="d">AI videos explaining Week 8 to Week 12</span>
       </button>
     </div>
 
-    <!-- 02 · YOUR PROGRESS -->
-    <div class="home-sec-head"><span class="num">02</span><span class="lbl">YOUR PROGRESS · Live from your device</span></div>
-    <div class="progress-strip" id="progressStrip"></div>
-    <div class="traps-host">
-      <div class="traps-cta">
-        <span class="traps-eyebrow">
-          <span class="te-dot" aria-hidden="true"></span>
-          <span>// CLASSIFIED ACCESS · ELITE TIER ONLY</span>
-          <span class="te-dot" aria-hidden="true"></span>
-        </span>
-        <button class="stealth-pill" data-route="survival" title="Classified · Reyes-trap survival kit">
-          <svg class="sp-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <rect x="3" y="11" width="18" height="11" rx="2"/>
-            <path d="M7 11V7a5 5 0 0110 0v4"/>
-          </svg>
-          <span class="sp-bracket">[</span>
-          <span class="sp-cmd">Traps</span>
-          <span class="sp-blink" aria-hidden="true"></span>
-          <span class="sp-bracket">]</span>
-          <svg class="sp-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M5 12h14M12 5l7 7-7 7"/>
-          </svg>
-        </button>
-        <span class="traps-hint">Unlock the Reyes Trap-Elimination Command Center →</span>
-      </div>
+    <!-- TRAPS BUTTON (below the 4 main boxes) -->
+    <div class="traps-below-cta">
+      <button class="traps-main-btn" data-route="survival" title="Reyes Trap-Elimination Command Center">
+        <svg class="traps-btn-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="3" y="11" width="18" height="11" rx="2"/>
+          <path d="M7 11V7a5 5 0 0110 0v4"/>
+        </svg>
+        Traps
+        <span class="traps-btn-shine" aria-hidden="true"></span>
+      </button>
     </div>
 
-    <!-- 03 · COVERAGE -->
-    <div class="home-sec-head"><span class="num">03</span><span class="lbl">What's covered</span></div>
-    <section class="coverage" aria-label="What is covered">
-      <div class="cov"><span class="ix">01</span><span class="ck">✓</span><span class="ct">Weeks 8 to 12 Core Coverage Included</span><span class="meta">CORE</span></div>
-      <div class="cov"><span class="ix">02</span><span class="ck">✓</span><span class="ct">Moodle Official PDFs Included</span><span class="meta">PDF</span></div>
-      <div class="cov"><span class="ix">03</span><span class="ck">✓</span><span class="ct">Weeks 8-12 Moodle Video Transcripts Integrated</span><span class="meta">VIDEO</span></div>
-      <div class="cov"><span class="ix">04</span><span class="ck">✓</span><span class="ct">All quizzes in weeks 8 to 12</span><span class="meta">HUAWEI</span></div>
-      <div class="cov"><span class="ix">05</span><span class="ck">✓</span><span class="ct"><span class="huawei-warn-ico" aria-hidden="true">⚠</span> Huawei Digital Power Simulation <span class="hw-muted">(Skip if needed — Not confirmed for Final Exam, included as a precaution)</span></span><span class="meta">EXAM</span></div>
-      <div class="cov"><span class="ix">06</span><span class="ck">✓</span><span class="ct">80 Real Midterm Exam Practice Questions style</span><span class="meta">MIDTERM</span></div>
-    </section>
-
-    <!-- 04 · METHODOLOGY (collapsed by default) -->
-    <div class="home-sec-head"><span class="num">04</span><span class="lbl">Methodology · How this was built</span></div>
-    <article class="card method-card is-collapsed" id="methodCard" aria-label="Methodology &amp; Disclaimer">
-      <header class="method-head">
-        <div class="ico">◈</div>
-        <h3>Methodology &amp; Disclaimer <span>· How this was built</span></h3>
-      </header>
-      <p class="method-body">
-        This website was crafted by a student <em>3mmar</em>, utilizing advanced AI to completely reverse-engineer Professor Faustino Reyes's examination philosophy. To achieve this exceptional level of predictive precision, a massive dataset was synthesized through the AI engine, <span class="method-sources-glow">(including the actual 75-question Midterm Exam, the professor's official emails confirming exact coverage and a strict &quot;no calculation&quot; rule, past Moodle quizzes, weekly PDF presentations, all video transcripts, and the specific Huawei Digital Power materials.)</span> By deeply analyzing these vectors, the AI successfully extracted the professor's precise testing blueprint decoding exactly how he transforms a simple textbook sentence into an interactive scenario, formulates tricky conceptual distractors, and strictly tests Huawei content as low-order fact or numeric recall questions. This extracted philosophy was then rigorously applied to the entire Final Exam curriculum (Weeks 8–12) to generate this predictive simulation, which is structurally optimized into three core difficulty bands: <em>Section A (Low-Demand/Recall)</em>, <em>Section B (High-Demand/Conceptual)</em>, and <em>Section C (Scenario-based problem-solving)</em>.
-      </p>
-      <button type="button" class="method-toggle" id="methodToggle">
-        <span class="method-toggle-label">Read full methodology</span>
-        <span class="method-toggle-arrow">▾</span>
-      </button>
-    </article>
-
-    <!-- 05 · COMMUNITY -->
-    <div class="home-sec-head"><span class="num">05</span><span class="lbl">Community · Discord</span></div>
+    <!-- 02 · COMMUNITY (was 05) -->
+    <div class="home-sec-head"><span class="num">02</span><span class="lbl">Community · Discord</span></div>
     <a class="discord-hero" href="https://discord.gg/rYJknEfA" target="_blank" rel="noopener">
       <div class="d-logo" aria-hidden="true">
         <!-- Official Discord wordmark/glyph -->
@@ -2987,6 +3071,21 @@ section.is-collapsed > .asrar-sec-body{grid-template-rows:0fr;opacity:0}
       </div>
       <span class="d-cta">Join the server <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></span>
     </a>
+
+    <!-- 03 · COVERAGE -->
+    <div class="home-sec-head"><span class="num">03</span><span class="lbl">What's covered</span></div>
+    <section class="coverage" aria-label="What is covered">
+      <div class="cov"><span class="ix">01</span><span class="ck">✓</span><span class="ct">Weeks 8 to 12 Core Coverage Included</span><span class="meta">CORE</span></div>
+      <div class="cov"><span class="ix">02</span><span class="ck">✓</span><span class="ct">Moodle Official PDFs Included</span><span class="meta">PDF</span></div>
+      <div class="cov"><span class="ix">03</span><span class="ck">✓</span><span class="ct">Weeks 8-12 Moodle Video Transcripts Integrated</span><span class="meta">VIDEO</span></div>
+      <div class="cov"><span class="ix">04</span><span class="ck">✓</span><span class="ct">All quizzes in weeks 8 to 12</span><span class="meta">HUAWEI</span></div>
+      <div class="cov"><span class="ix">05</span><span class="ck">✓</span><span class="ct"><span class="huawei-warn-ico" aria-hidden="true">⚠</span> Huawei Digital Power Simulation <span class="hw-muted">(Skip if needed — Not confirmed for Final Exam, included as a precaution)</span></span><span class="meta">EXAM</span></div>
+      <div class="cov"><span class="ix">06</span><span class="ck">✓</span><span class="ct">80 Real Midterm Exam Practice Questions style</span><span class="meta">MIDTERM</span></div>
+    </section>
+
+    <!-- 04 · YOUR PROGRESS (was 02) -->
+    <div class="home-sec-head"><span class="num">04</span><span class="lbl">YOUR PROGRESS · Live from your device</span></div>
+    <div class="progress-strip" id="progressStrip"></div>
 
   </main>
 
@@ -3109,6 +3208,9 @@ section.is-collapsed > .asrar-sec-body{grid-template-rows:0fr;opacity:0}
         <p class="v-sub">The Ultimate Final Exam Master Notes — Weeks 8–12 + Huawei.</p>
       </div>
     </div>
+    <div style="margin-bottom:16px">
+      <button class="btn accent" data-route="notes-ar" style="font-family:'IBM Plex Sans Arabic','Geist',sans-serif;font-size:15px;padding:12px 24px;border-radius:12px;width:100%;max-width:420px;display:block;margin:0 auto;">ملاحظات الدراسة باللغة العربية</button>
+    </div>
     <article class="notes" id="notes-en-content"></article>
   </main>
 
@@ -3128,6 +3230,169 @@ section.is-collapsed > .asrar-sec-body{grid-template-rows:0fr;opacity:0}
     <button class="notes-back-top" id="notesArBackTop" title="رجوع للأعلى" aria-label="رجوع للأعلى">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
     </button>
+  </main>
+
+  <!-- VIDEOS -->
+  <main class="view" id="view-videos">
+    <div class="view-head">
+      <div>
+        <h2>Videos <span class="subtle">· Weeks 8–12</span></h2>
+        <p class="v-sub">AI videos explaining topics from Week 8 to Week 12. Click a part to watch. A checkmark appears when you finish.</p>
+      </div>
+    </div>
+    <div class="vid-layout">
+      <!-- Left: video player -->
+      <div class="vid-player-col">
+        <div class="vid-player-box" id="vidPlayerBox">
+          <div class="vid-player-placeholder" id="vidPlayerPlaceholder">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="vid-placeholder-icon"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            <span>Select a video to watch</span>
+          </div>
+          <div class="vid-player-embed hide" id="vidPlayerEmbed"></div>
+        </div>
+        <div class="vid-now-playing" id="vidNowPlaying" style="display:none">
+          <span class="vid-np-label">Now playing:</span>
+          <span class="vid-np-title" id="vidNowPlayingTitle"></span>
+        </div>
+      </div>
+
+      <!-- Right: topic list -->
+      <div class="vid-list-col" id="vidListCol">
+
+        <!-- Topic 7 — Week 8 -->
+        <div class="vid-topic">
+          <div class="vid-topic-head">
+            <span class="vid-topic-tag">Topic 7</span>
+            <span class="vid-topic-name">Week 8 · Smart Buildings & IoT</span>
+          </div>
+          <div class="vid-parts">
+            <button class="vid-part-btn" data-vid-id="topic7-part1" data-vid-src="">
+              <span class="vid-part-check" id="chk-topic7-part1" aria-label="Completed">✓</span>
+              <span class="vid-part-num">Part 1</span>
+              <span class="vid-part-title">Building Automation & Smart Systems</span>
+              <span class="vid-part-arrow">▶</span>
+            </button>
+            <button class="vid-part-btn" data-vid-id="topic7-part2" data-vid-src="">
+              <span class="vid-part-check" id="chk-topic7-part2" aria-label="Completed">✓</span>
+              <span class="vid-part-num">Part 2</span>
+              <span class="vid-part-title">Demand Response & Energy Management</span>
+              <span class="vid-part-arrow">▶</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Topic 8 — Week 8/9 -->
+        <div class="vid-topic">
+          <div class="vid-topic-head">
+            <span class="vid-topic-tag">Topic 8</span>
+            <span class="vid-topic-name">Week 8/9 · Smart Cities & IoT</span>
+          </div>
+          <div class="vid-parts">
+            <button class="vid-part-btn" data-vid-id="topic8-part1" data-vid-src="">
+              <span class="vid-part-check" id="chk-topic8-part1" aria-label="Completed">✓</span>
+              <span class="vid-part-num">Part 1</span>
+              <span class="vid-part-title">Smart City Infrastructure & Huawei</span>
+              <span class="vid-part-arrow">▶</span>
+            </button>
+            <button class="vid-part-btn" data-vid-id="topic8-part2" data-vid-src="">
+              <span class="vid-part-check" id="chk-topic8-part2" aria-label="Completed">✓</span>
+              <span class="vid-part-num">Part 2</span>
+              <span class="vid-part-title">IoT Protocols & Connectivity Standards</span>
+              <span class="vid-part-arrow">▶</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Topic 9 — Week 9/10 -->
+        <div class="vid-topic">
+          <div class="vid-topic-head">
+            <span class="vid-topic-tag">Topic 9</span>
+            <span class="vid-topic-name">Week 9/10 · Cloud Architecture</span>
+          </div>
+          <div class="vid-parts">
+            <button class="vid-part-btn" data-vid-id="topic9-part1" data-vid-src="">
+              <span class="vid-part-check" id="chk-topic9-part1" aria-label="Completed">✓</span>
+              <span class="vid-part-num">Part 1</span>
+              <span class="vid-part-title">Multi-Region Cloud & CDN</span>
+              <span class="vid-part-arrow">▶</span>
+            </button>
+            <button class="vid-part-btn" data-vid-id="topic9-part2" data-vid-src="">
+              <span class="vid-part-check" id="chk-topic9-part2" aria-label="Completed">✓</span>
+              <span class="vid-part-num">Part 2</span>
+              <span class="vid-part-title">Database Architecture & Caching</span>
+              <span class="vid-part-arrow">▶</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Topic 10 — Week 10/11 -->
+        <div class="vid-topic">
+          <div class="vid-topic-head">
+            <span class="vid-topic-tag">Topic 10</span>
+            <span class="vid-topic-name">Week 10/11 · Data Pipelines</span>
+          </div>
+          <div class="vid-parts">
+            <button class="vid-part-btn" data-vid-id="topic10-part1" data-vid-src="">
+              <span class="vid-part-check" id="chk-topic10-part1" aria-label="Completed">✓</span>
+              <span class="vid-part-num">Part 1</span>
+              <span class="vid-part-title">Streaming vs Batch Processing</span>
+              <span class="vid-part-arrow">▶</span>
+            </button>
+            <button class="vid-part-btn" data-vid-id="topic10-part2" data-vid-src="">
+              <span class="vid-part-check" id="chk-topic10-part2" aria-label="Completed">✓</span>
+              <span class="vid-part-num">Part 2</span>
+              <span class="vid-part-title">Serverless & Event-Driven Architecture</span>
+              <span class="vid-part-arrow">▶</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Topic 11 — Week 11/12 -->
+        <div class="vid-topic">
+          <div class="vid-topic-head">
+            <span class="vid-topic-tag">Topic 11</span>
+            <span class="vid-topic-name">Week 11/12 · Application Architecture</span>
+          </div>
+          <div class="vid-parts">
+            <button class="vid-part-btn" data-vid-id="topic11-part1" data-vid-src="">
+              <span class="vid-part-check" id="chk-topic11-part1" aria-label="Completed">✓</span>
+              <span class="vid-part-num">Part 1</span>
+              <span class="vid-part-title">Monolith vs Microservices Patterns</span>
+              <span class="vid-part-arrow">▶</span>
+            </button>
+            <button class="vid-part-btn" data-vid-id="topic11-part2" data-vid-src="">
+              <span class="vid-part-check" id="chk-topic11-part2" aria-label="Completed">✓</span>
+              <span class="vid-part-num">Part 2</span>
+              <span class="vid-part-title">API Design: GraphQL & REST</span>
+              <span class="vid-part-arrow">▶</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Topic 12 — Week 12 -->
+        <div class="vid-topic">
+          <div class="vid-topic-head">
+            <span class="vid-topic-tag">Topic 12</span>
+            <span class="vid-topic-name">Week 12 · Performance & Sustainability</span>
+          </div>
+          <div class="vid-parts">
+            <button class="vid-part-btn" data-vid-id="topic12-part1" data-vid-src="">
+              <span class="vid-part-check" id="chk-topic12-part1" aria-label="Completed">✓</span>
+              <span class="vid-part-num">Part 1</span>
+              <span class="vid-part-title">Sustainable IT & Energy Efficiency</span>
+              <span class="vid-part-arrow">▶</span>
+            </button>
+            <button class="vid-part-btn" data-vid-id="topic12-part2" data-vid-src="">
+              <span class="vid-part-check" id="chk-topic12-part2" aria-label="Completed">✓</span>
+              <span class="vid-part-num">Part 2</span>
+              <span class="vid-part-title">Performance Trade-offs & MCDA</span>
+              <span class="vid-part-arrow">▶</span>
+            </button>
+          </div>
+        </div>
+
+      </div><!-- /vid-list-col -->
+    </div><!-- /vid-layout -->
   </main>
 
   <!-- SURVIVAL KIT -->
@@ -3166,8 +3431,8 @@ section.is-collapsed > .asrar-sec-body{grid-template-rows:0fr;opacity:0}
             <svg class="audio-icon audio-icon-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
             <span id="asrarAudioLabel">كتم</span>
           </button>
-          <input type="range" id="asrarVolume" class="audio-volume" min="0" max="100" value="35" step="1" aria-label="مستوى الصوت" title="مستوى الصوت">
-          <span class="audio-vol-val" id="asrarVolumeVal">35%</span>
+          <input type="range" id="asrarVolume" class="audio-volume" min="0" max="100" value="5" step="1" aria-label="مستوى الصوت" title="مستوى الصوت">
+          <span class="audio-vol-val" id="asrarVolumeVal">5%</span>
         </div>
         <audio id="asrarAudio" preload="auto" loop>
           <source src="./The%20Godfather%20Music%20%20BEST%20VERSION%20%21%21%21.mp3" type="audio/mpeg">
@@ -3500,7 +3765,7 @@ function shuffle(a){ const x=a.slice(); for(let i=x.length-1;i>0;i--){const j=Ma
 const letter = i => String.fromCharCode(65+i);
 
 /* ==================== ROUTER ==================== */
-const routes = ['home','practice','exam','notes-en','notes-ar','survival'];
+const routes = ['home','practice','exam','notes-en','notes-ar','survival','videos'];
 function navigate(to){
   if(!routes.includes(to)) to='home';
   document.body.dataset.route = to;
@@ -3514,6 +3779,7 @@ function navigate(to){
   if(to==='notes-en') renderNotesEN();
   if(to==='notes-ar') renderNotesAR();
   if(to==='survival') renderSurvival();
+  if(to==='videos') renderVideos();
   location.hash = to==='home' ? '' : '#'+to;
 }
 document.addEventListener('click', e=>{
@@ -3834,6 +4100,8 @@ function buildExamCard(q,idx,total){
   if(nx) nx.addEventListener('click',()=>examNav(+1));
   const sb = card.querySelector('[data-act="submit"]');
   if(sb) sb.addEventListener('click',submitExam);
+  const skipHw = card.querySelector('[data-act="skip-huawei"]');
+  if(skipHw) skipHw.addEventListener('click',()=>examNav(+1));
   return card;
 }
 function examNav(delta){
@@ -4896,7 +5164,7 @@ function renderSurvival(){
   const volLabel  = document.getElementById('asrarVolumeVal');
   if(audioBtn && audioEl){
     audioEl.loop = true;
-    audioEl.volume = 0.35;
+    audioEl.volume = 0.05;
 
     // Volume slider
     if(volSlider){
@@ -4934,6 +5202,10 @@ function renderSurvival(){
     document.getElementById('sk-tabs').addEventListener('click', e=>{
       const t = e.target.closest('.sk-tab'); if(!t) return;
       if(t.dataset.skTab === 'asrar'){
+        // Reset to 5% default volume on each entry
+        audioEl.volume = 0.05;
+        if(volSlider){ volSlider.value = 5; volSlider.style.setProperty('--vol','5%'); }
+        if(volLabel) volLabel.textContent = '5%';
         audioEl.muted = false;
         setMutedUI(false);
         audioEl.play().catch(()=>{
@@ -5095,12 +5367,7 @@ function renderSurvival(){
     requestAnimationFrame(() => {
       const fill = root.querySelector('.ps-bar-fill[data-fill]');
       if(fill) fill.style.width = fill.dataset.fill + '%';
-      const daysEl = document.getElementById('psDaysLeft');
-      if(daysEl){
-        const ms = new Date(2026, 5, 3, 16, 0, 0).getTime() - Date.now();
-        const days = Math.max(0, Math.ceil(ms / 86400000));
-        daysEl.innerHTML = days + '<span class="ps-unit">days</span>';
-      }
+      // Days to Exam value is synced live via tickCountdown() above
     });
   }
 
@@ -5152,6 +5419,9 @@ function tickCountdown(){
     cd.classList.add('elapsed');
     $('#cd-d').textContent='00';$('#cd-h').textContent='00';$('#cd-m').textContent='00';$('#cd-s').textContent='00';
     cd.querySelector('.cd-eyebrow').textContent = 'EXAM TIME · GO!';
+    // sync Days to Exam card
+    const dEl = document.getElementById('psDaysLeft');
+    if(dEl) dEl.innerHTML = '0<span class="ps-unit">days</span>';
     return;
   }
   const sec = Math.floor(diff/1000);
@@ -5164,9 +5434,98 @@ function tickCountdown(){
   $('#cd-h').textContent = pad(h);
   $('#cd-m').textContent = pad(m);
   $('#cd-s').textContent = pad(s);
+  // sync Days to Exam card — use exact day count from live countdown
+  const dEl = document.getElementById('psDaysLeft');
+  if(dEl) dEl.innerHTML = d + '<span class="ps-unit">days</span>';
 }
 tickCountdown();
 setInterval(tickCountdown, 1000);
+
+/* ==================== VIDEOS ====================
+   Video progress stored in localStorage under key 'vidProgress'
+   vidProgress = { "topic7-part1": true, ... }
+*/
+function loadVidProgress(){
+  try{ return JSON.parse(localStorage.getItem('vidProgress')||'{}'); }catch(e){ return {}; }
+}
+function saveVidProgress(p){ localStorage.setItem('vidProgress', JSON.stringify(p)); }
+
+function renderVideos(){
+  const progress = loadVidProgress();
+  // Render checkmarks for completed videos
+  document.querySelectorAll('.vid-part-check').forEach(el=>{
+    const id = el.id.replace('chk-','');
+    el.classList.toggle('done', !!progress[id]);
+  });
+
+  // Attach click handlers to part buttons (once)
+  const listCol = document.getElementById('vidListCol');
+  if(!listCol || listCol.dataset.vidBound) return;
+  listCol.dataset.vidBound = '1';
+
+  listCol.addEventListener('click', e=>{
+    const btn = e.target.closest('.vid-part-btn'); if(!btn) return;
+    const vidId  = btn.dataset.vidId;
+    const vidSrc = btn.dataset.vidSrc || '';
+
+    // Mark active button
+    document.querySelectorAll('.vid-part-btn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+
+    const playerEmbed = document.getElementById('vidPlayerEmbed');
+    const placeholder  = document.getElementById('vidPlayerPlaceholder');
+    const nowPlaying   = document.getElementById('vidNowPlaying');
+    const npTitle      = document.getElementById('vidNowPlayingTitle');
+    const titleEl      = btn.querySelector('.vid-part-title');
+    const topicName    = btn.closest('.vid-topic').querySelector('.vid-topic-name').textContent;
+
+    if(npTitle) npTitle.textContent = (titleEl ? titleEl.textContent : '') + ' — ' + topicName;
+    if(nowPlaying) nowPlaying.style.display = 'flex';
+
+    if(vidSrc){
+      // Show embed
+      placeholder.classList.add('hide');
+      playerEmbed.classList.remove('hide');
+      // Build iframe (YouTube or direct URL)
+      let iframeSrc = vidSrc;
+      if(vidSrc.includes('youtube.com/watch?v=')){
+        const yid = new URL(vidSrc).searchParams.get('v');
+        iframeSrc = `https://www.youtube.com/embed/${yid}?autoplay=1&enablejsapi=1`;
+      } else if(vidSrc.includes('youtu.be/')){
+        const yid = vidSrc.split('youtu.be/')[1].split('?')[0];
+        iframeSrc = `https://www.youtube.com/embed/${yid}?autoplay=1&enablejsapi=1`;
+      }
+      playerEmbed.innerHTML = `<iframe src="${iframeSrc}" allow="autoplay; encrypted-media" allowfullscreen></iframe>`;
+
+      // Listen for video end via postMessage (YouTube IFrame API)
+      window.onmessage = function(ev){
+        try{
+          const data = JSON.parse(ev.data);
+          // YouTube playerState 0 = ended
+          if(data.event === 'onStateChange' && data.info === 0){
+            markVideoComplete(vidId);
+          }
+        }catch(ex){}
+      };
+    } else {
+      // No URL yet — show placeholder with "coming soon" message
+      playerEmbed.classList.add('hide');
+      placeholder.classList.remove('hide');
+      placeholder.innerHTML = `
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="vid-placeholder-icon"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+        <span style="text-align:center">Video coming soon — add the URL to the<br><code>data-vid-src</code> attribute of this button.</span>
+      `;
+    }
+  });
+}
+
+function markVideoComplete(vidId){
+  const progress = loadVidProgress();
+  progress[vidId] = true;
+  saveVidProgress(progress);
+  const chk = document.getElementById('chk-' + vidId);
+  if(chk) chk.classList.add('done');
+}
 
 /* ==================== INIT ==================== */
 const initial = (location.hash||'').replace('#','') || 'home';
