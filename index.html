@@ -741,6 +741,47 @@ body[data-route="home"] .countdown{display:block}
 .hero .sub{
   color:var(--fg-dim);max-width:640px;margin:14px auto 0;font-size:clamp(15px,2vw,18px);
 }
+
+/* Hero subtitle — restructured cyberpunk layout */
+.hero .sub-hero{
+  max-width:760px;
+  display:flex;flex-wrap:wrap;justify-content:center;align-items:center;
+  gap:6px 10px;line-height:1.7;
+}
+.hero .sub-course{
+  font-family:'Geist Mono',monospace;font-weight:700;letter-spacing:.08em;
+  color:#facc15;
+  text-shadow:0 0 18px rgba(250,204,21,.45);
+}
+.hero .sub-sep{color:rgba(250,204,21,.45);font-weight:300}
+.hero .sub-name{color:var(--fg);font-weight:600}
+.hero .sub-tag{
+  flex-basis:100%;text-align:center;
+  color:var(--fg-dim);font-size:.92em;margin-top:2px;
+}
+.hero .sub-az{
+  font-family:'Geist Mono',monospace;font-weight:700;
+  color:#00ffff;
+  padding:1px 8px;border-radius:6px;
+  background:rgba(0,255,255,.07);
+  border:1px solid rgba(0,255,255,.28);
+  text-shadow:0 0 10px rgba(0,255,255,.35);
+  white-space:nowrap;
+}
+.hero .sub-pills{
+  flex-basis:100%;display:inline-flex;justify-content:center;flex-wrap:wrap;
+  align-items:center;gap:6px 10px;margin-top:8px;
+  font-family:'Geist Mono',monospace;font-size:12.5px;letter-spacing:.04em;
+}
+.hero .sub-pill{
+  color:#facc15;
+  padding:3px 10px;border-radius:999px;
+  background:rgba(250,204,21,.06);
+  border:1px solid rgba(250,204,21,.28);
+  text-shadow:0 0 8px rgba(250,204,21,.25);
+}
+.hero .sub-dot{color:rgba(0,255,255,.55);font-size:14px}
+.hero .sub-lang{color:#00ffff;font-weight:700}
 .hero .meta{
   margin-top:20px;display:flex;flex-wrap:wrap;justify-content:center;gap:10px;
 }
@@ -893,6 +934,203 @@ body[data-route="home"] .countdown{display:block}
   .discord-hero{grid-template-columns:auto 1fr;gap:18px;padding:22px}
   .discord-hero .d-cta{grid-column:1 / -1;justify-content:center;width:100%}
 }
+
+/* ============ TOP-OF-PAGE STRIP (critical warning + Discord CTA) ============ */
+.top-strip{
+  max-width:1100px;margin:0 auto 14px;
+  display:flex;flex-wrap:wrap;align-items:stretch;gap:12px;
+}
+.top-critical{
+  flex:1 1 480px;min-width:0;
+  display:flex;align-items:flex-start;gap:14px;
+  padding:14px 18px;border-radius:14px;
+  background:linear-gradient(90deg,rgba(255,90,108,.18),rgba(255,90,108,.04));
+  border:1px solid rgba(255,90,108,.45);
+  box-shadow:0 0 24px rgba(255,90,108,.12) inset;
+  color:#ffd0d6;font-size:13px;line-height:1.55;
+}
+.top-critical .tc-icon{
+  flex-shrink:0;width:34px;height:34px;border-radius:9px;
+  display:grid;place-items:center;
+  background:rgba(255,90,108,.25);color:#ff7a8a;
+  font-size:16px;font-weight:800;
+  border:1px solid rgba(255,90,108,.5);
+  box-shadow:0 0 14px rgba(255,90,108,.35);
+  animation:tcPulse 2.2s infinite;
+}
+@keyframes tcPulse{
+  0%,100%{box-shadow:0 0 14px rgba(255,90,108,.35)}
+  50%{box-shadow:0 0 22px rgba(255,90,108,.7)}
+}
+.top-critical b{color:#ff8a98;font-weight:800;letter-spacing:.02em}
+.top-critical .tc-tag{
+  display:inline-block;font-family:'Geist Mono',monospace;
+  font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;
+  color:#ff7a8a;background:rgba(255,90,108,.2);
+  padding:2px 8px;border-radius:5px;
+  margin-right:8px;border:1px solid rgba(255,90,108,.4);
+  vertical-align:1px;
+}
+.top-discord-btn{
+  flex:0 0 auto;
+  display:inline-flex;align-items:center;gap:10px;
+  padding:14px 20px;border-radius:14px;
+  background:linear-gradient(135deg,#5865F2,#4752C4);
+  color:#fff;text-decoration:none;font-weight:700;font-size:13.5px;
+  letter-spacing:.02em;line-height:1;
+  box-shadow:0 10px 28px -10px rgba(88,101,242,.65);
+  border:1px solid rgba(255,255,255,.14);
+  transition:transform .2s,box-shadow .2s,filter .2s;
+}
+.top-discord-btn:hover{
+  transform:translateY(-2px);filter:brightness(1.08);
+  box-shadow:0 16px 36px -12px rgba(88,101,242,.85);
+}
+.top-discord-btn svg.tdb-logo{width:18px;height:18px}
+.top-discord-btn b{color:#fff;font-weight:800}
+.top-discord-btn .tdb-pulse{
+  width:7px;height:7px;border-radius:50%;background:#7eff9c;
+  box-shadow:0 0 8px rgba(126,255,156,.8);
+  animation:tdbPulse 1.4s infinite;
+}
+@keyframes tdbPulse{
+  0%,100%{opacity:1;transform:scale(1)}
+  50%{opacity:.4;transform:scale(.7)}
+}
+.top-discord-btn .tdb-arrow{
+  display:inline-block;margin-left:4px;transition:transform .2s;
+}
+.top-discord-btn:hover .tdb-arrow{transform:translateX(4px)}
+
+/* Traps host inside YOUR PROGRESS */
+.traps-host{
+  margin-top:18px;display:flex;justify-content:center;
+}
+
+/* ============ HOMEPAGE STRUCTURE & INTERACTIVITY ============ */
+
+/* Section eyebrow used between major home blocks */
+.home-sec-head{
+  display:flex;align-items:center;gap:14px;
+  max-width:1100px;margin:46px auto 16px;
+  font-family:'Geist Mono',monospace;
+  font-size:11px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--fg-dim);
+}
+.home-sec-head::before,.home-sec-head::after{
+  content:'';height:1px;flex:1;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.1),transparent);
+}
+.home-sec-head .num{
+  color:#00e5ff;font-weight:700;letter-spacing:.12em;
+  text-shadow:0 0 8px rgba(0,229,255,.4);
+}
+.home-sec-head .lbl{color:var(--fg);font-weight:600}
+
+/* Progress strip — live stats pulled from localStorage */
+.progress-strip{
+  max-width:1100px;margin:0 auto;
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;
+}
+.ps-card{
+  position:relative;overflow:hidden;
+  padding:18px 20px;border-radius:14px;
+  background:linear-gradient(135deg,rgba(255,255,255,.025),rgba(255,255,255,.005));
+  border:1px solid var(--line);
+  transition:border-color .25s,transform .25s,background .25s;
+}
+.ps-card:hover{
+  border-color:rgba(0,229,255,.4);
+  transform:translateY(-2px);
+  background:linear-gradient(135deg,rgba(0,229,255,.05),rgba(255,255,255,.005));
+}
+.ps-label{
+  font-family:'Geist Mono',monospace;font-size:10.5px;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--fg-faint);
+  margin-bottom:12px;display:flex;align-items:center;gap:8px;
+}
+.ps-icon{
+  width:22px;height:22px;border-radius:6px;
+  display:grid;place-items:center;color:#00e5ff;
+  background:rgba(0,229,255,.08);border:1px solid rgba(0,229,255,.25);
+}
+.ps-icon svg{width:13px;height:13px}
+.ps-val{
+  font-size:30px;font-weight:800;letter-spacing:-.02em;
+  color:var(--fg);line-height:1;
+}
+.ps-val .ps-unit{
+  font-size:14px;color:var(--fg-faint);font-weight:500;margin-left:6px;
+}
+.ps-val .ps-zero{color:var(--fg-faint)}
+.ps-sub{margin-top:8px;font-size:12px;color:var(--fg-dim);line-height:1.5}
+.ps-bar{
+  margin-top:14px;height:6px;border-radius:999px;
+  background:rgba(255,255,255,.05);overflow:hidden;
+}
+.ps-bar-fill{
+  height:100%;width:0%;
+  background:linear-gradient(90deg,#00e5ff,#ff00ff);
+  box-shadow:0 0 10px rgba(0,229,255,.5);
+  border-radius:999px;
+  transition:width 1.2s cubic-bezier(.4,1.4,.5,1);
+}
+.ps-card.ps-continue{
+  background:linear-gradient(135deg,rgba(0,229,255,.07),rgba(255,0,255,.04));
+  border-color:rgba(0,229,255,.35);
+  cursor:pointer;
+  appearance:none;font:inherit;color:inherit;text-align:left;
+}
+.ps-card.ps-continue:hover{
+  background:linear-gradient(135deg,rgba(0,229,255,.13),rgba(255,0,255,.07));
+  border-color:rgba(0,229,255,.6);
+}
+.ps-arrow{
+  position:absolute;top:18px;left:20px;
+  color:#00e5ff;font-size:22px;font-weight:700;
+  transition:transform .25s;
+}
+.ps-card.ps-continue:hover .ps-arrow{transform:translateX(-4px)}
+.ps-card .ps-grade{
+  display:inline-block;margin-left:8px;
+  font-family:'Geist Mono',monospace;font-size:12px;
+  padding:2px 8px;border-radius:999px;font-weight:700;
+}
+.ps-grade.g-a{background:rgba(94,228,163,.15);color:#5ee4a3;border:1px solid rgba(94,228,163,.3)}
+.ps-grade.g-b{background:rgba(122,162,255,.15);color:#7aa2ff;border:1px solid rgba(122,162,255,.3)}
+.ps-grade.g-c{background:rgba(250,204,21,.15);color:#facc15;border:1px solid rgba(250,204,21,.3)}
+.ps-grade.g-f{background:rgba(255,122,138,.15);color:#ff7a8a;border:1px solid rgba(255,122,138,.3)}
+
+/* Collapsible methodology */
+.method-card{transition:padding .3s}
+.method-card.is-collapsed .method-body,
+.method-card.is-collapsed .warn-strip{
+  display:none;
+}
+.method-card.is-collapsed{padding-bottom:18px}
+.method-toggle{
+  appearance:none;border:0;cursor:pointer;
+  margin-top:14px;padding:9px 16px;
+  font:600 12px 'Geist',system-ui;letter-spacing:.04em;
+  background:rgba(122,162,255,.1);
+  color:var(--accent);
+  border:1px solid rgba(122,162,255,.3);
+  border-radius:9px;
+  display:inline-flex;align-items:center;gap:8px;
+  transition:all .2s;
+}
+.method-toggle:hover{
+  background:rgba(122,162,255,.18);
+  border-color:rgba(122,162,255,.5);
+  transform:translateY(-1px);
+}
+.method-toggle-arrow{
+  display:inline-block;font-size:10px;transition:transform .25s;
+}
+.method-card.is-collapsed .method-toggle-arrow{transform:rotate(-90deg)}
+
+/* Compact hero meta + count-up styling */
+.hero .chip b{display:inline-block;min-width:14px;text-align:center}
 
 /* CTA grid — 4 main mode boxes, oversized + glow */
 .cta-grid{
@@ -1221,6 +1459,212 @@ body[data-route="home"] .countdown{display:block}
 .notes-ar h3::before{background:linear-gradient(180deg,var(--accent-2),var(--accent))}
 .notes-ar .term, .notes-ar code{font-family:'Geist Mono',monospace}
 
+/* ============ NOTES AR · enhanced layout & interactivity ============ */
+
+/* Hero title gradient */
+.notes-ar h2{
+  font-size:clamp(28px,4vw,40px);
+  background:linear-gradient(135deg,#fff 0%,rgba(155,140,255,.85) 100%);
+  -webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;
+  margin-bottom:14px;font-weight:700;
+}
+.notes-ar > p:first-of-type{
+  color:var(--fg-dim);font-size:15px;line-height:1.7;
+  border-right:3px solid rgba(155,140,255,.35);
+  padding-right:14px;margin:0 0 22px;
+}
+
+/* RTL-correct table & list alignment */
+.notes-ar th, .notes-ar td{text-align:right !important;padding:12px 16px !important;font-size:14.5px}
+.notes-ar ul{padding-left:0 !important;padding-right:24px}
+.notes-ar ul li{margin:8px 0;font-size:15.5px}
+
+/* Reading progress bar — sticky at viewport top */
+.notes-progress{
+  position:sticky;top:0;left:0;right:0;
+  height:3px;background:rgba(255,255,255,.05);
+  z-index:60;margin:-4px -4px 12px;
+  border-radius:0 0 999px 999px;overflow:hidden;
+}
+.notes-progress-fill{
+  height:100%;width:0%;
+  background:linear-gradient(90deg,var(--accent-2),var(--accent));
+  box-shadow:0 0 10px rgba(155,140,255,.55);
+  transition:width .12s linear;
+}
+
+/* TOC — improved + labelled (scrolls with content, not sticky) */
+.notes-ar .toc{
+  margin:0 0 32px;padding:14px 14px 12px;
+  background:rgba(155,140,255,.04);
+  border:1px solid rgba(155,140,255,.2);
+  border-radius:14px;
+}
+.notes-ar .toc::before{
+  content:'فهرس الأقسام · اضغط للقفز';display:block;
+  font-family:'IBM Plex Sans Arabic','Geist Mono',monospace;
+  font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;
+  color:rgba(155,140,255,.85);margin-bottom:10px;
+  text-shadow:0 0 8px rgba(155,140,255,.25);
+}
+.notes-ar .toc a{
+  position:relative;font-size:13.5px;
+  background:rgba(255,255,255,.025);
+  border:1px solid var(--line);
+  transition:all .22s;
+  padding:11px 13px;
+}
+.notes-ar .toc a:hover{
+  background:rgba(155,140,255,.08);
+  border-color:rgba(155,140,255,.45);
+  transform:translateY(-2px);
+  color:#fff;
+}
+.notes-ar .toc a.is-current{
+  background:rgba(155,140,255,.18);
+  border-color:rgba(155,140,255,.6);
+  color:#fff;
+  box-shadow:0 0 18px rgba(155,140,255,.28);
+}
+.notes-ar .toc a.is-read::before{
+  content:'✓';
+  margin-left:6px;
+  color:#5ee4a3;font-weight:800;font-size:11px;
+  text-shadow:0 0 6px rgba(94,228,163,.4);
+}
+.notes-ar .toc a .n{color:rgba(155,140,255,.8);font-size:10.5px;letter-spacing:.06em}
+
+/* Collapsible h3 sections */
+.notes-section{position:relative;margin-top:32px}
+.notes-section + .notes-section{
+  padding-top:22px;
+  border-top:1px dashed rgba(255,255,255,.07);
+}
+.notes-ar .notes-section h3{
+  cursor:pointer;user-select:none;
+  padding:8px 6px;border-radius:10px;
+  margin:0 0 14px;
+  transition:background .2s,color .2s;
+  scroll-margin-top:140px;
+}
+.notes-ar .notes-section h3:hover{
+  background:rgba(155,140,255,.06);color:#fff;
+}
+.notes-ar .notes-section h3::before{display:none}
+.notes-sec-chevron{
+  display:inline-block;font-size:13px;
+  color:rgba(155,140,255,.75);
+  transition:transform .25s;
+  flex-shrink:0;
+}
+.notes-section.is-collapsed .notes-sec-chevron{transform:rotate(-90deg)}
+.notes-sec-text{flex:1;display:inline-flex;align-items:center;gap:10px}
+.notes-sec-text::before{
+  content:'';width:5px;height:22px;border-radius:3px;
+  background:linear-gradient(180deg,var(--accent-2),var(--accent));
+  flex-shrink:0;
+}
+.notes-sec-num{
+  font-family:'Geist Mono',monospace;font-size:10.5px;
+  letter-spacing:.12em;color:rgba(155,140,255,.85);
+  background:rgba(155,140,255,.1);
+  border:1px solid rgba(155,140,255,.32);
+  padding:3px 10px;border-radius:999px;
+  flex-shrink:0;
+}
+.notes-sec-body{
+  display:grid;grid-template-rows:1fr;
+  transition:grid-template-rows .35s ease,opacity .25s;
+  opacity:1;
+}
+.notes-section.is-collapsed .notes-sec-body{grid-template-rows:0fr;opacity:0}
+.notes-sec-inner{overflow:hidden;min-height:0}
+
+/* Tables — purple accent matching AR theme */
+.notes-ar .grid-table{
+  border-radius:14px;
+  background:rgba(155,140,255,.025);
+  border-color:rgba(155,140,255,.2);
+}
+.notes-ar table tbody tr{transition:background .15s}
+.notes-ar table tbody tr:hover{background:rgba(155,140,255,.07)}
+.notes-ar thead th{
+  background:rgba(155,140,255,.12) !important;
+  color:#fff !important;
+  font-family:'IBM Plex Sans Arabic','Geist',system-ui,sans-serif !important;
+  letter-spacing:0 !important;text-transform:none !important;
+  font-size:14px !important;font-weight:600;
+}
+.notes-ar td:first-child, .notes-ar th:first-child{color:#fff;font-weight:600}
+
+/* Improved callout — amber, RTL-aware accent edge */
+.notes-ar .callout{
+  background:linear-gradient(-90deg,rgba(255,207,107,.12),rgba(255,207,107,.03));
+  border:1px solid rgba(255,207,107,.32);
+  border-right:3px solid rgba(255,207,107,.7);
+  padding:14px 18px;border-radius:14px;
+  font-size:14.5px;line-height:1.85;
+  margin:18px 0;
+}
+
+/* Code / term chips — purple-tinted for AR */
+.notes-ar code, .notes-ar .term{
+  background:rgba(155,140,255,.12);
+  color:#d3c9ff;
+  border:1px solid rgba(155,140,255,.28);
+  padding:2px 8px;font-size:.92em;
+  border-radius:6px;
+}
+
+/* Body text spacing improvements */
+.notes-ar p{margin:14px 0;line-height:2}
+.notes-ar h4{
+  color:rgba(155,140,255,.95);
+  margin:22px 0 10px;font-size:14px;
+  text-transform:none;letter-spacing:.02em;font-weight:700;
+  font-family:'IBM Plex Sans Arabic','Geist',system-ui,sans-serif;
+  border-right:2px solid rgba(155,140,255,.45);padding-right:10px;
+}
+
+/* Floating back-to-top */
+.notes-back-top{
+  position:fixed;bottom:24px;left:24px;
+  width:46px;height:46px;border-radius:50%;
+  background:rgba(7,8,12,.85);backdrop-filter:blur(10px);
+  border:1px solid rgba(155,140,255,.5);
+  color:#9b8cff;cursor:pointer;
+  display:none;align-items:center;justify-content:center;
+  z-index:60;
+  transition:transform .25s,border-color .25s,box-shadow .25s;
+  box-shadow:0 6px 20px rgba(0,0,0,.5);
+}
+.notes-back-top.shown{display:inline-flex}
+.notes-back-top:hover{
+  transform:translateY(-3px);
+  border-color:rgba(155,140,255,.9);
+  box-shadow:0 10px 28px rgba(155,140,255,.4);
+}
+.notes-back-top svg{width:20px;height:20px}
+
+/* Keyboard hint footer */
+.notes-kbd-hint{
+  font-family:'Geist Mono',monospace;font-size:11.5px;
+  color:var(--fg-faint);text-align:center;
+  margin:30px 0 6px;letter-spacing:.04em;
+}
+.notes-kbd{
+  display:inline-block;padding:2px 7px;border-radius:5px;
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.12);
+  font-size:11px;color:var(--fg-dim);margin:0 2px;
+  font-family:'Geist Mono',monospace;
+}
+
+@media (prefers-reduced-motion:reduce){
+  .notes-progress-fill,.notes-sec-body{transition:none !important}
+}
+
 /* ============================================================
    PRACTICE COMPLETION BANNER
    ============================================================ */
@@ -1540,17 +1984,31 @@ body[data-route="home"] .countdown{display:block}
 }
 .rt-deploy{
   margin-top:14px;
-  appearance:none;border:0;cursor:pointer;font:inherit;
-  display:inline-flex;align-items:center;gap:8px;
-  padding:10px 18px;border-radius:10px;font-weight:600;font-size:13px;letter-spacing:.01em;
-  color:#06080d;background:linear-gradient(135deg, var(--cy), var(--in));
-  box-shadow:0 10px 30px -10px rgba(0,240,255,.6);
-  transition:transform .25s cubic-bezier(0.16,1,0.3,1), box-shadow .3s cubic-bezier(0.16,1,0.3,1), filter .25s, opacity .3s;
+  appearance:none;cursor:pointer;font:inherit;
+  display:inline-flex;align-items:center;gap:10px;
+  padding:12px 22px;border-radius:10px;
+  font-weight:700;font-size:13.5px;letter-spacing:.04em;text-transform:uppercase;
+  color:#0a0d14;
+  background:linear-gradient(135deg, #00f0ff 0%, #5b6cff 100%);
+  border:1px solid rgba(0,240,255,.9);
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.15) inset,
+    0 0 18px rgba(0,240,255,.45),
+    0 10px 30px -10px rgba(0,240,255,.7);
+  text-shadow:0 1px 0 rgba(255,255,255,.4);
+  transition:transform .25s cubic-bezier(0.16,1,0.3,1), box-shadow .3s, filter .25s, opacity .3s;
 }
-.rt-deploy:hover{transform:translateY(-2px);filter:brightness(1.08);box-shadow:0 14px 38px -10px rgba(0,240,255,.8)}
+.rt-deploy:hover{
+  transform:translateY(-2px);
+  filter:brightness(1.12) saturate(1.1);
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.25) inset,
+    0 0 28px rgba(0,240,255,.7),
+    0 14px 38px -10px rgba(0,240,255,.9);
+}
 .rt-deploy:active{transform:scale(.96)}
-.rt-deploy.fired{opacity:.35;pointer-events:none}
-.rt-deploy svg{width:14px;height:14px}
+.rt-deploy.fired{opacity:.45;pointer-events:none;filter:grayscale(.4)}
+.rt-deploy svg{width:16px;height:16px;stroke-width:2.4}
 
 /* ===== TOOL C · 60-Second Drill (neon masonry) ===== */
 .dr-grid{display:grid;gap:12px;grid-template-columns:repeat(auto-fill, minmax(230px, 1fr))}
@@ -1794,42 +2252,147 @@ body[data-route="home"]       .countdown{opacity:1;pointer-events:auto;transform
 }
 .pr-ico{font-size:22px}
 
-/* Stealth pill → Traps (classified intel) */
+/* ============ TRAPS CTA · Cinematic classified pill ============ */
+@property --traps-angle{
+  syntax:'<angle>';
+  initial-value:0deg;
+  inherits:false;
+}
+
+.traps-cta{
+  display:flex;flex-direction:column;align-items:center;gap:12px;
+}
+.traps-eyebrow{
+  font-family:'Geist Mono',monospace;
+  font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;
+  color:rgba(255,0,255,.75);
+  display:inline-flex;align-items:center;gap:12px;
+  text-shadow:0 0 10px rgba(255,0,255,.35);
+}
+.traps-eyebrow .te-dot{
+  width:5px;height:5px;border-radius:50%;
+  background:#ff3df8;box-shadow:0 0 10px rgba(255,61,248,.9);
+  animation:trapsDotPulse 1.6s infinite;
+}
+.traps-eyebrow .te-dot:last-child{animation-delay:.8s;background:#00f0ff;box-shadow:0 0 10px rgba(0,240,255,.9)}
+@keyframes trapsDotPulse{
+  0%,100%{opacity:1;transform:scale(1)}
+  50%{opacity:.25;transform:scale(.55)}
+}
+.traps-hint{
+  font-family:'Geist Mono',monospace;
+  font-size:11.5px;color:rgba(255,255,255,.55);
+  letter-spacing:.04em;font-style:italic;
+  text-align:center;
+}
+
+/* The pill itself — full override of the original .stealth-pill base */
 .stealth-pill{
-  background:rgba(255,0,255,.04) !important;
-  border:1px solid rgba(255,0,255,.35) !important;
-  color:rgba(255,0,255,.85) !important;
-  font-size:13px !important;
-  animation:magentaPulse 3s ease-in-out infinite !important;
-  backdrop-filter:blur(8px);
-  transition:transform .3s cubic-bezier(.22,1,.36,1), box-shadow .3s !important;
-  position:relative;overflow:hidden;
+  appearance:none !important;cursor:pointer;font:inherit;
+  display:inline-flex !important;align-items:center;gap:10px !important;
+  padding:14px 28px !important;border-radius:14px !important;
+  background:radial-gradient(120% 200% at 50% 0%,rgba(60,0,80,.4),rgba(8,4,14,.95)) !important;
+  border:0 !important;color:#fff !important;
+  font-family:'Geist Mono',monospace !important;
+  font-size:14.5px !important;letter-spacing:.08em !important;font-weight:600 !important;
+  position:relative;overflow:hidden;isolation:isolate;
+  box-shadow:
+    0 0 0 1px rgba(255,0,255,.35) inset,
+    0 0 22px -2px rgba(255,0,255,.45),
+    0 0 60px -10px rgba(0,240,255,.4),
+    0 14px 36px -12px rgba(0,0,0,.7) !important;
+  opacity:1 !important;
+  animation:trapsFloat 4.5s ease-in-out infinite !important;
+  transition:transform .3s cubic-bezier(.22,1,.36,1), box-shadow .3s, filter .3s !important;
 }
+@keyframes trapsFloat{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-3px)}
+}
+
+/* Rotating conic-gradient border (cyan → magenta → indigo) */
+.stealth-pill::before{
+  content:'';position:absolute;inset:-1.5px;border-radius:inherit;padding:1.5px;
+  background:conic-gradient(from var(--traps-angle),
+    #00f0ff 0deg, #ff3df8 120deg, #9b8cff 240deg, #00f0ff 360deg);
+  -webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+          mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;
+          mask-composite:exclude;
+  animation:trapsRotate 4s linear infinite;
+  pointer-events:none;
+  z-index:0;
+}
+@keyframes trapsRotate{to{--traps-angle:360deg}}
+
+/* TOP SECRET watermark — more visible, big and tilted behind the text */
 .stealth-pill::after{
-  content:'TOP SECRET';position:absolute;
-  font-size:42px;font-weight:900;letter-spacing:.08em;
-  color:rgba(255,0,255,.04);white-space:nowrap;
-  transform:rotate(-20deg);pointer-events:none;
-  top:50%;left:50%;translate:-50% -50%;
+  content:'TOP SECRET' !important;
+  position:absolute;font-size:36px !important;font-weight:900;letter-spacing:.14em;
+  color:rgba(255,0,255,.07) !important;white-space:nowrap;
+  transform:rotate(-18deg) !important;pointer-events:none;
+  top:50% !important;left:50% !important;translate:-50% -50% !important;
+  z-index:0;
+  transition:color .35s;
 }
+
+/* Children — bring them above pseudo-elements */
+.stealth-pill .sp-bracket{
+  color:#00f0ff !important;font-weight:700 !important;font-size:17px !important;
+  text-shadow:0 0 10px rgba(0,240,255,.75);
+  position:relative;z-index:2;
+}
+.stealth-pill .sp-cmd{
+  background:linear-gradient(135deg,#fff 0%,#ff9bf5 55%,#7fefff 100%);
+  -webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;color:transparent !important;
+  font-weight:700 !important;letter-spacing:.1em;
+  position:relative;z-index:2;
+  text-shadow:0 0 18px rgba(255,0,255,.25);
+}
+.stealth-pill .sp-blink{
+  background:#00f0ff !important;
+  width:8px !important;height:14px !important;display:inline-block;
+  box-shadow:0 0 10px rgba(0,240,255,.85);
+  position:relative;z-index:2;opacity:.85 !important;
+}
+.stealth-pill .sp-lock,
+.stealth-pill .sp-arrow{
+  width:16px;height:16px;color:#ff3df8;
+  filter:drop-shadow(0 0 6px rgba(255,61,248,.6));
+  position:relative;z-index:2;
+  transition:transform .3s cubic-bezier(.22,1,.36,1), color .3s, filter .3s;
+}
+.stealth-pill .sp-arrow{color:#00f0ff;filter:drop-shadow(0 0 6px rgba(0,240,255,.6))}
+
+/* Hover state — major level-up */
 .stealth-pill:hover{
-  transform:scale(1.05) !important;
-  box-shadow:0 0 22px rgba(255,0,255,.4) !important;
+  transform:translateY(-4px) scale(1.04) !important;
+  filter:brightness(1.08);
+  box-shadow:
+    0 0 0 1px rgba(255,0,255,.7) inset,
+    0 0 34px -2px rgba(255,0,255,.85),
+    0 0 90px -10px rgba(0,240,255,.65),
+    0 22px 50px -10px rgba(0,0,0,.85) !important;
 }
-.stealth-pill:hover .sp-cmd{
-  animation:decode .5s steps(6) forwards !important;
+.stealth-pill:hover::after{color:rgba(255,0,255,.14) !important}
+.stealth-pill:hover .sp-lock{
+  transform:rotate(-22deg) translateY(-1px);
+  color:#00f0ff;
+  filter:drop-shadow(0 0 8px rgba(0,240,255,.8));
 }
-@keyframes magentaPulse{
-  0%,100%{box-shadow:0 0 6px rgba(255,0,255,.2)}
-  50%    {box-shadow:0 0 18px rgba(255,0,255,.5)}
+.stealth-pill:hover .sp-arrow{
+  transform:translateX(5px);
+  color:#ff3df8;
+  filter:drop-shadow(0 0 8px rgba(255,61,248,.8));
 }
-@keyframes decode{
-  0%  {content:'X#@!&%'}
-  20% {content:'Tr@p$!'}
-  40% {content:'Tr4ps!'}
-  60% {content:'Traps!'}
-  80% {content:'Traps '}
-  100%{content:'Traps'}
+.stealth-pill:hover .sp-cmd{animation:skGlitch .3s steps(2) 1}
+.stealth-pill:active{transform:translateY(-2px) scale(.98) !important}
+
+/* Reduced motion fallback */
+@media (prefers-reduced-motion: reduce){
+  .stealth-pill,.stealth-pill::before{animation:none !important}
+  .traps-eyebrow .te-dot{animation:none !important}
 }
 
 /* Huawei disclaimer in questions */
@@ -1881,7 +2444,45 @@ body[data-route="home"]       .countdown{opacity:1;pointer-events:auto;transform
   box-shadow:0 0 12px rgba(0,229,255,.2);
 }
 .audio-icon-note{width:16px;height:16px}
+.audio-icon{width:16px;height:16px}
+.audio-toggle .audio-icon-off{display:none}
+.audio-toggle.audio-muted .audio-icon-on{display:none}
+.audio-toggle.audio-muted .audio-icon-off{display:inline-block}
+.audio-toggle.audio-muted{
+  border-color:rgba(255,122,138,.55);color:#ff7a8a;
+  background:rgba(255,122,138,.08);box-shadow:none;
+}
 .audio-hint{font-size:12px;color:var(--fg-faint)}
+
+/* Volume slider */
+.audio-volume{
+  -webkit-appearance:none;appearance:none;
+  width:120px;height:4px;cursor:pointer;
+  background:linear-gradient(to right,#00e5ff var(--vol,35%),rgba(255,255,255,.1) var(--vol,35%));
+  border-radius:999px;outline:none;
+  transition:height .15s;
+}
+.audio-volume:hover{height:6px}
+.audio-volume::-webkit-slider-thumb{
+  -webkit-appearance:none;appearance:none;
+  width:14px;height:14px;border-radius:50%;
+  background:#00e5ff;cursor:pointer;border:none;
+  box-shadow:0 0 10px rgba(0,229,255,.6);
+  transition:transform .15s;
+}
+.audio-volume::-webkit-slider-thumb:hover{transform:scale(1.2)}
+.audio-volume::-moz-range-thumb{
+  width:14px;height:14px;border-radius:50%;
+  background:#00e5ff;cursor:pointer;border:none;
+  box-shadow:0 0 10px rgba(0,229,255,.6);
+}
+.audio-vol-val{
+  font-family:'Geist Mono',monospace;font-size:11.5px;
+  color:#00e5ff;min-width:36px;text-align:center;
+  letter-spacing:.04em;
+}
+.audio-toggle.audio-muted ~ .audio-volume{opacity:.45}
+.audio-toggle.audio-muted ~ .audio-vol-val{color:#ff7a8a;opacity:.6}
 
 .asrar-header{margin-bottom:28px;padding-bottom:20px;border-bottom:1px solid var(--line)}
 .asrar-eyebrow{
@@ -1956,6 +2557,220 @@ body[data-route="home"]       .countdown{opacity:1;pointer-events:auto;transform
 }
 .asrar-discord:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(88,101,242,.6)}
 
+/* Table of Contents — sticky chip nav for أسرار */
+.asrar-toc{
+  display:flex;flex-wrap:wrap;gap:8px;
+  margin:6px 0 28px;padding:14px;
+  background:rgba(255,0,255,.04);
+  border:1px solid rgba(255,0,255,.18);
+  border-radius:14px;
+}
+.asrar-toc-btn{
+  appearance:none;cursor:pointer;font:inherit;
+  font-family:'IBM Plex Sans Arabic','Geist',system-ui,sans-serif;
+  font-size:12.5px;font-weight:600;
+  padding:7px 13px;border-radius:999px;
+  background:rgba(255,255,255,.03);
+  border:1px solid var(--line);
+  color:var(--fg-dim);
+  transition:all .2s;
+}
+.asrar-toc-btn:hover{
+  background:rgba(255,0,255,.08);
+  border-color:rgba(255,0,255,.4);
+  color:#fff;transform:translateY(-1px);
+}
+.asrar-toc-btn.is-current{
+  background:rgba(255,0,255,.18);
+  border-color:rgba(255,0,255,.6);
+  color:#fff;
+}
+.asrar-body section{scroll-margin-top:90px;margin-bottom:8px}
+.asrar-body .ok{color:#5ee4a3;font-weight:700}
+.asrar-body .bad{color:#ff7a8a;font-weight:700}
+.asrar-body b{color:#fff}
+
+/* ============ أسرار ENHANCED INTERACTIVITY ============ */
+
+/* Reading progress bar — sticky at top of asrar panel */
+.asrar-progress{
+  position:sticky;top:0;
+  height:3px;width:100%;
+  background:rgba(255,255,255,.04);
+  border-radius:999px;overflow:hidden;
+  z-index:50;margin-bottom:6px;
+}
+.asrar-progress-fill{
+  height:100%;width:0%;
+  background:linear-gradient(90deg,#00e5ff,#ff00ff);
+  box-shadow:0 0 12px rgba(0,229,255,.55);
+  transition:width .12s linear;
+}
+
+/* Sticky TOC under the progress bar */
+.asrar-toc{
+  position:sticky;top:3px;z-index:40;
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+  background:rgba(11,13,19,.82);
+}
+
+/* TOC: read indicator (✓ once user scrolled past) */
+.asrar-toc-btn{position:relative}
+.asrar-toc-btn.is-read::before{
+  content:'✓';
+  margin-left:4px;
+  color:#5ee4a3;font-weight:800;font-size:11px;
+  text-shadow:0 0 6px rgba(94,228,163,.4);
+}
+
+/* Collapsible section heads */
+.asrar-section-head{
+  cursor:pointer;
+  display:flex !important;align-items:center;gap:10px;
+  user-select:none;
+  transition:color .2s,background .2s;
+  padding-right:4px;
+}
+.asrar-section-head:hover{color:#fff;background:rgba(255,0,255,.03)}
+.asrar-collapse-arrow{
+  display:inline-block;
+  font-size:11px;color:rgba(255,0,255,.7);
+  transition:transform .25s;
+}
+section.is-collapsed > .asrar-section-head .asrar-collapse-arrow{
+  transform:rotate(-90deg);
+}
+.asrar-section-head-text{flex:1}
+.asrar-section-num{
+  font-family:'Geist Mono',monospace;font-size:10px;
+  letter-spacing:.1em;color:rgba(0,229,255,.85);
+  background:rgba(0,229,255,.07);
+  border:1px solid rgba(0,229,255,.28);
+  padding:2px 8px;border-radius:999px;
+  flex-shrink:0;
+}
+
+/* Smooth collapse with grid trick (no JS height math) */
+.asrar-sec-body{
+  display:grid;grid-template-rows:1fr;
+  transition:grid-template-rows .35s ease,opacity .25s;
+  opacity:1;
+}
+section.is-collapsed > .asrar-sec-body{grid-template-rows:0fr;opacity:0}
+.asrar-sec-inner{overflow:hidden;min-height:0}
+
+/* Section divider */
+.asrar-body section + section{
+  border-top:1px dashed rgba(255,255,255,.06);
+  padding-top:10px;margin-top:14px;
+}
+
+/* Interactive MCQ */
+.asrar-example[data-interactive]{position:relative}
+.asrar-example[data-interactive] .asrar-opt{
+  cursor:pointer;
+  transition:transform .22s,box-shadow .22s,opacity .22s,border-color .22s;
+}
+.asrar-example[data-interactive] .asrar-opt:hover{
+  transform:translateX(4px);
+  box-shadow:0 4px 16px rgba(0,229,255,.15);
+}
+.asrar-example[data-interactive][data-solved] .asrar-opt{cursor:default}
+.asrar-example[data-interactive][data-solved] .asrar-opt:hover{
+  transform:none;box-shadow:none;
+}
+.asrar-example[data-interactive][data-solved] .asrar-opt:not(.right-opt){
+  opacity:.35;
+}
+.asrar-example[data-interactive] .asrar-opt.is-revealed-wrong{
+  border-color:rgba(255,122,138,.6);
+  background:rgba(255,122,138,.12);
+}
+.asrar-example[data-interactive] .asrar-opt.right-opt.is-correct-glow{
+  border-color:rgba(94,228,163,.7);
+  background:rgba(94,228,163,.16);
+  box-shadow:0 0 24px rgba(94,228,163,.35);
+}
+@keyframes asrarShake{
+  0%,100%{transform:translateX(0)}
+  20%,60%{transform:translateX(-8px)}
+  40%,80%{transform:translateX(8px)}
+}
+.asrar-opt.is-shake{animation:asrarShake .38s}
+.asrar-opt-flaw{
+  display:block;margin-top:6px;
+  font-family:'Geist Mono',monospace;font-size:11.5px;
+  color:#ff7a8a;letter-spacing:.04em;
+}
+.asrar-mcq-prompt{
+  display:flex;align-items:center;gap:8px;
+  margin-bottom:8px;
+  font-family:'Geist Mono',monospace;font-size:11px;
+  letter-spacing:.12em;text-transform:uppercase;
+  color:rgba(0,229,255,.85);
+}
+.asrar-mcq-prompt::before{
+  content:'';width:6px;height:6px;border-radius:50%;
+  background:#00e5ff;box-shadow:0 0 8px rgba(0,229,255,.7);
+  animation:asrarPulse 1.6s infinite;
+}
+@keyframes asrarPulse{
+  0%,100%{opacity:1;transform:scale(1)}
+  50%{opacity:.4;transform:scale(.7)}
+}
+.asrar-mcq-feedback{
+  margin-top:10px;padding:10px 14px;border-radius:10px;
+  font-family:'Geist Mono',monospace;font-size:12.5px;
+  text-align:center;letter-spacing:.04em;
+  display:none;
+}
+.asrar-mcq-feedback.shown{display:block}
+.asrar-mcq-feedback.good{
+  background:rgba(94,228,163,.1);color:#5ee4a3;
+  border:1px solid rgba(94,228,163,.3);
+  box-shadow:0 0 16px rgba(94,228,163,.15);
+}
+.asrar-mcq-feedback.bad{
+  background:rgba(255,122,138,.08);color:#ff7a8a;
+  border:1px solid rgba(255,122,138,.3);
+}
+
+/* Back-to-top floating button */
+.asrar-back-top{
+  position:fixed;bottom:24px;left:24px;
+  width:46px;height:46px;border-radius:50%;
+  background:rgba(7,8,12,.85);backdrop-filter:blur(10px);
+  border:1px solid rgba(0,229,255,.45);
+  color:#00e5ff;cursor:pointer;
+  display:none;align-items:center;justify-content:center;
+  z-index:60;
+  transition:transform .25s,border-color .25s,box-shadow .25s;
+  box-shadow:0 6px 20px rgba(0,0,0,.5);
+}
+.asrar-back-top.shown{display:inline-flex}
+.asrar-back-top:hover{
+  transform:translateY(-3px);
+  border-color:rgba(0,229,255,.9);
+  box-shadow:0 10px 28px rgba(0,229,255,.35);
+}
+.asrar-back-top svg{width:20px;height:20px}
+
+/* Keyboard nav hint */
+.asrar-kbd-hint{
+  font-family:'Geist Mono',monospace;font-size:11.5px;
+  color:var(--fg-faint);text-align:center;
+  margin:22px 0 4px;letter-spacing:.04em;
+}
+.asrar-kbd{
+  display:inline-block;padding:2px 7px;border-radius:5px;
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.12);
+  font-size:11px;color:var(--fg-dim);
+  margin:0 2px;font-family:'Geist Mono',monospace;
+  box-shadow:inset 0 -1px 0 rgba(255,255,255,.05);
+}
+
 /* sk-tab active text always white */
 .sk-tab.active{color:#fff !important}
 .rt-card .rt-front{color:var(--fg) !important}
@@ -2005,13 +2820,13 @@ body[data-route="home"]       .countdown{opacity:1;pointer-events:auto;transform
       <div class="brand-mark">3</div>
       <div class="brand-title"><b>IT7014</b> <span>· Final Exam Prep</span></div>
     </div>
-    <a class="tb-discord" href="https://discord.gg/mSZfkGCy" target="_blank" rel="noopener" title="Join the poly it Discord server">
+    <a class="tb-discord" href="https://discord.gg/rYJknEfA" target="_blank" rel="noopener" title="Join the poly it Discord server">
       <svg viewBox="0 0 71 55" fill="currentColor" aria-hidden="true"><path d="M60.105 4.898A58.55 58.55 0 0 0 45.653.415a.22.22 0 0 0-.232.111c-.624 1.11-1.317 2.56-1.803 3.7a54.005 54.005 0 0 0-16.213 0c-.486-1.164-1.2-2.59-1.83-3.7a.228.228 0 0 0-.232-.111A58.385 58.385 0 0 0 10.89 4.898a.207.207 0 0 0-.094.082c-9.198 13.74-11.717 27.142-10.481 40.378a.245.245 0 0 0 .093.166c6.066 4.456 11.945 7.16 17.715 8.95a.23.23 0 0 0 .25-.082 41.93 41.93 0 0 0 3.626-5.902.225.225 0 0 0-.123-.312 38.772 38.772 0 0 1-5.539-2.64.228.228 0 0 1-.022-.378c.372-.279.744-.569 1.1-.862a.22.22 0 0 1 .229-.03c11.62 5.305 24.198 5.305 35.681 0a.22.22 0 0 1 .232.028c.357.293.728.585 1.103.864a.228.228 0 0 1-.02.378 36.384 36.384 0 0 1-5.54 2.637.227.227 0 0 0-.121.315 47.072 47.072 0 0 0 3.624 5.9.227.227 0 0 0 .25.084c5.798-1.79 11.677-4.494 17.743-8.95a.228.228 0 0 0 .093-.164c1.48-15.305-2.48-28.596-10.49-40.376a.18.18 0 0 0-.093-.084Zm-36.38 32.4c-3.497 0-6.38-3.21-6.38-7.156s2.826-7.156 6.38-7.156c3.583 0 6.438 3.24 6.38 7.156 0 3.946-2.825 7.156-6.38 7.156Zm23.59 0c-3.498 0-6.38-3.21-6.38-7.156s2.825-7.156 6.38-7.156c3.582 0 6.437 3.24 6.38 7.156 0 3.946-2.798 7.156-6.38 7.156Z"></path></svg>
       <span class="tbd-text">Join <b>poly it</b></span>
     </a>
     <nav class="nav" id="nav">
-      <button class="nav-btn active" data-route="home"><span class="dot"></span><span class="label">Home</span></button>
       <button class="lb-trophy-btn lb-trophy-small" onclick="openLeaderboard()" title="Leaderboard"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg></button>
+      <button class="nav-btn active" data-route="home"><span class="dot"></span><span class="label">Home</span></button>
       <button class="nav-btn" data-route="practice"><span class="dot"></span><span class="label">Practice</span></button>
       <button class="nav-btn" data-route="exam"><span class="dot"></span><span class="label">Exam</span></button>
       <button class="nav-btn" data-route="notes-en"><span class="dot"></span><span class="label">Notes</span></button>
@@ -2021,6 +2836,24 @@ body[data-route="home"]       .countdown{opacity:1;pointer-events:auto;transform
 
   <!-- HOME -->
   <main class="view active" id="view-home">
+
+    <!-- TOP STRIP — critical warning + Discord CTA -->
+    <div class="top-strip">
+      <div class="top-critical" role="note">
+        <span class="tc-icon" aria-hidden="true">⚠</span>
+        <span>
+          <span class="tc-tag">Critical warning</span>
+          <b>Please treat this website strictly as a SECONDARY study resource (Plan B).</b>
+          This is merely a highly educated prediction based on the provided base materials. The real exam may differ completely, so always rely on your primary study materials first!
+        </span>
+      </div>
+      <a class="top-discord-btn" href="https://discord.gg/rYJknEfA" target="_blank" rel="noopener">
+        <span class="tdb-pulse" aria-hidden="true"></span>
+        <svg class="tdb-logo" viewBox="0 0 71 55" fill="currentColor" aria-hidden="true"><path d="M60.105 4.898A58.55 58.55 0 0 0 45.653.415a.22.22 0 0 0-.232.111c-.624 1.11-1.317 2.56-1.803 3.7a54.005 54.005 0 0 0-16.213 0c-.486-1.164-1.2-2.59-1.83-3.7a.228.228 0 0 0-.232-.111A58.385 58.385 0 0 0 10.89 4.898a.207.207 0 0 0-.094.082c-9.198 13.74-11.717 27.142-10.481 40.378a.245.245 0 0 0 .093.166c6.066 4.456 11.945 7.16 17.715 8.95a.23.23 0 0 0 .25-.082 41.93 41.93 0 0 0 3.626-5.902.225.225 0 0 0-.123-.312 38.772 38.772 0 0 1-5.539-2.64.228.228 0 0 1-.022-.378c.372-.279.744-.569 1.1-.862a.22.22 0 0 1 .229-.03c11.62 5.305 24.198 5.305 35.681 0a.22.22 0 0 1 .232.028c.357.293.728.585 1.103.864a.228.228 0 0 1-.02.378 36.384 36.384 0 0 1-5.54 2.637.227.227 0 0 0-.121.315 47.072 47.072 0 0 0 3.624 5.9.227.227 0 0 0 .25.084c5.798-1.79 11.677-4.494 17.743-8.95a.228.228 0 0 0 .093-.164c1.48-15.305-2.48-28.596-10.49-40.376a.18.18 0 0 0-.093-.084Zm-36.38 32.4c-3.497 0-6.38-3.21-6.38-7.156s2.826-7.156 6.38-7.156c3.583 0 6.438 3.24 6.38 7.156 0 3.946-2.825 7.156-6.38 7.156Zm23.59 0c-3.498 0-6.38-3.21-6.38-7.156s2.825-7.156 6.38-7.156c3.582 0 6.437 3.24 6.38 7.156 0 3.946-2.798 7.156-6.38 7.156Z"></path></svg>
+        Join <b>poly it</b><span class="tdb-arrow">→</span>
+      </a>
+    </div>
+
     <div class="laptop-tip">
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
     <rect x="2" y="3" width="20" height="14" rx="2"/><polyline points="8 21 12 17 16 21"/>
@@ -2033,56 +2866,29 @@ body[data-route="home"]       .countdown{opacity:1;pointer-events:auto;transform
         <span class="by">Made by</span>
         <span class="name">3mmar</span>
       </h1>
-      <p class="sub">IT 7014 · IT7014 Digital Intelligence for Sustainability — Everything you need for the final exam only ( A to Z ) · 105 simulated MCQs · Exam · Notes in English &amp; Arabic</p>
+      <p class="sub sub-hero">
+        <span class="sub-course">IT 7014</span>
+        <span class="sub-sep">|</span>
+        <span class="sub-name">Digital Intelligence for Sustainability</span>
+        <span class="sub-tag">Everything you need for the final exam <span class="sub-az">A&nbsp;→&nbsp;Z</span></span>
+        <span class="sub-pills">
+          <span class="sub-pill">105 simulated MCQs</span>
+          <span class="sub-dot">•</span>
+          <span class="sub-pill">Full Exam Mode</span>
+          <span class="sub-dot">•</span>
+          <span class="sub-pill">Notes <span class="sub-lang">EN</span> &amp; <span class="sub-lang">AR</span></span>
+        </span>
+      </p>
       <div class="meta">
         <span class="chip"><b>105</b> MCQs</span>
         <span class="chip"><b>4</b> options each</span>
         <span class="chip"><b>0</b> calculation items</span>
-        <span class="chip">Modules <b>5 &amp; 6</b> + Huawei</span>
+        <span class="chip"><b>Topic 7 to 12</b></span>
       </div>
     </section>
 
-    <article class="card method-card" aria-label="Methodology &amp; Disclaimer">
-      <header class="method-head">
-        <div class="ico">◈</div>
-        <h3>Methodology &amp; Disclaimer <span>· How this was built</span></h3>
-      </header>
-      <p class="method-body">
-        This website was crafted by a student <em>3mmar</em>, utilizing advanced AI to completely reverse-engineer Professor Faustino Reyes's examination philosophy. To achieve this exceptional level of predictive precision, a massive dataset was synthesized through the AI engine, <span class="method-sources-glow">(including the actual 75-question Midterm Exam, the professor's official emails confirming exact coverage and a strict &quot;no calculation&quot; rule, past Moodle quizzes, weekly PDF presentations, all video transcripts, and the specific Huawei Digital Power materials.)</span> By deeply analyzing these vectors, the AI successfully extracted the professor's precise testing blueprint decoding exactly how he transforms a simple textbook sentence into an interactive scenario, formulates tricky conceptual distractors, and strictly tests Huawei content as low-order fact or numeric recall questions. This extracted philosophy was then rigorously applied to the entire Final Exam curriculum (Weeks 8–12) to generate this predictive simulation, which is structurally optimized into three core difficulty bands: <em>Section A (Low-Demand/Recall)</em>, <em>Section B (High-Demand/Conceptual)</em>, and <em>Section C (Scenario-based problem-solving)</em>.
-      </p>
-      <div class="warn-strip" role="note">
-        <span class="wico" aria-hidden="true">⚠</span>
-        <span><b>CRITICAL WARNING:</b> Please treat this website strictly as a <b>SECONDARY</b> study resource (Plan B). This is merely a highly educated prediction based on the provided base materials. The real exam may differ completely, so always rely on your primary study materials first!</span>
-      </div>
-    </article>
-
-    <!-- COVERAGE GRID -->
-    <section class="coverage" aria-label="What is covered">
-      <div class="cov"><span class="ix">01</span><span class="ck">✓</span><span class="ct">Weeks 8 to 12 Core Coverage Included</span><span class="meta">CORE</span></div>
-      <div class="cov"><span class="ix">02</span><span class="ck">✓</span><span class="ct">Moodle Official PDFs Included</span><span class="meta">PDF</span></div>
-      <div class="cov"><span class="ix">03</span><span class="ck">✓</span><span class="ct">Weeks 8-12 Moodle Video Transcripts Integrated</span><span class="meta">VIDEO</span></div>
-      <div class="cov"><span class="ix">04</span><span class="ck">✓</span><span class="ct">All Huawei Digital Power Video Content</span><span class="meta">HUAWEI</span></div>
-      <div class="cov"><span class="ix">05</span><span class="ck">✓</span><span class="ct"><span class="huawei-warn-ico" aria-hidden="true">⚠</span> Huawei Digital Power Simulation <span class="hw-muted">(Skip if needed — Not confirmed for Final Exam, included as a precaution)</span></span><span class="meta">EXAM</span></div>
-      <div class="cov"><span class="ix">06</span><span class="ck">✓</span><span class="ct">80 Real Midterm Exam Practice Questions</span><span class="meta">MIDTERM</span></div>
-    </section>
-
-    <!-- DISCORD HERO -->
-    <a class="discord-hero" href="https://discord.gg/mSZfkGCy" target="_blank" rel="noopener">
-      <div class="d-logo" aria-hidden="true">
-        <!-- Official Discord wordmark/glyph -->
-        <svg viewBox="0 0 71 55" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-          <path d="M60.105 4.898A58.55 58.55 0 0 0 45.653.415a.22.22 0 0 0-.232.111c-.624 1.11-1.317 2.56-1.803 3.7a54.005 54.005 0 0 0-16.213 0c-.486-1.164-1.2-2.59-1.83-3.7a.228.228 0 0 0-.232-.111A58.385 58.385 0 0 0 10.89 4.898a.207.207 0 0 0-.094.082c-9.198 13.74-11.717 27.142-10.481 40.378a.245.245 0 0 0 .093.166c6.066 4.456 11.945 7.16 17.715 8.95a.23.23 0 0 0 .25-.082 41.93 41.93 0 0 0 3.626-5.902.225.225 0 0 0-.123-.312 38.772 38.772 0 0 1-5.539-2.64.228.228 0 0 1-.022-.378c.372-.279.744-.569 1.1-.862a.22.22 0 0 1 .229-.03c11.62 5.305 24.198 5.305 35.681 0a.22.22 0 0 1 .232.028c.357.293.728.585 1.103.864a.228.228 0 0 1-.02.378 36.384 36.384 0 0 1-5.54 2.637.227.227 0 0 0-.121.315 47.072 47.072 0 0 0 3.624 5.9.227.227 0 0 0 .25.084c5.798-1.79 11.677-4.494 17.743-8.95a.228.228 0 0 0 .093-.164c1.48-15.305-2.48-28.596-10.49-40.376a.18.18 0 0 0-.093-.084Zm-36.38 32.4c-3.497 0-6.38-3.21-6.38-7.156s2.826-7.156 6.38-7.156c3.583 0 6.438 3.24 6.38 7.156 0 3.946-2.825 7.156-6.38 7.156Zm23.59 0c-3.498 0-6.38-3.21-6.38-7.156s2.825-7.156 6.38-7.156c3.582 0 6.437 3.24 6.38 7.156 0 3.946-2.798 7.156-6.38 7.156Z"></path>
-        </svg>
-      </div>
-      <div class="d-body">
-        <span class="d-eyebrow"><span class="pulse" style="width:5px;height:5px;background:#7eff9c;border-radius:50%"></span> Live community · free to join</span>
-        <h3 class="d-title">Join the <b>poly it</b> Discord server</h3>
-        <p class="d-unique-warn">⚠ If there are unique questions, they will be sent exclusively in the Discord server.</p>
-        <p class="d-sub">Built specifically for 3mmar's process of distributing custom updated PDFs, study guides, and single-page app tools for upcoming semesters. New questions, latest PDF revisions, and future-course websites drop here first.<span class="d-link">discord.gg/mSZfkGCy</span></p>
-      </div>
-      <span class="d-cta">Join the server <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></span>
-    </a>
-
+    <!-- 01 · QUICK START -->
+    <div class="home-sec-head"><span class="num">01</span><span class="lbl">QUICK START · Choose your mode</span></div>
     <div class="cta-grid">
       <button class="cta" data-route="practice" style="--glow:rgba(122,162,255,.45)">
         <span class="arrow">→</span>
@@ -2110,15 +2916,78 @@ body[data-route="home"]       .countdown{opacity:1;pointer-events:auto;transform
       </button>
     </div>
 
-    <!-- STEALTH ENTRY · easter egg for the elite -->
-    <div class="stealth">
-      <button class="stealth-pill" data-route="survival" title="Classified · Reyes-trap survival kit">
-        <span class="sp-bracket">[</span>
-        <span class="sp-cmd">Traps</span>
-        <span class="sp-blink" aria-hidden="true"></span>
-        <span class="sp-bracket">]</span>
-      </button>
+    <!-- 02 · YOUR PROGRESS -->
+    <div class="home-sec-head"><span class="num">02</span><span class="lbl">YOUR PROGRESS · Live from your device</span></div>
+    <div class="progress-strip" id="progressStrip"></div>
+    <div class="traps-host">
+      <div class="traps-cta">
+        <span class="traps-eyebrow">
+          <span class="te-dot" aria-hidden="true"></span>
+          <span>// CLASSIFIED ACCESS · ELITE TIER ONLY</span>
+          <span class="te-dot" aria-hidden="true"></span>
+        </span>
+        <button class="stealth-pill" data-route="survival" title="Classified · Reyes-trap survival kit">
+          <svg class="sp-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="3" y="11" width="18" height="11" rx="2"/>
+            <path d="M7 11V7a5 5 0 0110 0v4"/>
+          </svg>
+          <span class="sp-bracket">[</span>
+          <span class="sp-cmd">Traps</span>
+          <span class="sp-blink" aria-hidden="true"></span>
+          <span class="sp-bracket">]</span>
+          <svg class="sp-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </button>
+        <span class="traps-hint">Unlock the Reyes Trap-Elimination Command Center →</span>
+      </div>
     </div>
+
+    <!-- 03 · COVERAGE -->
+    <div class="home-sec-head"><span class="num">03</span><span class="lbl">What's covered</span></div>
+    <section class="coverage" aria-label="What is covered">
+      <div class="cov"><span class="ix">01</span><span class="ck">✓</span><span class="ct">Weeks 8 to 12 Core Coverage Included</span><span class="meta">CORE</span></div>
+      <div class="cov"><span class="ix">02</span><span class="ck">✓</span><span class="ct">Moodle Official PDFs Included</span><span class="meta">PDF</span></div>
+      <div class="cov"><span class="ix">03</span><span class="ck">✓</span><span class="ct">Weeks 8-12 Moodle Video Transcripts Integrated</span><span class="meta">VIDEO</span></div>
+      <div class="cov"><span class="ix">04</span><span class="ck">✓</span><span class="ct">All quizzes in weeks 8 to 12</span><span class="meta">HUAWEI</span></div>
+      <div class="cov"><span class="ix">05</span><span class="ck">✓</span><span class="ct"><span class="huawei-warn-ico" aria-hidden="true">⚠</span> Huawei Digital Power Simulation <span class="hw-muted">(Skip if needed — Not confirmed for Final Exam, included as a precaution)</span></span><span class="meta">EXAM</span></div>
+      <div class="cov"><span class="ix">06</span><span class="ck">✓</span><span class="ct">80 Real Midterm Exam Practice Questions style</span><span class="meta">MIDTERM</span></div>
+    </section>
+
+    <!-- 04 · METHODOLOGY (collapsed by default) -->
+    <div class="home-sec-head"><span class="num">04</span><span class="lbl">Methodology · How this was built</span></div>
+    <article class="card method-card is-collapsed" id="methodCard" aria-label="Methodology &amp; Disclaimer">
+      <header class="method-head">
+        <div class="ico">◈</div>
+        <h3>Methodology &amp; Disclaimer <span>· How this was built</span></h3>
+      </header>
+      <p class="method-body">
+        This website was crafted by a student <em>3mmar</em>, utilizing advanced AI to completely reverse-engineer Professor Faustino Reyes's examination philosophy. To achieve this exceptional level of predictive precision, a massive dataset was synthesized through the AI engine, <span class="method-sources-glow">(including the actual 75-question Midterm Exam, the professor's official emails confirming exact coverage and a strict &quot;no calculation&quot; rule, past Moodle quizzes, weekly PDF presentations, all video transcripts, and the specific Huawei Digital Power materials.)</span> By deeply analyzing these vectors, the AI successfully extracted the professor's precise testing blueprint decoding exactly how he transforms a simple textbook sentence into an interactive scenario, formulates tricky conceptual distractors, and strictly tests Huawei content as low-order fact or numeric recall questions. This extracted philosophy was then rigorously applied to the entire Final Exam curriculum (Weeks 8–12) to generate this predictive simulation, which is structurally optimized into three core difficulty bands: <em>Section A (Low-Demand/Recall)</em>, <em>Section B (High-Demand/Conceptual)</em>, and <em>Section C (Scenario-based problem-solving)</em>.
+      </p>
+      <button type="button" class="method-toggle" id="methodToggle">
+        <span class="method-toggle-label">Read full methodology</span>
+        <span class="method-toggle-arrow">▾</span>
+      </button>
+    </article>
+
+    <!-- 05 · COMMUNITY -->
+    <div class="home-sec-head"><span class="num">05</span><span class="lbl">Community · Discord</span></div>
+    <a class="discord-hero" href="https://discord.gg/rYJknEfA" target="_blank" rel="noopener">
+      <div class="d-logo" aria-hidden="true">
+        <!-- Official Discord wordmark/glyph -->
+        <svg viewBox="0 0 71 55" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path d="M60.105 4.898A58.55 58.55 0 0 0 45.653.415a.22.22 0 0 0-.232.111c-.624 1.11-1.317 2.56-1.803 3.7a54.005 54.005 0 0 0-16.213 0c-.486-1.164-1.2-2.59-1.83-3.7a.228.228 0 0 0-.232-.111A58.385 58.385 0 0 0 10.89 4.898a.207.207 0 0 0-.094.082c-9.198 13.74-11.717 27.142-10.481 40.378a.245.245 0 0 0 .093.166c6.066 4.456 11.945 7.16 17.715 8.95a.23.23 0 0 0 .25-.082 41.93 41.93 0 0 0 3.626-5.902.225.225 0 0 0-.123-.312 38.772 38.772 0 0 1-5.539-2.64.228.228 0 0 1-.022-.378c.372-.279.744-.569 1.1-.862a.22.22 0 0 1 .229-.03c11.62 5.305 24.198 5.305 35.681 0a.22.22 0 0 1 .232.028c.357.293.728.585 1.103.864a.228.228 0 0 1-.02.378 36.384 36.384 0 0 1-5.54 2.637.227.227 0 0 0-.121.315 47.072 47.072 0 0 0 3.624 5.9.227.227 0 0 0 .25.084c5.798-1.79 11.677-4.494 17.743-8.95a.228.228 0 0 0 .093-.164c1.48-15.305-2.48-28.596-10.49-40.376a.18.18 0 0 0-.093-.084Zm-36.38 32.4c-3.497 0-6.38-3.21-6.38-7.156s2.826-7.156 6.38-7.156c3.583 0 6.438 3.24 6.38 7.156 0 3.946-2.825 7.156-6.38 7.156Zm23.59 0c-3.498 0-6.38-3.21-6.38-7.156s2.825-7.156 6.38-7.156c3.582 0 6.437 3.24 6.38 7.156 0 3.946-2.798 7.156-6.38 7.156Z"></path>
+        </svg>
+      </div>
+      <div class="d-body">
+        <span class="d-eyebrow"><span class="pulse" style="width:5px;height:5px;background:#7eff9c;border-radius:50%"></span> Live community · free to join</span>
+        <h3 class="d-title">Join the <b>poly it</b> Discord server</h3>
+        <p class="d-unique-warn">⚠ If there are unique questions, they will be sent exclusively in the Discord server.</p>
+        <p class="d-sub">Built specifically for 3mmar's process of distributing custom updated PDFs, study guides, and single-page app tools for upcoming semesters. New questions, latest PDF revisions, and future-course websites drop here first.<span class="d-link">discord.gg/rYJknEfA</span></p>
+      </div>
+      <span class="d-cta">Join the server <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></span>
+    </a>
+
   </main>
 
   <!-- PRACTICE -->
@@ -2245,6 +3114,9 @@ body[data-route="home"]       .countdown{opacity:1;pointer-events:auto;transform
 
   <!-- NOTES AR -->
   <main class="view" id="view-notes-ar">
+    <div class="notes-progress" aria-hidden="true">
+      <div class="notes-progress-fill" id="notesArProgress"></div>
+    </div>
     <div class="view-head">
       <div>
         <h2>ملاحظات الدراسة <span class="subtle">· عربي</span></h2>
@@ -2252,6 +3124,10 @@ body[data-route="home"]       .countdown{opacity:1;pointer-events:auto;transform
       </div>
     </div>
     <article class="notes notes-ar" id="notes-ar-content" dir="rtl" lang="ar"></article>
+    <p class="notes-kbd-hint" dir="rtl">للتنقل بين الأقسام: <span class="notes-kbd">↑</span><span class="notes-kbd">↓</span> · اضغط على رأس القسم لطيّ المحتوى</p>
+    <button class="notes-back-top" id="notesArBackTop" title="رجوع للأعلى" aria-label="رجوع للأعلى">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+    </button>
   </main>
 
   <!-- SURVIVAL KIT -->
@@ -2277,108 +3153,196 @@ body[data-route="home"]       .countdown{opacity:1;pointer-events:auto;transform
     </section>
     <section class="sk-panel" data-sk-panel="dr">
       <div class="dr-grid" id="dr-grid"></div>
-    
-<section class="sk-panel" data-sk-panel="asrar">
-<div style="max-width:860px;margin:0 auto;padding:10px 0 40px;">
+    </section>
 
-  <!-- Audio toggle -->
-  <div class="asrar-audio-bar">
-    <button class="audio-toggle" id="asrarAudioBtn" title="تشغيل/إيقاف" aria-pressed="false">
-      <svg class="audio-icon-note" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
-      <span id="asrarAudioLabel">▶ موسيقى</span>
-    </button>
-    <span class="audio-hint">اضغط لتشغيل موسيقى أثناء القراءة</span>
-  </div>
-  <div id="asrarYTWrap" style="position:absolute;width:1px;height:1px;overflow:hidden;opacity:0;pointer-events:none;">
-    <iframe id="asrarYT" width="1" height="1" src="" frameborder="0" allow="autoplay" title="bg audio"></iframe>
-  </div>
+    <!-- ============ أسرار الاختبار ============ -->
+    <section class="sk-panel" data-sk-panel="asrar">
+      <div class="asrar-wrap" dir="rtl">
 
-  <!-- RTL container — entire block is RTL so Arabic flows correctly -->
-  <div dir="rtl" style="font-family:'IBM Plex Sans Arabic','Geist',system-ui,sans-serif; line-height:2; font-size:15.5px; color:var(--fg);">
+        <!-- Background music — autoplays on tab open; button toggles mute -->
+        <div class="asrar-audio-bar">
+          <button class="audio-toggle audio-playing" id="asrarAudioBtn" title="كتم / إلغاء الكتم" aria-pressed="true">
+            <svg class="audio-icon audio-icon-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 010 7.07"/><path d="M19.07 4.93a10 10 0 010 14.14"/></svg>
+            <svg class="audio-icon audio-icon-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+            <span id="asrarAudioLabel">كتم</span>
+          </button>
+          <input type="range" id="asrarVolume" class="audio-volume" min="0" max="100" value="35" step="1" aria-label="مستوى الصوت" title="مستوى الصوت">
+          <span class="audio-vol-val" id="asrarVolumeVal">35%</span>
+        </div>
+        <audio id="asrarAudio" preload="auto" loop>
+          <source src="./The%20Godfather%20Music%20%20BEST%20VERSION%20%21%21%21.mp3" type="audio/mpeg">
+          <source src="./The%20Godfather%20Music%20BEST%20VERSION%20%21%21%21.mp3" type="audio/mpeg">
+        </audio>
 
-    <div style="margin-bottom:28px;padding-bottom:18px;border-bottom:1px solid var(--line);">
-      <div style="font-family:'Geist Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,0,255,.7);margin-bottom:8px;">// سري · مخصص للطالب الذكي</div>
-      <h2 style="font-size:32px;font-weight:800;letter-spacing:-.03em;background:linear-gradient(135deg,#fff,rgba(255,0,255,.8));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:6px;">أسرار الاختبار</h2>
-      <p style="color:var(--fg-dim);font-size:14px;">تفكيك عقلية الدكتور Faustino Reyes — كيف يفكّر فعلًا وكيف تخرج من امتحانه بدرجة عالية؟</p>
-      <p style="color:var(--fg-faint);font-size:12.5px;font-style:italic;">من الطالب عمار إلى زملائه. مساعدة، لا يغنيك عن المنهج الأصلي.</p>
-    </div>
+        <!-- Header -->
+        <header class="asrar-header">
+          <div class="asrar-eyebrow">// سري · مخصص للطالب الذكي</div>
+          <h2 class="asrar-title">أسرار الاختبار</h2>
+          <p class="asrar-subtitle">تفكيك عقلية الدكتور Faustino Reyes — كيف يفكّر فعلًا، وكيف تخرج من امتحانه بدرجة عالية؟</p>
+          <p class="asrar-credit">من الطالب عمار إلى زملائه. مساعدة، لا تغني عن المنهج الأصلي.</p>
+        </header>
 
-<p dir="rtl">قبل ما تقرأ أي سؤال في الامتحان، لازم تعرف شي واحد عن الدكتور Reyes: هو ما يسوي الامتحان عشان يتأكد انك حافظ. هو يسوية عشان يميّز بين نوعين من الطلاب ف الاختبار الطالب اللي قرأ الـ slides عشرين مرة وحفظها، والطالب اللي قرأها خمس مرات لكن فهم ليش كل جملة فيها مكتوبة. هذا الفرق هو كل اللي يهمّه. وكل سؤال يصنعه مصمّم بدقة عشان يكشف هذا الفرق.</p>
+        <!-- Interactive Table of Contents -->
+        <nav class="asrar-toc" id="asrarToc" aria-label="فهرس الأقسام">
+          <button class="asrar-toc-btn is-current" data-jump="sec-mindset">عقلية الدكتور</button>
+          <button class="asrar-toc-btn" data-jump="sec-example">مثال حقيقي</button>
+          <button class="asrar-toc-btn" data-jump="sec-long">الإجابة الطويلة</button>
+          <button class="asrar-toc-btn" data-jump="sec-tiebreak">عند الاحتيار</button>
+          <button class="asrar-toc-btn" data-jump="sec-refute">Refute the Teammate</button>
+          <button class="asrar-toc-btn" data-jump="sec-logic">المنطق وقت النسيان</button>
+          <button class="asrar-toc-btn" data-jump="sec-bridge">دمج المواضيع</button>
+          <button class="asrar-toc-btn" data-jump="sec-huawei">Huawei والفيديوهات</button>
+          <button class="asrar-toc-btn" data-jump="sec-90">60% مقابل 90%</button>
+        </nav>
 
-<p dir="rtl">شلون يعمل هذا في الواقع؟ الدكتور ياخذ جملة من الـ PowerPoint، يقلبها لك ل سيناريو، ويسوي أربع خيازات: خيار واحد صح، وثلاثه خيارات غلط. لكن الثلاث الغلط مو غلط بطريقة عشوائية. كل خيار غلط مصمّم عشان "يصطاد" نوع معين من الطلاب. خيار يصطاد الطالب اللي قرأ بسرعة. خيار يصطاد الطالب اللي حافظ كلمات بدون ما يربطها بأسبابها. خيار يصطاد الطالب اللي ينجذب للكلمات التقنية المتقدمة. الخيار الصح يتعرّف عليه فقط الطالب اللي عبر كل هذه الفخاخ ووصل للسبب الحقيقي.</p>
+        <!-- Reading progress bar -->
+        <div class="asrar-progress" aria-hidden="true"><div class="asrar-progress-fill" id="asrarProgress"></div></div>
 
-<p dir="rtl">عشان جذي أول قاعدة لازم تدخل فيها الامتحان: الخيار الصح في 80% من أسئلة Section B و C يذكر شيئين السبب الميكانيكي (mechanism)، والتكلفة أو المقابل (trade-off). لو لقيت خيار يقول "هذا أفضل لأن السبب جذي، والمقابل جذي"، احتمال كبير جدًا إنه الصح. ولو حصلت خيار يقول "هذا أفضل، نقطة" بدون أي ذكر للتكلفة أو الشروط احتمال كبير إنه فخ. الدكتور ما يحب الإجابات المثالية. هو يعرف إن كل قرار في الـ IT فيه trade-off، وأي إجابة تتجاهل الـ trade-off هي إجابة طالب سطحي.</p>
+        <!-- Body -->
+        <article class="asrar-body">
 
-<p dir="rtl">خلنا ناخذ مثال حقيقي عشان توضح الفكرة. تخيّل إن السؤال يقول: "زميلك يقول نختار Active-Active بدل Active-Passive لأن Active-Active دائمًا أكثر استدامة. ويش الـ refutation؟" والخيارات تكون:</p>
+          <!-- 1. Mindset -->
+          <section id="sec-mindset">
+            <div class="asrar-section-head">عقلية الدكتور Reyes</div>
+            <p>قبل ما تقرأ أي سؤال في الامتحان، لازم تعرف شي واحد عن الدكتور Reyes: هو ما يسوّي الامتحان عشان يتأكد إنك حافظ. هو يسوّيه عشان يميّز بين نوعين من الطلاب الطالب اللي قرأ الـ slides عشرين مرة وحفظها، والطالب اللي قرأها خمس مرات لكن فهم ليش كل جملة فيها مكتوبة. هذا الفرق هو كل اللي يهمّه. وكل سؤال يصنعه مصمَّم بدقة عشان يكشف هذا الفرق.</p>
+            <p>شلون يعمل هذا في الواقع؟ الدكتور ياخذ جملة من الـ PowerPoint، يقلبها لك سيناريو، ويسوّي أربع خيارات: واحد صح، وثلاثة غلط. لكن الثلاثة الغلط مو غلط بطريقة عشوائية. كل خيار غلط مصمَّم عشان "يصطاد" نوع معيّن من الطلاب. خيار يصطاد اللي قرأ بسرعة. خيار يصطاد اللي حافظ كلمات بدون ما يربطها بأسبابها. خيار يصطاد اللي ينجذب للكلمات التقنية المتقدمة. الخيار الصح يتعرّف عليه فقط الطالب اللي عبر كل هذه الفخاخ ووصل للسبب الحقيقي.</p>
+            <p>عشان جذي أول قاعدة لازم تدخل فيها الامتحان: الخيار الصح في <b>80%</b> من أسئلة Section B و C يذكر شيئين السبب الميكانيكي (<b>mechanism</b>)، والتكلفة أو المقابل (<b>trade-off</b>). لو لقيت خيار يقول "هذا أفضل لأن السبب جذي، والمقابل جذي"، احتمال كبير جدًا إنه <span class="ok">الصح</span>. ولو حصلت خيار يقول "هذا أفضل، نقطة" بدون أي ذكر للتكلفة أو الشروط احتمال كبير إنه <span class="bad">فخ</span>. الدكتور ما يحب الإجابات المثالية. هو يعرف إن كل قرار في الـ IT فيه trade-off، وأي إجابة تتجاهل الـ trade-off هي إجابة طالب سطحي.</p>
+          </section>
 
-<div dir="rtl" style="background:var(--bg-2);border:1px solid var(--line);border-radius:14px;padding:16px;margin:14px 0 20px;display:flex;flex-direction:column;gap:8px;">
-  <div style="display:flex;align-items:flex-start;gap:10px;padding:10px 14px;border-radius:10px;background:rgba(255,122,138,.07);border:1px solid rgba(255,122,138,.2)"><span style="min-width:24px;height:24px;border-radius:7px;font-weight:800;font-size:12px;display:grid;place-items:center;background:rgba(255,122,138,.2);color:#ff7a8a">A</span><span dir="rtl">Active-Active دائمًا يستهلك ضعف الطاقة لأن في region اثنين شغّالة.</span></div>
-  <div style="display:flex;align-items:flex-start;gap:10px;padding:10px 14px;border-radius:10px;background:rgba(255,122,138,.07);border:1px solid rgba(255,122,138,.2)"><span style="min-width:24px;height:24px;border-radius:7px;font-weight:800;font-size:12px;display:grid;place-items:center;background:rgba(255,122,138,.2);color:#ff7a8a">B</span><span dir="rtl">Active-Active يحتاج Synchronous replication الإجباري، اللي يهدر طاقة.</span></div>
-  <div style="display:flex;align-items:flex-start;gap:10px;padding:10px 14px;border-radius:10px;background:rgba(94,228,163,.09);border:1px solid rgba(94,228,163,.3)"><span style="min-width:24px;height:24px;border-radius:7px;font-weight:800;font-size:12px;display:grid;place-items:center;background:rgba(94,228,163,.2);color:#5ee4a3">C</span><span dir="rtl">لا، Active-Passive هو اللي عنده standby energy overhead لأن الـ secondary region مُشغّل ومتزامن لكنه idle. المقارنة العادلة لازم تكون per request served، مو per region provisioned، و Active-Active يتفوّق في هذا المقياس.</span></div>
-  <div style="display:flex;align-items:flex-start;gap:10px;padding:10px 14px;border-radius:10px;background:rgba(255,122,138,.07);border:1px solid rgba(255,122,138,.2)"><span style="min-width:24px;height:24px;border-radius:7px;font-weight:800;font-size:12px;display:grid;place-items:center;background:rgba(255,122,138,.2);color:#ff7a8a">D</span><span dir="rtl">Active-Active يحتاج AES-256 encryption عبر الـ regions اللي يبطّئه.</span></div>
-</div>
+          <!-- 2. Real example -->
+          <section id="sec-example">
+            <div class="asrar-section-head">مثال حقيقي — Active-Active vs Active-Passive</div>
+            <p>خلّنا ناخذ مثال حقيقي عشان توضح الفكرة. تخيّل إن السؤال يقول: <i>"زميلك يقول نختار Active-Active بدل Active-Passive لأن Active-Active دائمًا أكثر استدامة. ويش الـ refutation؟"</i></p>
+            <div class="asrar-mcq-prompt">جرّب بنفسك — اختر الإجابة الصح</div>
+            <div class="asrar-example" data-interactive>
+              <div class="asrar-opt wrong-opt" data-flaw="← فخ: كلمة مطلقة «دائمًا»"><span class="asrar-lbl">A</span><span>Active-Active <b>دائمًا</b> يستهلك ضعف الطاقة لأن في region اثنين شغّالة.</span></div>
+              <div class="asrar-opt wrong-opt" data-flaw="← فخ: True-But-Irrelevant (مصطلح صحيح، سياق غلط)"><span class="asrar-lbl">B</span><span>Active-Active يحتاج <b>Synchronous replication</b> إجباري، اللي يهدر طاقة.</span></div>
+              <div class="asrar-opt right-opt"><span class="asrar-lbl">C</span><span>لا، Active-Passive هو اللي عنده <b>standby energy overhead</b> لأن الـ secondary region مُشغَّل ومتزامن لكنه idle. المقارنة العادلة لازم تكون <b>per request served</b>، مو per region provisioned، و Active-Active يتفوّق في هذا المقياس.</span></div>
+              <div class="asrar-opt wrong-opt" data-flaw="← فخ: decoration تقنية (AES-256 بلا علاقة بالسؤال)"><span class="asrar-lbl">D</span><span>Active-Active يحتاج <b>AES-256 encryption</b> عبر الـ regions اللي يبطّئه.</span></div>
+            </div>
+            <div class="asrar-mcq-feedback" id="asrarMcqFeedback"></div>
 
-<p dir="rtl">طالب يدخل الامتحان حافظ مش فاهم بس يشوف الخيار (A) ويحس إنه منطقي "صح، region اثنين = طاقة أكثر، واضحة." يجاوب ويمشي. لكن الطالب اللي فاهم عقلية الدكتور يلاحظ كلمة "دائمًا" في (A) ويعرف فورًا إنها إشارة فخ. ليش؟ لأنه الدكتور يستخدم الكلمات المُطلقة (always, never, only, regardless) كسلاح. هو يعرف إن في الـ IT ما فيه شيء "دائمًا". كل شيء يعتمد على الـ workload والـ constraints. فأي خيار يستخدم كلمة مطلقة، الدكتور يعرف ان بيصطاد طالب ما قرأ بدقة. وعشان جذي (A) فخ، حتى لو إحساسك يقول إنه صح.</p>
+            <p>طالب يدخل الامتحان حافظ مش فاهم بس يشوف الخيار (A) ويحس إنه منطقي: "صح، region اثنين = طاقة أكثر، واضحة." يجاوب ويمشي. لكن الطالب اللي فاهم عقلية الدكتور يلاحظ كلمة <b>"دائمًا"</b> في (A) ويعرف فورًا إنها إشارة فخ. ليش؟ لأن الدكتور يستخدم الكلمات المُطلقة (<i>always, never, only, regardless</i>) كسلاح. هو يعرف إن في الـ IT ما فيه شيء "دائمًا"، كل شيء يعتمد على الـ workload والـ constraints. فأي خيار يستخدم كلمة مطلقة، الدكتور يعرف إنه بيصطاد طالب ما قرأ بدقة. عشان جذي (A) <span class="bad">فخ</span>، حتى لو إحساسك يقول إنه صح.</p>
 
-<p dir="rtl">ثاني شي يلاحظه الطالب الذكي: الخيار (B) يذكر Synchronous replication. هذي كلمة تقنية متقدمة وحقيقية، فالطالب اللي قرأ الـ Topic 1 يحس إنها إجابة "ذكية". لكنه يسأل نفسه: هل Active-Active يحتاج Synchronous إجباري؟ الجواب لا Active-Active يقدر يشتغل بـ Async replication مع توافق eventual consistency. فالكلمة التقنية صحيحة، لكنها مستخدمة في سياق غلط. هذا هو الفخ الثاني: True-But-Irrelevant. الكلمة موجودة بالواقع، لكنها ما تنطبق على هذا السؤال. الدكتور يحبّ هذا الفخ لأنه يصيد الطلاب اللي ينجذبون لـ "الإجابة اللي تستخدم مصطلح يبيّن إني أعرف شي."</p>
+            <p>ثاني شي يلاحظه الطالب الذكي: الخيار (B) يذكر <b>Synchronous replication</b>. هذي كلمة تقنية متقدمة وحقيقية، فالطالب اللي قرأ الـ Topic 1 يحس إنها إجابة "ذكية". لكنه يسأل نفسه: هل Active-Active يحتاج Synchronous إجباري؟ الجواب لا Active-Active يقدر يشتغل بـ Async replication مع توافق eventual consistency. الكلمة التقنية صحيحة، لكنها مستخدمة في سياق غلط. هذا هو الفخ الثاني: <b>True-But-Irrelevant</b>. الكلمة موجودة بالواقع، لكنها ما تنطبق على هذا السؤال. الدكتور يحب هذا الفخ لأنه يصيد الطلاب اللي ينجذبون لـ "الإجابة اللي تستخدم مصطلح يبيّن إني أعرف شي."</p>
 
-<p dir="rtl">الخيار (D) أسهل AES-256 ما له أي علاقة بالموضوع. هذا فخ صريح لطالب يائس يدوّر أي خيار شكله "تقني". تعرفه فورًا.</p>
+            <p>الخيار (D) أسهل: AES-256 ما له أي علاقة بالموضوع. هذا فخ صريح لطالب يائس يدوّر أي خيار شكله "تقني". تعرفه فورًا.</p>
 
-<p dir="rtl">يبقى (C). تلاحظ إنه يفعل ثلاث أشياء في نفس الجملة: ينفي ادّعاء الزميل صراحة ("لا"), يحدّد المفهوم الصحيح بدقة (standby energy overhead خاص بـ Active-Passive), ويعطيك المقياس الصحيح للمقارنة (per request served, مو per region provisioned). هذا توقيع الدكتور بالحرف. هو يحب الإجابة اللي تكون فيها "تصحيح + سبب + معيار جديد". إذا جفت خيار يجمع هذه الثلاثة، انت على الإجابة الصح.</p>
+            <p>يبقى (C). تلاحظ إنه يفعل ثلاث أشياء في نفس الجملة: ينفي ادّعاء الزميل صراحة ("لا")، يحدّد المفهوم الصحيح بدقة (standby energy overhead خاص بـ Active-Passive)، ويعطيك المقياس الصحيح للمقارنة (per request served, مو per region provisioned). هذا توقيع الدكتور بالحرف. هو يحب الإجابة اللي تكون فيها <b>تصحيح + سبب + معيار جديد</b>. إذا جفت خيار يجمع هذه الثلاثة، انت على <span class="ok">الإجابة الصح</span>.</p>
+          </section>
 
-<div style="font-family:'Geist Mono',monospace;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,0,255,.8);margin:28px 0 10px;border-bottom:1px solid rgba(255,0,255,.2);padding-bottom:6px;" dir="rtl">متى الإجابة الطويلة صح؟ ومتى تكون فخ؟</div>
+          <!-- 3. Long answers -->
+          <section id="sec-long">
+            <div class="asrar-section-head">متى الإجابة الطويلة صح؟ ومتى تكون فخ؟</div>
+            <p>هني تجي نقطة مهمة جدًا الناس تخلط فيها. القاعدة بسيطة لكنها دقيقة. الإجابة الطويلة تكون <span class="ok">صح</span> لمّا السؤال سيناريو أو يطلب <i>"most defensible"</i> أو <i>"most accurate"</i>، لأن الجواب في هذي الحالات يحتاج يذكر السبب + التكلفة + الشرط، وهذا يحتاج كلمات. لكن الإجابة الطويلة تكون <span class="bad">فخ</span> لمّا تكون "كومة ادّعاءات مكدّسة فوق بعض" يعني تقرأها وتحسّ إن كل جملة فيها صحيحة لكن جمعهم سويًا غريب. الدكتور يصنع هذا النوع من الفخاخ أيضًا: يأخذ ثلاث جمل صحيحة من ثلاث مواضيع مختلفة ويلصقهم في خيار واحد، عشان يصطاد الطالب اللي يفكر "هذا الخيار فيه أكبر معلومات، إذن هو الصح." الطالب الذكي يقرأ كل جملة في الإجابة الطويلة لحالها ويسأل: <b>هل هذه الجملة تخدم الجواب على السؤال؟ ولا هي مجرد حشو تقني؟</b> لو حسّيت إن جملة فيها "معلومة صحيحة بس ما تخدم السؤال" هذي علامة إن الخيار كله فخ.</p>
+            <p>مثال على إجابة طويلة تكون فخ: تخيّل سؤال عن سبب بطء قاعدة بيانات relational لمّا تستقبل 200 مليون time-series row يوميًا. خيار طويل يقول: "الـ relational database بطيئة لأن MongoDB كانت بتكون أسرع، ولأن AES-256 encryption تبطّئ الـ inserts، ولأن الـ database vendor يفرض ضرائب على الـ connections بعد معدّل معيّن." كل جملة فيها مصطلح صحيح، لكن الجملة كلها جذب من بدايتها لنهايتها. السبب الحقيقي مو في أي من هذه. السبب الحقيقي هو إن الـ relational engine يدفع تكلفة <b>transaction logs</b> و <b>B-tree indexes</b> اللي الـ time-series workload ما يستفيد منها، فيهدر الـ resources على work ما له داعي. الإجابة الصحيحة الطويلة تذكر <i>"wrong shape of data, wrong store — polyglot persistence."</i></p>
+            <p>الفرق بين الإجابتين الطويلتين هو: <span class="ok">الصح تركّز على سبب واحد دقيق وتفصّل فيه</span>. <span class="bad">الفخ يقفز بين عدة أسباب سطحية بدون عمق في أي منها</span>.</p>
+          </section>
 
-<p dir="rtl">هني تجي نقطة مهمة جدًا الناس تخلط فيها: متى الإجابة الطويلة هي الصح؟ ومتى تكون فخ؟ القاعدة بسيطة لكنها دقيقة. الإجابة الطويلة تكون صح لمّا السؤال سيناريو أو يطلب "most defensible" أو "most accurate" لأن الجواب في هذي الحالات يحتاج يذكر السبب + التكلفة + الشرط، وهذا يحتاج كلمات. لكن الإجابة الطويلة تكون فخ لمّا تكون "كومة ادّعاءات مكدّسة فوق بعض" يعني تقرأها وتحسّ إن كل جملة فيها صحيحة لكن جمعهم سويًا غريب. الدكتور يصنع هذا النوع من الفخاخ ايضاً: يأخذ ثلاث جمل صحيحة من ثلاث مواضيع مختلفة ويلصقهم في خيار واحد، عشان يصطاد الطالب اللي يفكر "هذا الخيار فيه أكبر معلومات، إذن هو الصح." الطالب الذكي يقرأ كل جملة في الإجابة الطويلة لحالها ويسأل: هل هذه الجملة تخدم الجواب على السؤال؟ ولا هي مجرد حشو تقني؟ لو حسّيت إن جملة فيها "معلومة صحيحة بس ما تخدم السؤال" هذي علامة إن الخيار كله فخ.</p>
+          <!-- 4. Tiebreaker tests -->
+          <section id="sec-tiebreak">
+            <div class="asrar-section-head">اللحظة الأصعب — تحتار بين خيارين</div>
+            <p>اللحظة الأصعب في الامتحان: تحتار بين خيارين، الاثنين منطقيين، ووقتك ضيّق وما يمديك تغش. هني لازم تطبّق ثلاث اختبارات سريعة:</p>
+            <div class="asrar-rules">
+              <div class="asrar-rule"><span class="rule-num">1</span><span><b>اختبار الكلمات المطلقة:</b> أي واحد فيهم يحتوي (<i>always, never, only, regardless, any, every</i>)؟ احذفه على طول. الدكتور تقريبًا أبدًا ما يستخدم كلمة مطلقة في الإجابة الصحيحة، لأن أي تعميم في الـ IT خطأ.</span></div>
+              <div class="asrar-rule"><span class="rule-num">2</span><span><b>اختبار الكلمة الدخيلة:</b> أي واحد يذكر كلمة تقنية ما لها علاقة بسياق السؤال؟ "encryption" في سؤال عن caching، أو اسم لغة برمجة في سؤال عن architecture pattern، أو brand name في سؤال عن governance — احذفه. الكلمة موجودة عشان تصطاد الطالب اللي ينجذب للمصطلحات المتقدمة.</span></div>
+              <div class="asrar-rule"><span class="rule-num">3</span><span><b>اختبار السببية:</b> أي واحد فيهم يجاوب على "ليش" بطريقة سببية، ولا يكتفي بـ "إنه أفضل، نقطة"؟ هذا هو <span class="ok">الصح</span>.</span></div>
+            </div>
+            <p>لو الخيارين عدّوا الاختبارات الثلاثة، انتبه لكلمة واحدة دقيقة: هل في الخيار كلمة <b>"primary"</b> أو <b>"fundamental"</b> أو <b>"root cause"</b>؟ السؤال نفسه أحيانًا يحدد هل يبي السبب الرئيسي ولا السبب الإضافي. لو السؤال قال "primary reason" والخيار الأول ذكر سبب صحيح لكنه ثانوي، والخيار الثاني ذكر السبب الجذري الثاني هو الصح، حتى لو الأول يبدو منطقيًا أكثر.</p>
+            <p>مثال: السؤال يسأل <i>"ما السبب الأساسي وراء بقاء الـ Supervisory server على الـ on-site بدل الـ cloud؟"</i> خيار يقول "لأن الـ on-site هاردوير يستهلك كهرباء أقل من الـ cloud" — قد يكون صحيح في بعض الحالات، لكنه ما هو السبب الأساسي. خيار ثاني يقول "لأن life-safety alarms و control loops لازم تظل شغّالة لو انقطع الإنترنت السبب هو <b>continuity</b>، مو speed أو cost" — هذا هو السبب الجذري اللي يذكره الدكتور بالحرف في Topic 8.</p>
+          </section>
 
-<p dir="rtl">مثال على إجابة طويلة تكون فخ: تخيّل سؤال عن سبب بطء قاعدة بيانات relational لمّا تستقبل 200 مليون time-series row يوميًا. خيار طويل يقول: "الـ relational database بطيئة لأن MongoDB كانت بتكون أسرع، ولأن AES-256 encryption تبطّئ الـ inserts، ولأن الـ database vendor يفرض ضرائب على الـ connections بعد معدّل معيّن." كل جملة فيها فيها مصطلح صحيح، لكن الجملة كلها جذب من بدايتها لنهايتها. السبب الحقيقي مو في أي من هذه. السبب الحقيقي هو إن الـ relational engine يدفع تكلفة transaction logs و B-tree indexes اللي الـ time-series workload ما يستفيد منها، فيهدر الـ resources على work ما له داعي. الإجابة الصحيحة الطويلة تذكر "wrong shape of data, wrong store polyglot persistence." الفرق بين الإجابتين الطويلتين هو: الصح تركّز على سبب واحد دقيق وتفصّل فيه. الفخ يقفز بين عدة أسباب سطحية بدون عمق في أي منها.</p>
+          <!-- 5. Refute the Teammate -->
+          <section id="sec-refute">
+            <div class="asrar-section-head">نوع سؤال خاص — Refute the Teammate</div>
+            <p>في نوع سؤال خاص لازم تعرفه عشان لا تضيع: <b>"Refute the Teammate."</b> السؤال يبدأ بـ "فلان يقول جذي..." أو <i>"Adel argues that..."</i> وبعدين ادّعاء قوي ومقنع شكليًا. كقاعدة شبه مطلقة: <span class="bad">في هذا النوع من الأسئلة، فلان غلطان</span>. لازم ادّعاءه فيه خلل ما. فأي خيار يبدأ بـ <i>"Your teammate is correct"</i> أو <i>"He is right"</i> أو <i>"Adel is right"</i> بيكون فخ في 95% من الحالات. هذا فخ خاص اسمه <b>False-Concession</b>، يحطّه الدكتور عشان يصيد الطالب اللي يقرأ سريع ويحسب إن الدكتور وافق فلان. ما يوافق.</p>
+            <p>فلان دائمًا غلطان، ووظيفتك إنك تحصل أي نوع من الخلل في كلامه: هل هو <b>cherry-pick</b> (ركّز على معيار واحد فقط)؟ هل هو <b>swapped trade-off</b> (نسب صفة لمفهوم وهي تخص مفهوم آخر)؟ هل هو <b>absolute overgeneralization</b> (قال "always" أو "best" بدون شروط)؟ الإجابة الصحيحة تسمّي الخلل بدقة.</p>
+            <p>طريقة عملية: لمّا تقرأ ادّعاء فلان، اسأل نفسك <b>"ويش الـ trade-off اللي يتجاهله؟"</b> كل ادّعاء فيه شيء يتجاهله:</p>
+            <div class="asrar-rules">
+              <div class="asrar-rule"><span class="rule-num">×</span><span>قال "نختار الـ region اللي عنده أنظف grid" → يتجاهل الـ latency والـ network energy للـ users البعيدين.</span></div>
+              <div class="asrar-rule"><span class="rule-num">×</span><span>قال "Microservices دايمًا أفضل من Monolith" → يتجاهل الـ baseline footprint والـ network overhead.</span></div>
+              <div class="asrar-rule"><span class="rule-num">×</span><span>قال "Synchronous replication أسرع لأن في parallel confirmation" → يتجاهل إن الـ Sync ينتظر للأبطأ، مو يستفيد من الـ parallel.</span></div>
+            </div>
+            <p>الإجابة الصحيحة دائمًا تكشف بالضبط شنو اللي يتجاهله الزميل.</p>
+          </section>
 
-<div style="font-family:'Geist Mono',monospace;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,0,255,.8);margin:28px 0 10px;border-bottom:1px solid rgba(255,0,255,.2);padding-bottom:6px;" dir="rtl">اللحظة الأصعب — تحتار بين خيارين</div>
+          <!-- 6. First-Principles -->
+          <section id="sec-logic">
+            <div class="asrar-section-head">لو نسيت المعلومة — استخدم المنطق</div>
+            <p>اوكي، الموقف الأصعب: ما كنت متريق عدل ونسيت الجواب. ما تتذكر هل Flywheels هي seconds ولا hours. ما تذكر هل CDN hit rate 90% ولا 70%. ويش تسوي؟ هني لازم تستخدم <b>المنطق الهيكلي</b> للـ IT. خلّني أوضّح بمثالين.</p>
+            <p><b>مثال أول:</b> نسيت أي storage technology تناسب الـ frequency regulation. السؤال يعطيك أربعة خيارات: Pumped hydro, Flow batteries, Flywheels, Lithium-ion. ما تذكر شي. بدال ما تخمّن عشوائيًا، فكّر بالمنطق:</p>
+            <div class="asrar-rules">
+              <div class="asrar-rule"><span class="rule-num">⚙</span><span><b>Pumped hydro</b> — تحتاج فتح بوابات وتحريك ماء → بطيئة بطبيعتها.</span></div>
+              <div class="asrar-rule"><span class="rule-num">⚗</span><span><b>Flow batteries</b> — تعتمد على تفاعل كيميائي يحتاج وقت → متوسطة.</span></div>
+              <div class="asrar-rule"><span class="rule-num">⚡</span><span><b>Lithium-ion</b> — سريعة لكن تحتاج تحكّم إلكتروني معقّد لـ sub-second response.</span></div>
+              <div class="asrar-rule"><span class="rule-num">↻</span><span><b>Flywheels</b> — قرص يدور بسرعة عالية، تكبح وتعطيك الطاقة الحركية فورًا → <span class="ok">أسرع شيء فيزيائيًا</span>.</span></div>
+            </div>
+            <p>حتى لو نسيت الجدول، المنطق الفيزيائي يوصلك إن <b>Flywheels</b> هي الإجابة الصح. هذا اسمه <i>"الاستنتاج من المبادئ الأولية"</i>، وهو إنقاذ للطالب اللي نسى الأرقام لكنه فاهم العلاقات.</p>
+            <p><b>مثال ثاني:</b> نسيت ليش يبقى الـ Supervisory server في الـ on-site بدل الـ cloud. فكّر بالموقف الواقعي: مبنى فيه عمّال وإنذار حريق ونظام HVAC. لو قطعوا النت، هل لازم نظام الحريق يستمر شغّال؟ بكل تأكيد نعم — مستحيل تربط نظام يحمي أرواح الناس بشبكة قد تنقطع. هذا الاستنتاج البسيط يوصلك إن السبب هو <b>continuity</b>، مو speed ولا cost. كل اللي سويته: شفت الموقف العملي وسألت نفسك "شنو شي ما يحتمل ينقطع؟"</p>
+            <p>هذي طريقة تفيد في واجد أسئلة: لو نسيت الجواب، استحضر الموقف العملي ذهنيًا، واسأل نفسك <b>"لو أنا مهندس مسؤول، ويش الشي اللي راح أحرص عليه؟"</b> غالبًا هذا اللي يحرص عليه الدكتور.</p>
+          </section>
 
-<p dir="rtl">انزين، اللحظة الأصعب في الامتحان: تحتار بين خيارين، الاثنين منطقيين، ووقتك ضيق ومايمديك تغش. هني لازم تطبّق ثلاث اختبارات سريعة. الأول: أي واحد فيهم يحتوي كلمة مطلقة (always, never, only, regardless, any, every)؟ احذفه على طول. الدكتور تقريبًا أبدًا ما يستخدم كلمة مطلقة في الإجابة الصحيحة، لأنه يعرف إن أي تعميم في الـ IT خطأ. ثاني اختبار: أي واحد فيهم يذكر كلمة تقنية ما لها علاقة بسياق السؤال؟ يعني تشوف "encryption" في سؤال عن caching، أو اسم لغة برمجة في سؤال عن architecture pattern، أو brand name في سؤال عن governance احذفه. الكلمة موجودة عشان تصطاد الطالب اللي ينجذب للمصطلحات المتقدمة. ثالث اختبار، والأهم: أي واحد فيهم يجاوب على "ليش" بطريقة سببية، ولا يكتفي بـ "إنه أفضل، نقطة"؟ هذا هو الصح.</p>
+          <!-- 7. Bridged topics -->
+          <section id="sec-bridge">
+            <div class="asrar-section-head">المواضيع اللي يحب الدكتور يربطها وي بعض</div>
+            <p>في نمط لازم تعرفه: الدكتور يحب يربط موضوعين من Topics مختلفة في scenario واحد عشان يتأكد إنك تفهم العلاقة، مو بس حفظت كل موضوع بروحه. أمثلة:</p>
+            <div class="asrar-rules">
+              <div class="asrar-rule"><span class="rule-num">⇄</span><span><b>Demand Response + Storage Selection:</b> يعطيك مصنع يبي يدخل DR program ويسألك أي battery يختار — لازم تربط نوع الـ DR programme بالـ duration المناسبة.</span></div>
+              <div class="asrar-rule"><span class="rule-num">⇄</span><span><b>Multi-Region + Carbon-aware:</b> يعطيك خيار region "نظيف" لكنه بعيد ويسألك هل تختاره — الإجابة دائمًا هي ترتيب الـ framework (<i>Regulation → Latency → Availability → Cost → Carbon</i>).</span></div>
+              <div class="asrar-rule"><span class="rule-num">⇄</span><span><b>Microservices + Serverless:</b> يعطيك workload معيّن ويسألك أي architecture يناسبه.</span></div>
+            </div>
+            <p>كل ما شفت سؤال يدمج موضوعين، اعرف إن الدكتور يبي يميّز الطالب اللي يفكر تقاطعيًا.</p>
+          </section>
 
-<p dir="rtl">لو الخيارين عدو الاختبارات الثلاثة، انتبه لكلمة وحدة دقيقة: هل في الخيار كلمة "primary" أو "fundamental" أو "root cause"؟ السؤال نفسه أحيانًا يحدد هل يبي السبب الرئيسي ولا السبب الإضافي. لو السؤال قال "primary reason" والـ خيار الأول ذكر سبب صحيح لكنه ثانوي، والخيار الثاني ذكر السبب الجذري الثاني هو الصح، حتى لو الأول يبدو منطقيًا أكثر.</p>
+          <!-- 8. Huawei + videos -->
+          <section id="sec-huawei">
+            <div class="asrar-section-head">أسئلة Huawei والفيديوهات — recall فقط</div>
+            <p>هالنوع من الأسئلة مختلف تمامًا. هني ما في منطق ولا فهم ولا trade-off — <b>فقط حفظ</b>. الدكتور يأخذ جملة أو رقم أو اسم من الفيديو ويحطّها كسؤال recall مباشر.</p>
+            <p>مثلًا: <i>"أي مدينة أوروبية تستخدم نظام رش تلقائي عند الجفاف وحاويات تُفرَّغ عند الامتلاء؟"</i> الجواب <b>Santander</b>. لا تحاول تفكر "أيها أقرب لإسبانيا" أو "أيها مذكورة في سياق الـ IoT" — هي بس Santander لأن الفيديو ذكرها بالحرف. ونفس الشي مع باقي الأرقام والعبارات الجاهزة:</p>
+            <div class="asrar-rules">
+              <div class="asrar-rule"><span class="rule-num">⚐</span><span><b>Helsinki</b> → waste system</span></div>
+              <div class="asrar-rule"><span class="rule-num">⚐</span><span><b>Shenzhen</b> → taxi surveillance</span></div>
+              <div class="asrar-rule"><span class="rule-num">⚐</span><span><b>5G</b> = "engine for IoT"</span></div>
+              <div class="asrar-rule"><span class="rule-num">⚐</span><span><b>Huawei Smart City</b> = "nervous system"</span></div>
+              <div class="asrar-rule"><span class="rule-num">⚐</span><span><b>Huawei Cloud</b> = comparable to water / electricity / network</span></div>
+              <div class="asrar-rule"><span class="rule-num">⚐</span><span><b>BMS</b> = 20–40%</span></div>
+              <div class="asrar-rule"><span class="rule-num">⚐</span><span><b>CDN</b> hit rate = 90–98%</span></div>
+            </div>
+            <p>الدكتور قال صراحة في الـ email إن الفيديوهات و Huawei = recall فقط، وهذا يعني إنه بيحط منها أسئلة سهلة جدًا لو حفظتها. <span class="ok">هذي درجات سهلة، لا تضيّعها</span> (إذا جانا مثل الميد).</p>
+          </section>
 
-<p dir="rtl">مثال على هذا: السؤال يسأل "ما السبب الأساسي وراء بقاء الـ Supervisory server على الـ on-site بدل الـ cloud؟" خيار يقول "لأن الـ on-site هاردوير يستهلك كهرباء أقل من الـ cloud." هذا قد يكون صحيح في بعض الحالات، لكنه ما هو السبب الأساسي. خيار ثاني يقول "لأن life-safety alarms و control loops لازم تتم شغّالة لو انقطع الإنترنت السبب هو continuity، مو speed أو cost." هذا هو السبب الجذري اللي يذكره الدكتور بالحرف في الـ Topic 8. الفرق بين الخيارين هو: الأول يذكر فائدة ثانوية، الثاني يذكر الـ requirement الأساسي. الدكتور كله يبي السبب الأساسي.</p>
+          <!-- 9. 60% vs 90% -->
+          <section id="sec-90">
+            <div class="asrar-section-head">الفرق بين 60% و 90%</div>
+            <p>الشي الأخير اللي يفرّق الطالب اللي يجيب درجة عالية عن الطالب اللي بس ينجح: <b>الطالب اللي يجيب درجة عالية ما يحلّ السؤال مرة واحدة</b>. هو يحلّه، ثم يرجع له عقب ويسأل نفسه ثلاث أسئلة:</p>
+            <div class="asrar-rules">
+              <div class="asrar-rule"><span class="rule-num">؟</span><span><b>هل قرأت السؤال بدقة؟</b> الدكتور أحيانًا يحط كلمة <i>"NOT"</i> أو <i>"EXCEPT"</i> في نص السؤال، والطالب المستعجل ما يلاحظها فينقلب جوابه.</span></div>
+              <div class="asrar-rule"><span class="rule-num">؟</span><span><b>هل اخترت الخيار لأنه الصح، أم لأنه "حسّيته" الصح؟</b> الإحساس خطأ لو ما تقدر تشرح ليش الخيارات الثانية غلط. لو ما تقدر تستبعد الثلاث الباقية، احتمال إجابتك غلط.</span></div>
+              <div class="asrar-rule"><span class="rule-num">؟</span><span><b>لو الدكتور يقرأ إجابتي الآن، هل راح يقول "هالطالب فاهم"، ولا "هالطالب حافظ"؟</b> لو حسّيت إن إجابتك سطحية، في احتمال إنها فخ.</span></div>
+            </div>
+            <p>هذا التفكير الإضافي يأخذ منك 15–20 ثانية لكل سؤال، لكنه يحوّل لك <b>6–10 درجات</b> في الامتحان كله.</p>
+            <p><span class="bad">الطالب اللي ينجح بـ 60%</span> هو اللي يجاوب ويمشي. <span class="ok">الطالب اللي يجيب 90%</span> هو اللي يجاوب، يراجع، يتأكد، وبعدين يمشي.</p>
+          </section>
 
-<div style="font-family:'Geist Mono',monospace;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,0,255,.8);margin:28px 0 10px;border-bottom:1px solid rgba(255,0,255,.2);padding-bottom:6px;" dir="rtl">نوع سؤال خاص — Refute the Teammate</div>
+        </article>
 
-<p dir="rtl">في بعد نوع سؤال خاص لازم تعرفه عشان لا تضيع: "Refute the Teammate." السؤال يبدأ بـ "فلان يقول جذي..." أو "Adel argues that..." وبعدين ادّعاء قوي ومقنع شكليًا. كقاعدة شبه مطلقة: في هذا النوع من الأسئلة، فلان غلطان وأكبر غلطان. لازم ادّعاءه فيه خلل ما. فأي خيار يبدأ بـ "Your teammate is correct" أو "He is right" أو "Adel is right" بيكون فخ في 95% من الحالات. هذا فخ خاص اسمه False-Concession، يحطّه الدكتور عشان يصيد الطالب الأهبل اللي يقرأ سريع ويحسب ان الدكتور وافق فلان. ما يوافق. فلان دائمًا غلطان، ووظيفتك أنته تحصل أي نوع من الخلل في كلامه هل هو cherry-pick (ركّز على معيار واحد فقط)؟ هل هو swapped trade-off (نسب صفة لمفهوم وهي تخص مفهوم آخر)؟ هل هو absolute overgeneralization (قال "always" أو "best" بدون شروط)؟ الإجابة الصحيحة تسمّي الخلل بدقة.</p>
+        <!-- Keyboard navigation hint -->
+        <p class="asrar-kbd-hint">للتنقل بين الأقسام استخدم <span class="asrar-kbd">↑</span><span class="asrar-kbd">↓</span> أو اضغط على رأس القسم للطيّ</p>
 
-<p dir="rtl">طريقة عملية تساعدك تفهم Refute scenarios: لمّا تقرأ ادّعاء فلان، اسأل نفسك "ويش الـ trade-off اللي يتجاهله؟" لأنع كل ادّعاء فيه شيء يتجاهله. لو فلان قال "نختار الـ region اللي عنده أنظف grid" هو يتجاهل الـ latency والـ network energy للـ users البعيدين. لو قال "Microservices دايما أفضل من Monolith" هو يتجاهل الـ baseline footprint و الـ network overhead. لو قال "Synchronous replication أسرع لأن في parallel confirmation" هو يتجاهل إن الـ Sync ينتظر للأبطأ، مو يستفيد من الـ parallel. الإجابة الصحيحة دائمًا تكشف بالضبط شنو اللي يتجاهله الزميل.</p>
+        <!-- Footer -->
+        <div class="asrar-footer">
+          <p>كلمة أخيرة: هذا التحليل من تجربتي مع الـ midterm والـ quizzes والـ PowerPoints الرسمية. هو محاولة فهم لطريقة الدكتور، لكنه ما يغطّي المحتوى نفسه. الـ Topics الأصلية تحتوي تفاصيل وأمثلة وحالات دراسية ما تظهر هني، والدكتور عادي يحط سؤال من زاوية ما تخطر على بال أحد. خذ هذا التحليل كأداة تفكير، وادرس من المصادر الأصلية كأساس. <b>الباوربوينتات هي المادة، والله أعلم.</b></p>
+          <a href="https://discord.gg/rYJknEfA" target="_blank" rel="noopener" class="asrar-discord">تنوّرون سيرفرنا في دسكورد 🤍</a>
+          <p>رزقنا الله وإياكم الدرجة العالية والعلم النافع</p>
+        </div>
 
-<div style="font-family:'Geist Mono',monospace;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,0,255,.8);margin:28px 0 10px;border-bottom:1px solid rgba(255,0,255,.2);padding-bottom:6px;" dir="rtl">لو نسيت المعلومة — استخدم المنطق</div>
+      </div><!-- /asrar-wrap -->
 
-<p dir="rtl">اوكي، الموقف الأصعب: ماكنت متريق عدل ونسيت الجواب . ما تتذكر هل Flywheels هي seconds ولا hours. ما تذكر هل CDN hit rate 90% ولا 70%. ويش تسوي؟ هني لازم تستخدم المنطق الهيكلي للـ IT. خلّني أوضّح بمثال.</p>
-
-<p dir="rtl">تخيّل انك نسيت أي storage technology تناسب للـ frequency regulation. السؤال بيعطيك أربع خيارات: Pumped hydro, Flow batteries, Flywheels, Lithium-ion. وانت ما تذكر شي. بدال ما تخمّن عشوائي، فكّر بالمنطق. الـ frequency regulation تحتاج response في ثواني العمليّة "ميكانيكية بحتة"، يعني تحتاج شيء يقدر يحرّر طاقة بسرعة قصوى. Pumped hydro تحتاج فتح بوابات وتحريك ماء بطيئة بطبيعتها. Flow batteries تعتمد على تفاعل كيميائي يحتاج وقت متوسطة. Lithium-ion سريعة لكن تحتاج تحكّم إلكتروني معقّد للـ sub-second response. Flywheels عبارة عن قرص يدور بسرعة عالية، ولمّا تبيها تحرّر طاقة، تكبح وتعطيك الطاقة الحركية فورًا أسرع شيء فيزيائيًا. حتى لو نسيت الجدول، المنطق الفيزيائي يوصلك إن Flywheels هي الإجابة الصح. هذا اسمه "الاستنتاج من المبادئ الأولية"، وهو إنقاذ للطالب اللي نسى الأرقام لكنه فاهم العلاقات.</p>
-
-<p dir="rtl">مثال ثاني: نسيت ليش يبقى الـ Supervisory server في الـ on-site بدل الـ cloud. فكّر بالموقف الواقعي: مبنى فيه عمّال وإنذار حريق ونظام ايسي. لو قطعوا النت، هل لازم نظام الحريق يستمر شغّال؟ بكل تأكيد نعم مستحيل تربط نظام يحمي أرواح الناس بشبكة قد تنقطع أرواح الناس مو لعبة. هذا الاستنتاج البسيط يوصلك إن السبب هو continuity، مو speed ولا cost. كل اللي سويته: شفت الموقف العملي وسألت روحي "شنو شي ما يحتمل ينقطع؟" والإجابة وضحت.</p>
-
-<p dir="rtl">هذي طريقة تفيد ف واجد اسئلع : لو نسيت الجواب، استحضر الموقف العملي ذهنيًا، واسأل نفسك "لو أنا مهندس مسؤول، ويش الشي اللي راح أحرص عليه؟" غالبًا هذا اللي يحرص عليه الدكتور.</p>
-
-<div style="font-family:'Geist Mono',monospace;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,0,255,.8);margin:28px 0 10px;border-bottom:1px solid rgba(255,0,255,.2);padding-bottom:6px;" dir="rtl">المواضيع اللي يحب الدكتور يربطها وي بعض</div>
-
-<p dir="rtl">هناك أيضًا نمط لازم تعرفه عن المواضيع اللي يحب الدكتور يربطها وي بعض في نفس السؤال. هو ياخذ موضوعين من Topics مختلفة ويدمجهم في scenario واحد عشان يتأكد إنك تفهم العلاقة، مو بس حفظت كل موضوع بروحة. أمثلة: يدمج Demand Response مع Storage Selection يعطيك مصنع يبي يدخل DR program ويسألك أي battery يختار، فلازم تربط نوع الـ DR programme بالـ duration المناسبة. يدمج Multi-Region مع Carbon-aware يعطيك خيار region "نظيف" لكنه بعيد ويسألك هل تختاره، والإجابة دائمًا هي ترتيب الـ framework. يدمج Microservices مع Serverless يعطيك workload معيّن ويسألك أي architecture يناسبه. كل ما شفت سؤال يدمج موضوعين، اعرف إن الدكتور يبي يميّز الطالب اللي يفكر تقاطعيًا.</p>
-
-<div style="font-family:'Geist Mono',monospace;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,0,255,.8);margin:28px 0 10px;border-bottom:1px solid rgba(255,0,255,.2);padding-bottom:6px;" dir="rtl">أسئلة Huawei والفيديوهات</div>
-
-<p dir="rtl">وفي شي عن أسئلة Huawei والفيديوهات. هالنوع من الأسئلة مختلف تمامًا. هني ما في منطق ولا فهم ولا trade-off فقط حفظ. الدكتور يأخذ جملة أو رقم أو اسم من الفيديو ويحطّها كسؤال recall مباشر. مثلًا: "أي مدينة أوروبية تستخدم نظام رش تلقائي عند الجفاف وحاويات تُفرَّغ عند الامتلاء؟" الجواب Santander. لا تحاول تفكر "أيها أقرب لإسبانيا" أو "أيها مذكورة في سياق الـ IoT" هي بس Santander لأن الفيديو ذكرها بالحرف. نفس الشي مع Helsinki (waste system), Shenzhen (taxi surveillance), 5G = "engine for IoT", Huawei Smart City = "nervous system", Huawei Cloud = "comparable to water/electricity/network", BMS = 20–40%, CDN = 90–98%. كل هذي أرقام وعبارات احفظها بالحرف. الدكتور قال صراحة في الـ email إن الفيديوهات و Huawei = recall فقط، وهذا يعني أيضًا إنه بيحط منها أسئلة سهلة جدًا لو حفظتها. هذي درجات سهلة، لا تضيّعها ( اذا جانا مثل الميد )</p>
-
-<div style="font-family:'Geist Mono',monospace;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,0,255,.8);margin:28px 0 10px;border-bottom:1px solid rgba(255,0,255,.2);padding-bottom:6px;" dir="rtl">الفرق بين الطالب اللي ينجح والطالب اللي يجيب درجة عالية</div>
-
-<p dir="rtl">الشي الأخير اللي يفرّق الطالب اللي يجيب درجة عالية عن الطالب اللي بس ينجح: الطالب اللي يجيب درجة عالية ما يحلّ السؤال مرة وحدة. هو يحلّه، ثم يرجع له عقب ويسأل نفسه ثلاث أسئلة. أولًا: هل قرأت السؤال نفسه بدقة، أم قرأته بسرعة؟ الدكتور أحيانًا يحطّ كلمة "NOT" أو "EXCEPT" في نص السؤال، والطالب المستعجل ما يلاحظها فينقلب جوابه. ثانيًا: هل أنا اخترت الخيار لأنه الصح، أم لأنه "حسّيته" الصح؟ الإحساس خطأ لو ما تقدر تشرح ليش الخيارات الثانية غلط. لو ما تقدر تستبعد الثلاث الباقية، احتمال إجابتك غلط. ثالثًا: لو الدكتور يقرأ إجابتي الآن، هل راح يقول "هالطالب فاهم"، ولا "هالطالب حافظ"؟ لو حسّيت إن إجابتك سطحية، في احتمال إنها فخ.</p>
-
-<p dir="rtl">هذا التفكير الإضافي يأخذ منك 15-20 ثانية لكل سؤال، لكنه يحوّل لك 6-10 درجات في الامتحان كله. الطالب اللي ينجح بـ 60% هو اللي يجاوب ويمشي. الطالب اللي يجيب 90% هو اللي يجاوب، يراجع، يتأكد، وبعدين يمشي.</p>
-
-<div style="margin-top:32px;padding:20px 22px;background:rgba(255,255,255,.025);border:1px dashed var(--line-2);border-radius:14px;text-align:center;" dir="rtl">
-  <p style="color:var(--fg-dim);font-size:13.5px;margin-bottom:14px;line-height:1.65;">كلمة أخيرة: هذا التحليل من تجربتي مع الـ midterm والـ quizzes والـ PowerPoints الرسمية. هو محاولة فهم لطريقة الدكتور، لكنه ما يغطّي المحتوى نفسه. الـ Topics الأصلية تحتوي تفاصيل وأمثلة وحالات دراسية ما تظهر هني، و الدكتور عادي يحط سؤال من زاوية ما تخطر على بال أحد والتحليل هذا نقطه فالزبالة عشان جذي، خذ هذا التحليل كأداة تفكير، وادرس من المصادر الأصلية كأساس. الباوربوينتات هي المادة، والله اعلم.</p>
-  <a href="https://discord.gg/mSZfkGCy" target="_blank" rel="noopener" class="asrar-discord">تنورون سيرفرنا ف دسكورد 🤍</a>
-  <p style="color:var(--fg-faint);font-size:13px;margin-top:14px;">رزقنا الله وإياكم الدرجة العالية والعلم النافع</p>
-</div>
-
-  </div><!-- /rtl container -->
-</div><!-- /asrar-wrap -->
-</section>
+      <!-- Floating back-to-top button -->
+      <button class="asrar-back-top" id="asrarBackTop" title="رجوع للأعلى" aria-label="رجوع للأعلى">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+      </button>
+    </section>
 
   </main>
 
@@ -3005,7 +3969,7 @@ function showBreakOverlay(type){
       <p class="modal-body">You've studied a lot. Take a quick break!<br><br>
         <span class="break-discord-msg">While you rest, join the <b>poly it</b> Discord server for the latest updates and PDFs.</span></p>
       <div class="modal-btns">
-        <a href="https://discord.gg/mSZfkGCy" target="_blank" rel="noopener" class="btn-modal-primary">💬 Join Server</a>
+        <a href="https://discord.gg/rYJknEfA" target="_blank" rel="noopener" class="btn-modal-primary">💬 Join Server</a>
         <button class="btn-modal-ghost" id="breakContinue">Continue Quiz →</button>
       </div>
     </div>`;
@@ -3015,7 +3979,7 @@ function showBreakOverlay(type){
       <h3 class="modal-title">تذكير مهم</h3>
       <p class="modal-body">⚠ If there are new questions, they will be added exclusively to the Discord server.<br><br>Make sure you have the latest version!</p>
       <div class="modal-btns">
-        <a href="https://discord.gg/mSZfkGCy" target="_blank" rel="noopener" class="btn-modal-primary">💬 Discord Server</a>
+        <a href="https://discord.gg/rYJknEfA" target="_blank" rel="noopener" class="btn-modal-primary">💬 Discord Server</a>
         <button class="btn-modal-ghost" id="breakContinue">Continue →</button>
       </div>
     </div>`;
@@ -3382,7 +4346,149 @@ const NOTES_AR = `
 
 let notesENRendered=false, notesARRendered=false;
 function renderNotesEN(){ if(notesENRendered) return; $('#notes-en-content').innerHTML = NOTES_EN; notesENRendered=true; }
-function renderNotesAR(){ if(notesARRendered) return; $('#notes-ar-content').innerHTML = NOTES_AR; notesARRendered=true; }
+function renderNotesAR(){
+  if(notesARRendered) return;
+  $('#notes-ar-content').innerHTML = NOTES_AR;
+  notesARRendered=true;
+  enhanceNotesAR();
+}
+
+function enhanceNotesAR(){
+  const root = document.getElementById('notes-ar-content');
+  if(!root || root.dataset.enhanced) return;
+  root.dataset.enhanced = '1';
+
+  // 1. Wrap each h3 + its following siblings (up to next h3) into <section> collapsibles
+  const heads = Array.from(root.querySelectorAll('h3'));
+  const total = heads.length;
+  heads.forEach((h3, i) => {
+    const section = document.createElement('section');
+    section.className = 'notes-section';
+    h3.parentNode.insertBefore(section, h3);
+    section.appendChild(h3);
+    // Body wrapper for smooth collapse via grid-row trick
+    const body = document.createElement('div');
+    body.className = 'notes-sec-body';
+    const inner = document.createElement('div');
+    inner.className = 'notes-sec-inner';
+    body.appendChild(inner);
+    section.appendChild(body);
+    // Move siblings until next h3
+    let next = section.nextSibling;
+    while(next && !(next.nodeType === 1 && next.tagName === 'H3')){
+      const nn = next.nextSibling;
+      inner.appendChild(next);
+      next = nn;
+    }
+    // Rebuild h3: chevron + accent-bar+text + numbered badge
+    const num = String(i+1).padStart(2,'0');
+    const tot = String(total).padStart(2,'0');
+    const txt = h3.textContent.trim();
+    h3.innerHTML =
+      '<span class="notes-sec-chevron" aria-hidden="true">▾</span>' +
+      '<span class="notes-sec-text">' + escapeHTML(txt) + '</span>' +
+      '<span class="notes-sec-num">' + num + ' / ' + tot + '</span>';
+    h3.setAttribute('role','button');
+    h3.setAttribute('tabindex','0');
+    h3.setAttribute('aria-expanded','true');
+    h3.addEventListener('click', () => {
+      section.classList.toggle('is-collapsed');
+      h3.setAttribute('aria-expanded', section.classList.contains('is-collapsed') ? 'false' : 'true');
+    });
+    h3.addEventListener('keydown', e => {
+      if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); h3.click(); }
+    });
+  });
+
+  // 2. TOC click → auto-expand the target section before scrolling
+  const toc = root.querySelector('.toc');
+  if(toc){
+    toc.addEventListener('click', e => {
+      const a = e.target.closest('a[href^="#"]'); if(!a) return;
+      const id = a.getAttribute('href').slice(1);
+      const target = document.getElementById(id);
+      if(target){
+        const section = target.closest('.notes-section');
+        if(section){
+          section.classList.remove('is-collapsed');
+          const h = section.querySelector('h3');
+          if(h) h.setAttribute('aria-expanded','true');
+        }
+        e.preventDefault();
+        setTimeout(() => target.scrollIntoView({behavior:'smooth', block:'start'}), 40);
+      }
+    });
+  }
+
+  // 3. Scroll-spy: highlight current TOC link + mark earlier sections as read
+  if('IntersectionObserver' in window && toc){
+    const links = Array.from(toc.querySelectorAll('a[href^="#"]'));
+    const byHref = id => links.find(l => l.getAttribute('href') === '#' + id);
+    const headIds = heads.map(h => h.id).filter(Boolean);
+    const headEls = headIds.map(id => document.getElementById(id));
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(en => {
+        if(en.isIntersecting){
+          links.forEach(l => l.classList.remove('is-current'));
+          const a = byHref(en.target.id);
+          if(a){ a.classList.add('is-current'); a.classList.add('is-read'); }
+          const idx = headEls.indexOf(en.target);
+          for(let i = 0; i < idx; i++){
+            const prev = byHref(headEls[i].id);
+            if(prev) prev.classList.add('is-read');
+          }
+        }
+      });
+    }, {rootMargin:'-25% 0px -65% 0px', threshold:0});
+    headEls.forEach(h => h && io.observe(h));
+  }
+
+  // 4. Reading progress bar (sticky at top)
+  const progress = document.getElementById('notesArProgress');
+  const updateProgress = () => {
+    const view = document.getElementById('view-notes-ar');
+    if(!view || !view.classList.contains('active') || !progress) return;
+    const rect = view.getBoundingClientRect();
+    const vh = window.innerHeight;
+    const totalScroll = rect.height - vh;
+    const scrolled = Math.min(Math.max(-rect.top, 0), totalScroll);
+    const pct = totalScroll > 0 ? (scrolled / totalScroll) * 100 : 0;
+    progress.style.width = Math.max(0, Math.min(100, pct)) + '%';
+  };
+  window.addEventListener('scroll', updateProgress, {passive:true});
+  window.addEventListener('resize', updateProgress);
+  updateProgress();
+
+  // 5. Floating back-to-top
+  const backTop = document.getElementById('notesArBackTop');
+  if(backTop){
+    const updateBackTop = () => {
+      const view = document.getElementById('view-notes-ar');
+      const onView = view && view.classList.contains('active');
+      backTop.classList.toggle('shown', onView && window.scrollY > 600);
+    };
+    window.addEventListener('scroll', updateBackTop, {passive:true});
+    backTop.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
+  }
+
+  // 6. Keyboard navigation (↑/↓) — only when notes-ar is active
+  document.addEventListener('keydown', e => {
+    const tag = (e.target.tagName || '').toLowerCase();
+    if(tag === 'input' || tag === 'textarea' || tag === 'select') return;
+    const view = document.getElementById('view-notes-ar');
+    if(!view || !view.classList.contains('active')) return;
+    if(e.key !== 'ArrowDown' && e.key !== 'ArrowUp') return;
+    e.preventDefault();
+    const list = Array.from(root.querySelectorAll('.notes-section'));
+    if(e.key === 'ArrowDown'){
+      const next = list.find(s => s.getBoundingClientRect().top > 80);
+      if(next){ next.classList.remove('is-collapsed'); next.scrollIntoView({behavior:'smooth', block:'start'}); }
+    } else {
+      const prev = [...list].reverse().find(s => s.getBoundingClientRect().top < -10);
+      if(prev){ prev.classList.remove('is-collapsed'); prev.scrollIntoView({behavior:'smooth', block:'start'}); }
+    }
+  });
+}
 
 /* ==================== LEADERBOARD ==================== */
 (function(){
@@ -3622,7 +4728,405 @@ function renderSurvival(){
     tile.appendChild(ripple);
     setTimeout(()=>ripple.remove(), 700);
   });
+
+  // ===== Asrar enhanced: section numbering, collapse, TOC, scroll-spy, read tracking =====
+  const toc = document.getElementById('asrarToc');
+  const sections = $$('.asrar-body section');
+  const btns = $$('.asrar-toc-btn');
+  const byId = id => btns.find(b=>b.dataset.jump===id);
+  const total = sections.length;
+
+  // 1. Restructure each section: add arrow + numbered badge, wrap body for smooth collapse
+  sections.forEach((sec, i) => {
+    const head = sec.querySelector('.asrar-section-head');
+    if(!head || head.dataset.enhanced) return;
+    head.dataset.enhanced = '1';
+    const headText = head.textContent.trim();
+    head.innerHTML =
+      '<span class="asrar-collapse-arrow" aria-hidden="true">▾</span>' +
+      '<span class="asrar-section-head-text">' + headText + '</span>' +
+      '<span class="asrar-section-num">' + String(i+1).padStart(2,'0') + ' / ' + String(total).padStart(2,'0') + '</span>';
+    head.setAttribute('role','button');
+    head.setAttribute('tabindex','0');
+    head.setAttribute('aria-expanded','true');
+
+    // Wrap everything after the head in a collapsible container (grid-row trick for smooth transition)
+    const body = document.createElement('div');
+    body.className = 'asrar-sec-body';
+    const inner = document.createElement('div');
+    inner.className = 'asrar-sec-inner';
+    body.appendChild(inner);
+    let node = head.nextSibling;
+    while(node){ const next = node.nextSibling; inner.appendChild(node); node = next; }
+    sec.appendChild(body);
+
+    head.addEventListener('click', () => {
+      sec.classList.toggle('is-collapsed');
+      head.setAttribute('aria-expanded', sec.classList.contains('is-collapsed') ? 'false' : 'true');
+    });
+    head.addEventListener('keydown', e => {
+      if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); head.click(); }
+    });
+  });
+
+  // 2. TOC: smooth scroll + auto-expand target section
+  if(toc){
+    toc.addEventListener('click', e => {
+      const btn = e.target.closest('.asrar-toc-btn'); if(!btn) return;
+      const sec = document.getElementById(btn.dataset.jump);
+      if(sec){
+        sec.classList.remove('is-collapsed');
+        const h = sec.querySelector('.asrar-section-head');
+        if(h) h.setAttribute('aria-expanded','true');
+        // Small delay so layout settles before scroll
+        setTimeout(()=>sec.scrollIntoView({behavior:'smooth', block:'start'}), 30);
+      }
+    });
+  }
+
+  // 3. Scroll-spy: highlight current chip + mark previous sections as read
+  if('IntersectionObserver' in window && sections.length){
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(en => {
+        if(en.isIntersecting){
+          btns.forEach(b => b.classList.remove('is-current'));
+          const b = byId(en.target.id);
+          if(b){ b.classList.add('is-current'); b.classList.add('is-read'); }
+          // Mark all earlier sections as read too
+          const idx = sections.indexOf(en.target);
+          for(let i=0;i<idx;i++){
+            const pb = byId(sections[i].id);
+            if(pb) pb.classList.add('is-read');
+          }
+        }
+      });
+    }, {rootMargin:'-30% 0px -60% 0px', threshold:0});
+    sections.forEach(s => io.observe(s));
+  }
+
+  // 4. Reading progress bar
+  const progress = document.getElementById('asrarProgress');
+  const asrarWrap = document.querySelector('.sk-panel[data-sk-panel="asrar"] .asrar-wrap');
+  const updateProgress = () => {
+    if(!progress || !asrarWrap) return;
+    const panel = asrarWrap.closest('.sk-panel');
+    if(!panel || !panel.classList.contains('active')) return;
+    const rect = asrarWrap.getBoundingClientRect();
+    const vh = window.innerHeight;
+    const totalScroll = rect.height - vh;
+    const scrolled = Math.min(Math.max(-rect.top, 0), totalScroll);
+    const pct = totalScroll > 0 ? (scrolled / totalScroll) * 100 : 0;
+    progress.style.width = Math.max(0, Math.min(100, pct)) + '%';
+  };
+  window.addEventListener('scroll', updateProgress, {passive:true});
+  window.addEventListener('resize', updateProgress);
+  updateProgress();
+
+  // 5. Back-to-top floating button
+  const backTop = document.getElementById('asrarBackTop');
+  if(backTop){
+    const updateBackTop = () => {
+      const panel = document.querySelector('.sk-panel[data-sk-panel="asrar"]');
+      const onAsrar = panel && panel.classList.contains('active');
+      backTop.classList.toggle('shown', onAsrar && window.scrollY > 600);
+    };
+    window.addEventListener('scroll', updateBackTop, {passive:true});
+    backTop.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
+    // Update visibility on tab switches too
+    document.getElementById('sk-tabs').addEventListener('click', () => setTimeout(updateBackTop, 50));
+  }
+
+  // 6. Keyboard navigation (↑/↓) — only when أسرار tab is the active SK panel
+  document.addEventListener('keydown', e => {
+    const tag = (e.target.tagName||'').toLowerCase();
+    if(tag === 'input' || tag === 'textarea' || tag === 'select') return;
+    const panel = document.querySelector('.sk-panel[data-sk-panel="asrar"]');
+    if(!panel || !panel.classList.contains('active')) return;
+    if(e.key !== 'ArrowDown' && e.key !== 'ArrowUp') return;
+    e.preventDefault();
+    const list = $$('.asrar-body section');
+    if(e.key === 'ArrowDown'){
+      const next = list.find(s => s.getBoundingClientRect().top > 80);
+      if(next){ next.classList.remove('is-collapsed'); next.scrollIntoView({behavior:'smooth', block:'start'}); }
+    } else {
+      const prev = [...list].reverse().find(s => s.getBoundingClientRect().top < -10);
+      if(prev){ prev.classList.remove('is-collapsed'); prev.scrollIntoView({behavior:'smooth', block:'start'}); }
+    }
+  });
+
+  // 7. Interactive MCQ — click options, wrong shakes + shows flaw, right glows + locks
+  $$('.asrar-example[data-interactive]').forEach(ex => {
+    const opts = $$('.asrar-opt', ex);
+    const feedback = ex.parentNode.querySelector('.asrar-mcq-feedback');
+    opts.forEach(opt => {
+      opt.addEventListener('click', () => {
+        if(ex.dataset.solved) return;
+        const isRight = opt.classList.contains('right-opt');
+        if(isRight){
+          ex.dataset.solved = '1';
+          opt.classList.add('is-correct-glow');
+          if(feedback){
+            feedback.textContent = '✓ ممتاز — كاش الفخ، حدّد المفهوم الصح، وعطى المقياس الجديد';
+            feedback.className = 'asrar-mcq-feedback good shown';
+          }
+        } else {
+          opt.classList.add('is-shake','is-revealed-wrong');
+          setTimeout(()=>opt.classList.remove('is-shake'), 420);
+          const flaw = opt.dataset.flaw;
+          if(flaw && !opt.querySelector('.asrar-opt-flaw')){
+            const hint = document.createElement('span');
+            hint.className = 'asrar-opt-flaw';
+            hint.textContent = flaw;
+            opt.querySelector('span:last-child').appendChild(hint);
+          }
+          if(feedback){
+            feedback.textContent = '✗ فخ — راجع الخيار، جرّب مرة ثانية';
+            feedback.className = 'asrar-mcq-feedback bad shown';
+          }
+        }
+      });
+    });
+  });
+
+  // ===== Asrar background music — autoplays on tab open, button toggles mute =====
+  const audioBtn = document.getElementById('asrarAudioBtn');
+  const audioLbl = document.getElementById('asrarAudioLabel');
+  const audioEl  = document.getElementById('asrarAudio');
+  const volSlider = document.getElementById('asrarVolume');
+  const volLabel  = document.getElementById('asrarVolumeVal');
+  if(audioBtn && audioEl){
+    audioEl.loop = true;
+    audioEl.volume = 0.35;
+
+    // Volume slider
+    if(volSlider){
+      const applyVol = (v) => {
+        audioEl.volume = v / 100;
+        volSlider.style.setProperty('--vol', v + '%');
+        if(volLabel) volLabel.textContent = v + '%';
+        // Sliding above 0 unmutes; sliding to 0 mutes.
+        if(v == 0 && !audioEl.muted){
+          audioEl.muted = true;
+          audioBtn.classList.add('audio-muted');
+          audioBtn.classList.remove('audio-playing');
+          audioBtn.setAttribute('aria-pressed','false');
+          audioLbl.textContent = 'إلغاء الكتم';
+        } else if(v > 0 && audioEl.muted){
+          audioEl.muted = false;
+          audioBtn.classList.remove('audio-muted');
+          audioBtn.classList.add('audio-playing');
+          audioBtn.setAttribute('aria-pressed','true');
+          audioLbl.textContent = 'كتم';
+        }
+      };
+      volSlider.style.setProperty('--vol', volSlider.value + '%');
+      volSlider.addEventListener('input', e => applyVol(+e.target.value));
+    }
+
+    const setMutedUI = (muted) => {
+      audioBtn.classList.toggle('audio-muted', muted);
+      audioBtn.classList.toggle('audio-playing', !muted);
+      audioBtn.setAttribute('aria-pressed', muted ? 'false' : 'true');
+      audioLbl.textContent = muted ? 'UnMute' : 'Mute';
+    };
+
+    // Autoplay when the user clicks into the أسرار tab; pause when leaving it.
+    document.getElementById('sk-tabs').addEventListener('click', e=>{
+      const t = e.target.closest('.sk-tab'); if(!t) return;
+      if(t.dataset.skTab === 'asrar'){
+        audioEl.muted = false;
+        setMutedUI(false);
+        audioEl.play().catch(()=>{
+          // Browser still blocked it — fall back to muted autoplay + invite to unmute.
+          audioEl.muted = true;
+          setMutedUI(true);
+          audioEl.play().catch(()=>{});
+        });
+      } else {
+        audioEl.pause();
+      }
+    });
+
+    // Mute / unmute
+    audioBtn.addEventListener('click', ()=>{
+      audioEl.muted = !audioEl.muted;
+      setMutedUI(audioEl.muted);
+      if(audioEl.paused) audioEl.play().catch(()=>{});
+    });
+
+    // Stop playback when the user navigates away from the Survival Kit entirely.
+    document.addEventListener('click', e=>{
+      const t = e.target.closest('[data-route]');
+      if(t && t.dataset.route !== 'survival') audioEl.pause();
+    });
+    window.addEventListener('hashchange', ()=>{
+      const h = (location.hash||'').replace('#','');
+      if(h !== 'survival') audioEl.pause();
+    });
+  }
 }
+
+/* ==================== HOMEPAGE: progress strip + methodology + count-up ==================== */
+(function(){
+  const qsa = (sel, root) => Array.from((root || document).querySelectorAll(sel));
+
+  // ---- A. Animated count-up for hero meta chips (runs once on load) ----
+  function animateCounters(){
+    qsa('.hero .chip b').forEach(b => {
+      const txt = b.textContent.trim();
+      const n = parseInt(txt, 10);
+      if(isNaN(n) || n === 0) return; // skip non-numeric and zeros (already at target)
+      const dur = 900;
+      const start = performance.now();
+      const ease = t => 1 - Math.pow(1 - t, 3);
+      function tick(now){
+        const t = Math.min(1, (now - start) / dur);
+        b.textContent = Math.round(n * ease(t));
+        if(t < 1) requestAnimationFrame(tick);
+        else b.textContent = n;
+      }
+      b.textContent = '0';
+      requestAnimationFrame(tick);
+    });
+  }
+
+  // Load state directly from localStorage (avoids cross-IIFE access)
+  function loadStateLS(){
+    try{
+      const raw = localStorage.getItem('it7014.v1');
+      const parsed = raw ? JSON.parse(raw) : {};
+      return Object.assign({
+        practiceIdx:0, practiceAnswers:{}, practiceFilter:'ALL',
+        examBest105:null, examBest30:null, examAttempts:0
+      }, parsed);
+    } catch(e){
+      return {practiceIdx:0, practiceAnswers:{}, examBest105:null, examBest30:null, examAttempts:0};
+    }
+  }
+
+  // ---- B. Methodology collapse/expand ----
+  function bindMethodToggle(){
+    const card = document.getElementById('methodCard');
+    const btn  = document.getElementById('methodToggle');
+    if(!card || !btn) return;
+    const lbl = btn.querySelector('.method-toggle-label');
+    btn.addEventListener('click', () => {
+      const collapsed = card.classList.toggle('is-collapsed');
+      if(lbl) lbl.textContent = collapsed ? 'Read full methodology' : 'Hide methodology';
+    });
+  }
+
+  // ---- C. Progress strip — pulled from localStorage `state` ----
+  function gradeBand(pct){
+    if(pct >= 90) return {cls:'g-a', label:'A · Mastery'};
+    if(pct >= 75) return {cls:'g-b', label:'B · Solid'};
+    if(pct >= 60) return {cls:'g-c', label:'C · Passing'};
+    return {cls:'g-f', label:'< Pass'};
+  }
+  function renderProgressStrip(){
+    const root = document.getElementById('progressStrip');
+    if(!root) return;
+    const st = loadStateLS();
+    const totalQ = (typeof Q !== 'undefined' && Array.isArray(Q)) ? Q.length : 105;
+    const answered = Object.keys(st.practiceAnswers || {}).length;
+    const correct = (typeof Q !== 'undefined')
+      ? Q.filter(q => st.practiceAnswers[q.n] === q.c).length : 0;
+    const accuracy = answered > 0 ? Math.round((correct / answered) * 100) : 0;
+    const pct = totalQ > 0 ? Math.round((answered / totalQ) * 100) : 0;
+    const best = st.examBest105;
+    const attempts = st.examAttempts || 0;
+    const lastIdx = st.practiceIdx || 0;
+
+    const grade = best != null ? gradeBand(best) : null;
+    const continueQ = answered > 0 && answered < totalQ;
+
+    root.innerHTML = `
+      <div class="ps-card" title="Total questions you've answered in Practice Mode">
+        <div class="ps-label">
+          <span class="ps-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+          Practice progress
+        </div>
+        <div class="ps-val"><span class="${answered === 0 ? 'ps-zero' : ''}">${answered}</span><span class="ps-unit">/ ${totalQ}</span></div>
+        <div class="ps-sub">${answered === 0 ? 'You haven\'t started yet — pick Practice Mode above.' : `${accuracy}% accuracy across answered questions`}</div>
+        <div class="ps-bar"><div class="ps-bar-fill" data-fill="${pct}"></div></div>
+      </div>
+
+      <div class="ps-card" title="Highest exam score you've recorded">
+        <div class="ps-label">
+          <span class="ps-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21h8M12 17v4M7 4h10v6a5 5 0 01-10 0V4z"/><path d="M5 4h2v3a3 3 0 01-3-3z"/><path d="M19 4h-2v3a3 3 0 003-3z"/></svg></span>
+          Best exam score
+        </div>
+        <div class="ps-val">${best == null ? '<span class="ps-zero">—</span>' : best + '<span class="ps-unit">%</span>'}${grade ? `<span class="ps-grade ${grade.cls}">${grade.label}</span>` : ''}</div>
+        <div class="ps-sub">${best == null ? 'Take a full Exam to set a baseline.' : 'Your highest run · keep beating it'}</div>
+      </div>
+
+      <div class="ps-card" title="Number of full exam simulations you've completed">
+        <div class="ps-label">
+          <span class="ps-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 11-2.12-9.36L23 10"/></svg></span>
+          Exam attempts
+        </div>
+        <div class="ps-val"><span class="${attempts === 0 ? 'ps-zero' : ''}">${attempts}</span><span class="ps-unit">${attempts === 1 ? 'run' : 'runs'}</span></div>
+        <div class="ps-sub">${attempts === 0 ? 'No simulations recorded yet.' : 'Each attempt sharpens your timing.'}</div>
+      </div>
+
+      ${continueQ ? `
+      <button class="ps-card ps-continue" data-route="practice" title="Jump back into Practice Mode">
+        <span class="ps-arrow">→</span>
+        <div class="ps-label">
+          <span class="ps-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="6 4 20 12 6 20 6 4"/></svg></span>
+          Continue practice
+        </div>
+        <div class="ps-val">Q${Math.min(lastIdx + 1, totalQ)}<span class="ps-unit">next up</span></div>
+        <div class="ps-sub">Pick up exactly where you left off →</div>
+      </button>
+      ` : `
+      <div class="ps-card" title="When you start practicing, your next-up question shows here">
+        <div class="ps-label">
+          <span class="ps-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/></svg></span>
+          Days to exam
+        </div>
+        <div class="ps-val" id="psDaysLeft">—<span class="ps-unit">days</span></div>
+        <div class="ps-sub">Final · Wed 3 Jun 2026 · 4:00 PM</div>
+      </div>
+      `}
+    `;
+
+    // Animate the progress fill in after layout
+    requestAnimationFrame(() => {
+      const fill = root.querySelector('.ps-bar-fill[data-fill]');
+      if(fill) fill.style.width = fill.dataset.fill + '%';
+      const daysEl = document.getElementById('psDaysLeft');
+      if(daysEl){
+        const ms = new Date(2026, 5, 3, 16, 0, 0).getTime() - Date.now();
+        const days = Math.max(0, Math.ceil(ms / 86400000));
+        daysEl.innerHTML = days + '<span class="ps-unit">days</span>';
+      }
+    });
+  }
+
+  let countersAnimated = false;
+  function init(){
+    if(!countersAnimated){ animateCounters(); countersAnimated = true; }
+    bindMethodToggle();
+    renderProgressStrip();
+  }
+  // Wait a tick so the data + state are initialised before running
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', () => setTimeout(init, 30));
+  } else {
+    setTimeout(init, 30);
+  }
+  // Refresh progress strip whenever the user navigates back to home
+  window.addEventListener('hashchange', () => {
+    const h = (location.hash || '').replace('#','');
+    if(h === '' || h === 'home') setTimeout(renderProgressStrip, 50);
+  });
+  // Also refresh on direct nav-button clicks to home
+  document.addEventListener('click', e => {
+    const t = e.target.closest('[data-route="home"]');
+    if(t) setTimeout(renderProgressStrip, 50);
+  });
+})();
 
 /* ==================== LIVE STUDENT COUNTER ==================== */
 (function(){
