@@ -2150,67 +2150,118 @@ body[data-route="home"] .countdown{display:block}
    ══════════════════════════════════════════════════════════ */
 .vid-layout{
   display:grid;
-  grid-template-columns:1fr 380px;
-  gap:24px;align-items:start;
+  grid-template-columns:1fr 400px;
+  gap:28px;align-items:start;
 }
-@media(max-width:860px){
+@media(max-width:900px){
   .vid-layout{grid-template-columns:1fr;grid-template-rows:auto auto}
 }
 .vid-player-col{position:sticky;top:80px}
-@media(max-width:860px){.vid-player-col{position:static}}
+@media(max-width:900px){.vid-player-col{position:static}}
+
+/* Player box */
 .vid-player-box{
-  width:100%;aspect-ratio:16/9;border-radius:16px;overflow:hidden;
-  background:var(--bg-2);border:1px solid var(--line);
+  width:100%;aspect-ratio:16/9;border-radius:18px;overflow:hidden;
+  background:linear-gradient(145deg,#0d1117,#111827);
+  border:1.5px solid rgba(122,162,255,.18);
   display:flex;align-items:center;justify-content:center;
+  box-shadow:0 8px 40px rgba(0,0,0,.45);
 }
 .vid-player-placeholder{
-  display:flex;flex-direction:column;align-items:center;gap:14px;
-  color:var(--fg-faint);font-size:13.5px;font-family:'Geist Mono',monospace;
+  display:flex;flex-direction:column;align-items:center;gap:16px;
+  padding:32px;text-align:center;
 }
-.vid-placeholder-icon{width:48px;height:48px;opacity:.4}
+.vid-ph-icon-wrap{
+  width:72px;height:72px;border-radius:50%;
+  background:rgba(122,162,255,.08);border:1.5px dashed rgba(122,162,255,.25);
+  display:grid;place-items:center;
+}
+.vid-placeholder-icon{width:32px;height:32px;color:rgba(122,162,255,.5)}
+.vid-ph-text{
+  color:var(--fg-dim);font-size:14px;font-weight:600;margin:0;
+}
+.vid-ph-hint{
+  color:var(--fg-faint);font-size:12px;font-family:'Geist Mono',monospace;
+  margin:0;letter-spacing:.04em;
+}
 .vid-player-embed{width:100%;height:100%}
 .vid-player-embed iframe{width:100%;height:100%;border:none;display:block}
+
+/* Now-playing bar */
 .vid-now-playing{
-  margin-top:10px;padding:10px 14px;border-radius:10px;
-  background:var(--bg-2);border:1px solid var(--line);
-  display:flex;align-items:center;gap:8px;font-size:13px;
+  margin-top:12px;padding:11px 16px;border-radius:12px;
+  background:rgba(122,162,255,.06);border:1px solid rgba(122,162,255,.15);
+  display:flex;align-items:center;gap:10px;font-size:13px;
 }
-.vid-np-label{color:var(--fg-faint);font-family:'Geist Mono',monospace;letter-spacing:.06em;flex-shrink:0}
-.vid-np-title{color:var(--fg);font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.vid-list-col{display:flex;flex-direction:column;gap:14px}
-.vid-topic{
-  border:1px solid var(--line);border-radius:14px;overflow:hidden;
-  background:var(--bg-1);
-}
-.vid-topic-head{
-  display:flex;align-items:center;gap:12px;
-  padding:12px 16px;border-bottom:1px solid var(--line);
-  background:var(--bg-2);
-}
-.vid-topic-tag{
-  font-family:'Geist Mono',monospace;font-size:11px;font-weight:700;
-  letter-spacing:.1em;text-transform:uppercase;
-  color:var(--accent);padding:3px 8px;border-radius:6px;
-  background:rgba(122,162,255,.1);border:1px solid rgba(122,162,255,.2);
+.vid-np-label{
+  color:var(--accent);font-family:'Geist Mono',monospace;
+  font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
   flex-shrink:0;
 }
-.vid-topic-name{font-size:13.5px;font-weight:600;color:var(--fg)}
-.vid-parts{display:flex;flex-direction:column;gap:0}
+.vid-np-title{color:var(--fg);font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
+/* Accordion list */
+.vid-list-col{display:flex;flex-direction:column;gap:10px}
+
+.vid-accord{
+  border:1px solid var(--line);border-radius:14px;overflow:hidden;
+  background:var(--bg-1);
+  transition:border-color .2s;
+}
+.vid-accord:hover{border-color:rgba(122,162,255,.3)}
+.vid-accord.open{border-color:rgba(122,162,255,.35)}
+
+.vid-accord-btn{
+  display:flex;align-items:center;gap:12px;
+  width:100%;border:none;cursor:pointer;
+  padding:13px 16px;text-align:left;
+  background:var(--bg-2);
+  transition:background .18s;
+}
+.vid-accord-btn:hover{background:rgba(122,162,255,.07)}
+.vid-accord.open .vid-accord-btn{background:rgba(122,162,255,.09)}
+
+.vid-accord-week{
+  font-family:'Geist Mono',monospace;font-size:10.5px;font-weight:700;
+  letter-spacing:.1em;text-transform:uppercase;
+  color:var(--accent);padding:3px 9px;border-radius:6px;
+  background:rgba(122,162,255,.1);border:1px solid rgba(122,162,255,.2);
+  flex-shrink:0;white-space:nowrap;
+}
+.vid-accord-topic{
+  flex:1;font-size:13px;font-weight:600;color:var(--fg);line-height:1.35;
+}
+.vid-accord-chevron{
+  width:16px;height:16px;color:var(--fg-faint);flex-shrink:0;
+  transition:transform .22s var(--ease),color .18s;
+}
+.vid-accord.open .vid-accord-chevron{transform:rotate(180deg);color:var(--accent)}
+
+.vid-accord-body{
+  max-height:0;overflow:hidden;
+  transition:max-height .28s var(--ease);
+}
+.vid-accord.open .vid-accord-body{max-height:400px}
+
+/* Part buttons inside accordion */
 .vid-part-btn{
   display:flex;align-items:center;gap:12px;
   width:100%;border:none;background:transparent;cursor:pointer;
   padding:12px 16px;text-align:left;color:var(--fg);
-  font:500 14px/1.4 'Geist','Inter',system-ui,sans-serif;
-  border-bottom:1px solid var(--line);
+  font:500 13.5px/1.4 'Geist','Inter',system-ui,sans-serif;
+  border-top:1px solid var(--line);
   transition:background .18s var(--ease);
   position:relative;
 }
-.vid-part-btn:last-child{border-bottom:none}
-.vid-part-btn:hover{background:rgba(122,162,255,.06)}
-.vid-part-btn.active{background:rgba(122,162,255,.1);border-left:3px solid var(--accent)}
+.vid-part-btn:hover{background:rgba(122,162,255,.07)}
+.vid-part-btn.active{
+  background:rgba(122,162,255,.12);
+  border-left:3px solid var(--accent);
+  padding-left:13px;
+}
 .vid-part-check{
   width:20px;height:20px;border-radius:50%;
-  border:1.5px solid rgba(255,255,255,.12);
+  border:1.5px solid rgba(255,255,255,.1);
   display:grid;place-items:center;
   font-size:10px;font-weight:700;color:#5ee4a3;
   flex-shrink:0;opacity:0;transition:opacity .2s,background .2s,border-color .2s;
@@ -2219,21 +2270,39 @@ body[data-route="home"] .countdown{display:block}
   opacity:1;background:rgba(94,228,163,.15);
   border-color:rgba(94,228,163,.4);
 }
-.vid-part-num{
+.vid-part-info{display:flex;flex-direction:column;flex:1;gap:2px}
+.vid-part-name{font-size:13px;color:var(--fg);line-height:1.3}
+.vid-part-badge{
   font-family:'Geist Mono',monospace;font-size:10px;font-weight:700;
-  letter-spacing:.08em;color:var(--fg-faint);text-transform:uppercase;
-  flex-shrink:0;min-width:36px;
+  letter-spacing:.07em;text-transform:uppercase;color:var(--fg-faint);
 }
-.vid-part-title{flex:1;font-size:13.5px;color:var(--fg)}
 .vid-part-arrow{
   font-size:10px;color:var(--fg-faint);flex-shrink:0;
   transition:color .18s,transform .18s;
 }
 .vid-part-btn:hover .vid-part-arrow{color:var(--accent);transform:scale(1.3)}
 .vid-part-btn.active .vid-part-arrow{color:var(--accent)}
-.vid-placeholder-msg{
-  padding:24px;text-align:center;color:var(--fg-faint);
-  font-size:13px;font-family:'Geist Mono',monospace;
+
+/* Finalize section — important badge */
+.vid-accord-finalize .vid-accord-week{
+  background:rgba(255,80,80,.12);border-color:rgba(255,80,80,.3);
+  color:#ff7070;
+}
+.vid-accord-finalize.open{border-color:rgba(255,80,80,.4)}
+.vid-accord-finalize .vid-accord-btn:hover{background:rgba(255,80,80,.06)}
+.vid-accord-finalize.open .vid-accord-btn{background:rgba(255,80,80,.08)}
+.vid-accord-finalize.open .vid-accord-chevron{color:#ff7070}
+.vid-important-badge{
+  display:inline-flex;align-items:center;gap:5px;
+  font-family:'Geist Mono',monospace;font-size:9.5px;font-weight:800;
+  letter-spacing:.12em;text-transform:uppercase;
+  color:#fff;background:#e53535;
+  padding:2px 8px;border-radius:5px;
+  flex-shrink:0;animation:importantPulse 2s ease-in-out infinite;
+}
+@keyframes importantPulse{
+  0%,100%{box-shadow:0 0 0 0 rgba(229,53,53,.5)}
+  50%{box-shadow:0 0 0 5px rgba(229,53,53,0)}
 }
 
 /* ══════════════════════════════════════════════════════════
@@ -3245,8 +3314,11 @@ section.is-collapsed > .asrar-sec-body{grid-template-rows:0fr;opacity:0}
       <div class="vid-player-col">
         <div class="vid-player-box" id="vidPlayerBox">
           <div class="vid-player-placeholder" id="vidPlayerPlaceholder">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="vid-placeholder-icon"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-            <span>Select a video to watch</span>
+            <div class="vid-ph-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="vid-placeholder-icon"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+            </div>
+            <p class="vid-ph-text">Select a video to begin</p>
+            <p class="vid-ph-hint">← choose a topic &amp; part from the list</p>
           </div>
           <div class="vid-player-embed hide" id="vidPlayerEmbed"></div>
         </div>
@@ -3256,136 +3328,195 @@ section.is-collapsed > .asrar-sec-body{grid-template-rows:0fr;opacity:0}
         </div>
       </div>
 
-      <!-- Right: topic list -->
+      <!-- Right: accordion topic list -->
       <div class="vid-list-col" id="vidListCol">
 
-        <!-- Topic 7 — Week 8 -->
-        <div class="vid-topic">
-          <div class="vid-topic-head">
-            <span class="vid-topic-tag">Topic 7</span>
-            <span class="vid-topic-name">Week 8 · Smart Buildings & IoT</span>
-          </div>
-          <div class="vid-parts">
-            <button class="vid-part-btn" data-vid-id="topic7-part1" data-vid-src="">
+        <!-- Week 8 — Topic 7 -->
+        <div class="vid-accord" data-accord="w8t7">
+          <button class="vid-accord-btn" aria-expanded="false">
+            <span class="vid-accord-week">Week 8</span>
+            <span class="vid-accord-topic">Topic 7 · Smart Grid Technology and Demand Response</span>
+            <svg class="vid-accord-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="vid-accord-body">
+            <button class="vid-part-btn" data-vid-id="topic7-part1" data-vid-src="https://youtu.be/koMcHv1cMtI">
               <span class="vid-part-check" id="chk-topic7-part1" aria-label="Completed">✓</span>
-              <span class="vid-part-num">Part 1</span>
-              <span class="vid-part-title">Building Automation & Smart Systems</span>
+              <span class="vid-part-info">
+                <span class="vid-part-name">Topic 7 - Smart Grid Technology and Demand Response</span>
+                <span class="vid-part-badge">Part 1</span>
+              </span>
               <span class="vid-part-arrow">▶</span>
             </button>
-            <button class="vid-part-btn" data-vid-id="topic7-part2" data-vid-src="">
+            <button class="vid-part-btn" data-vid-id="topic7-part2" data-vid-src="https://youtu.be/zo23uJTFwDc">
               <span class="vid-part-check" id="chk-topic7-part2" aria-label="Completed">✓</span>
-              <span class="vid-part-num">Part 2</span>
-              <span class="vid-part-title">Demand Response & Energy Management</span>
+              <span class="vid-part-info">
+                <span class="vid-part-name">Topic 7 - Smart Grid Technology and Demand Response</span>
+                <span class="vid-part-badge">Part 2</span>
+              </span>
               <span class="vid-part-arrow">▶</span>
             </button>
           </div>
         </div>
 
-        <!-- Topic 8 — Week 8/9 -->
-        <div class="vid-topic">
-          <div class="vid-topic-head">
-            <span class="vid-topic-tag">Topic 8</span>
-            <span class="vid-topic-name">Week 8/9 · Smart Cities & IoT</span>
-          </div>
-          <div class="vid-parts">
-            <button class="vid-part-btn" data-vid-id="topic8-part1" data-vid-src="">
+        <!-- Week 8 — Topic 8 -->
+        <div class="vid-accord" data-accord="w8t8">
+          <button class="vid-accord-btn" aria-expanded="false">
+            <span class="vid-accord-week">Week 8</span>
+            <span class="vid-accord-topic">Topic 8 · Building Automation and Smart City Systems</span>
+            <svg class="vid-accord-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="vid-accord-body">
+            <button class="vid-part-btn" data-vid-id="topic8-part1" data-vid-src="https://youtu.be/FuYfzFb7iR8">
               <span class="vid-part-check" id="chk-topic8-part1" aria-label="Completed">✓</span>
-              <span class="vid-part-num">Part 1</span>
-              <span class="vid-part-title">Smart City Infrastructure & Huawei</span>
+              <span class="vid-part-info">
+                <span class="vid-part-name">Topic 8 - Building Automation and Smart City Systems</span>
+                <span class="vid-part-badge">Part 1</span>
+              </span>
               <span class="vid-part-arrow">▶</span>
             </button>
-            <button class="vid-part-btn" data-vid-id="topic8-part2" data-vid-src="">
+            <button class="vid-part-btn" data-vid-id="topic8-part2" data-vid-src="https://youtu.be/zo23uJTFwDc">
               <span class="vid-part-check" id="chk-topic8-part2" aria-label="Completed">✓</span>
-              <span class="vid-part-num">Part 2</span>
-              <span class="vid-part-title">IoT Protocols & Connectivity Standards</span>
+              <span class="vid-part-info">
+                <span class="vid-part-name">Topic 8 - Building Automation and Smart City Systems</span>
+                <span class="vid-part-badge">Part 2</span>
+              </span>
               <span class="vid-part-arrow">▶</span>
             </button>
           </div>
         </div>
 
-        <!-- Topic 9 — Week 9/10 -->
-        <div class="vid-topic">
-          <div class="vid-topic-head">
-            <span class="vid-topic-tag">Topic 9</span>
-            <span class="vid-topic-name">Week 9/10 · Cloud Architecture</span>
-          </div>
-          <div class="vid-parts">
-            <button class="vid-part-btn" data-vid-id="topic9-part1" data-vid-src="">
+        <!-- Week 9 — Topic 9 -->
+        <div class="vid-accord" data-accord="w9t9">
+          <button class="vid-accord-btn" aria-expanded="false">
+            <span class="vid-accord-week">Week 9</span>
+            <span class="vid-accord-topic">Topic 9 · Cloud Architecture and Multi-Region Deployment</span>
+            <svg class="vid-accord-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="vid-accord-body">
+            <button class="vid-part-btn" data-vid-id="topic9-part1" data-vid-src="https://youtu.be/PM5pY-oQr_k">
               <span class="vid-part-check" id="chk-topic9-part1" aria-label="Completed">✓</span>
-              <span class="vid-part-num">Part 1</span>
-              <span class="vid-part-title">Multi-Region Cloud & CDN</span>
+              <span class="vid-part-info">
+                <span class="vid-part-name">Topic 9 - Cloud Architecture and Multi-Region Deployment</span>
+                <span class="vid-part-badge">Part 1</span>
+              </span>
               <span class="vid-part-arrow">▶</span>
             </button>
-            <button class="vid-part-btn" data-vid-id="topic9-part2" data-vid-src="">
+            <button class="vid-part-btn" data-vid-id="topic9-part2" data-vid-src="https://youtu.be/qaedKwsz7qM">
               <span class="vid-part-check" id="chk-topic9-part2" aria-label="Completed">✓</span>
-              <span class="vid-part-num">Part 2</span>
-              <span class="vid-part-title">Database Architecture & Caching</span>
+              <span class="vid-part-info">
+                <span class="vid-part-name">Topic 9 - Cloud Architecture and Multi-Region Deployment</span>
+                <span class="vid-part-badge">Part 2</span>
+              </span>
               <span class="vid-part-arrow">▶</span>
             </button>
           </div>
         </div>
 
-        <!-- Topic 10 — Week 10/11 -->
-        <div class="vid-topic">
-          <div class="vid-topic-head">
-            <span class="vid-topic-tag">Topic 10</span>
-            <span class="vid-topic-name">Week 10/11 · Data Pipelines</span>
-          </div>
-          <div class="vid-parts">
-            <button class="vid-part-btn" data-vid-id="topic10-part1" data-vid-src="">
+        <!-- Week 10 — Topic 10 -->
+        <div class="vid-accord" data-accord="w10t10">
+          <button class="vid-accord-btn" aria-expanded="false">
+            <span class="vid-accord-week">Week 10</span>
+            <span class="vid-accord-topic">Topic 10 · Database and Caching Architecture, Trade-Offs</span>
+            <svg class="vid-accord-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="vid-accord-body">
+            <button class="vid-part-btn" data-vid-id="topic10-part1" data-vid-src="https://youtu.be/HMtd0-iBkIk">
               <span class="vid-part-check" id="chk-topic10-part1" aria-label="Completed">✓</span>
-              <span class="vid-part-num">Part 1</span>
-              <span class="vid-part-title">Streaming vs Batch Processing</span>
+              <span class="vid-part-info">
+                <span class="vid-part-name">Topic 10 - Database and Caching Architecture, Trade-Offs</span>
+                <span class="vid-part-badge">Part 1</span>
+              </span>
               <span class="vid-part-arrow">▶</span>
             </button>
-            <button class="vid-part-btn" data-vid-id="topic10-part2" data-vid-src="">
+            <button class="vid-part-btn" data-vid-id="topic10-part2" data-vid-src="https://youtu.be/JFj31NWdijM">
               <span class="vid-part-check" id="chk-topic10-part2" aria-label="Completed">✓</span>
-              <span class="vid-part-num">Part 2</span>
-              <span class="vid-part-title">Serverless & Event-Driven Architecture</span>
+              <span class="vid-part-info">
+                <span class="vid-part-name">Topic 10 - Database and Caching Architecture, Trade-Offs</span>
+                <span class="vid-part-badge">Part 2</span>
+              </span>
               <span class="vid-part-arrow">▶</span>
             </button>
           </div>
         </div>
 
-        <!-- Topic 11 — Week 11/12 -->
-        <div class="vid-topic">
-          <div class="vid-topic-head">
-            <span class="vid-topic-tag">Topic 11</span>
-            <span class="vid-topic-name">Week 11/12 · Application Architecture</span>
-          </div>
-          <div class="vid-parts">
-            <button class="vid-part-btn" data-vid-id="topic11-part1" data-vid-src="">
+        <!-- Week 12 — Topic 11 -->
+        <div class="vid-accord" data-accord="w12t11">
+          <button class="vid-accord-btn" aria-expanded="false">
+            <span class="vid-accord-week">Week 12</span>
+            <span class="vid-accord-topic">Topic 11 · Application Architecture Patterns Evaluation</span>
+            <svg class="vid-accord-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="vid-accord-body">
+            <button class="vid-part-btn" data-vid-id="topic11-part1" data-vid-src="https://youtu.be/KtQc2Gyl47Q">
               <span class="vid-part-check" id="chk-topic11-part1" aria-label="Completed">✓</span>
-              <span class="vid-part-num">Part 1</span>
-              <span class="vid-part-title">Monolith vs Microservices Patterns</span>
+              <span class="vid-part-info">
+                <span class="vid-part-name">Topic 11 - Application Architecture Patterns Evaluation</span>
+                <span class="vid-part-badge">Part 1</span>
+              </span>
               <span class="vid-part-arrow">▶</span>
             </button>
-            <button class="vid-part-btn" data-vid-id="topic11-part2" data-vid-src="">
+            <button class="vid-part-btn" data-vid-id="topic11-part2" data-vid-src="https://youtu.be/cJMvmTsUNnI">
               <span class="vid-part-check" id="chk-topic11-part2" aria-label="Completed">✓</span>
-              <span class="vid-part-num">Part 2</span>
-              <span class="vid-part-title">API Design: GraphQL & REST</span>
+              <span class="vid-part-info">
+                <span class="vid-part-name">Topic 11 - Application Architecture Patterns Evaluation</span>
+                <span class="vid-part-badge">Part 2</span>
+              </span>
               <span class="vid-part-arrow">▶</span>
             </button>
           </div>
         </div>
 
-        <!-- Topic 12 — Week 12 -->
-        <div class="vid-topic">
-          <div class="vid-topic-head">
-            <span class="vid-topic-tag">Topic 12</span>
-            <span class="vid-topic-name">Week 12 · Performance & Sustainability</span>
-          </div>
-          <div class="vid-parts">
-            <button class="vid-part-btn" data-vid-id="topic12-part1" data-vid-src="">
+        <!-- Week 12 — Topic 12 -->
+        <div class="vid-accord" data-accord="w12t12">
+          <button class="vid-accord-btn" aria-expanded="false">
+            <span class="vid-accord-week">Week 12</span>
+            <span class="vid-accord-topic">Topic 12 · Performance vs. Sustainability Trade-off Analysis and Decision Frameworks</span>
+            <svg class="vid-accord-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="vid-accord-body">
+            <button class="vid-part-btn" data-vid-id="topic12-part1" data-vid-src="https://youtu.be/X9wf9KEPKdQ">
               <span class="vid-part-check" id="chk-topic12-part1" aria-label="Completed">✓</span>
-              <span class="vid-part-num">Part 1</span>
-              <span class="vid-part-title">Sustainable IT & Energy Efficiency</span>
+              <span class="vid-part-info">
+                <span class="vid-part-name">Topic 12 - Performance vs. Sustainability Trade-off Analysis and Decision Frameworks</span>
+                <span class="vid-part-badge">Part 1</span>
+              </span>
               <span class="vid-part-arrow">▶</span>
             </button>
-            <button class="vid-part-btn" data-vid-id="topic12-part2" data-vid-src="">
+            <button class="vid-part-btn" data-vid-id="topic12-part2" data-vid-src="https://youtu.be/-f3pgU7PfJc">
               <span class="vid-part-check" id="chk-topic12-part2" aria-label="Completed">✓</span>
-              <span class="vid-part-num">Part 2</span>
-              <span class="vid-part-title">Performance Trade-offs & MCDA</span>
+              <span class="vid-part-info">
+                <span class="vid-part-name">Topic 12 - Performance vs. Sustainability Trade-off Analysis and Decision Frameworks</span>
+                <span class="vid-part-badge">Part 2</span>
+              </span>
+              <span class="vid-part-arrow">▶</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- FINALIZE — Exam Review -->
+        <div class="vid-accord vid-accord-finalize" data-accord="finalize">
+          <button class="vid-accord-btn" aria-expanded="false">
+            <span class="vid-accord-week">Finalize</span>
+            <span class="vid-accord-topic">IT7014 Grand Final &amp; Exam Podcast</span>
+            <svg class="vid-accord-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="vid-accord-body">
+            <button class="vid-part-btn" data-vid-id="final-grand" data-vid-src="https://youtu.be/M8woRRh3VTg">
+              <span class="vid-part-check" id="chk-final-grand" aria-label="Completed">✓</span>
+              <span class="vid-part-info">
+                <span class="vid-part-name">IT7014 Grand Final · Exam Review &amp; Preparation</span>
+                <span class="vid-part-badge" style="display:flex;align-items:center;gap:6px">
+                  <span class="vid-important-badge">⚡ Important</span>
+                </span>
+              </span>
+              <span class="vid-part-arrow">▶</span>
+            </button>
+            <button class="vid-part-btn" data-vid-id="final-podcast" data-vid-src="https://youtu.be/Trc212Pyqfc">
+              <span class="vid-part-check" id="chk-final-podcast" aria-label="Completed">✓</span>
+              <span class="vid-part-info">
+                <span class="vid-part-name">IT7014 Exam Podcast</span>
+                <span class="vid-part-badge">Listen before exam day</span>
+              </span>
               <span class="vid-part-arrow">▶</span>
             </button>
           </div>
@@ -5458,12 +5589,23 @@ function renderVideos(){
     el.classList.toggle('done', !!progress[id]);
   });
 
-  // Attach click handlers to part buttons (once)
+  // Attach handlers once
   const listCol = document.getElementById('vidListCol');
   if(!listCol || listCol.dataset.vidBound) return;
   listCol.dataset.vidBound = '1';
 
+  // Accordion toggle
   listCol.addEventListener('click', e=>{
+    const accordBtn = e.target.closest('.vid-accord-btn');
+    if(accordBtn && !e.target.closest('.vid-part-btn')){
+      const accord = accordBtn.closest('.vid-accord');
+      const isOpen = accord.classList.contains('open');
+      accord.classList.toggle('open', !isOpen);
+      accordBtn.setAttribute('aria-expanded', String(!isOpen));
+      return;
+    }
+
+    // Part button click
     const btn = e.target.closest('.vid-part-btn'); if(!btn) return;
     const vidId  = btn.dataset.vidId;
     const vidSrc = btn.dataset.vidSrc || '';
@@ -5476,17 +5618,16 @@ function renderVideos(){
     const placeholder  = document.getElementById('vidPlayerPlaceholder');
     const nowPlaying   = document.getElementById('vidNowPlaying');
     const npTitle      = document.getElementById('vidNowPlayingTitle');
-    const titleEl      = btn.querySelector('.vid-part-title');
-    const topicName    = btn.closest('.vid-topic').querySelector('.vid-topic-name').textContent;
+    const nameEl       = btn.querySelector('.vid-part-name');
+    const badgeEl      = btn.querySelector('.vid-part-badge');
+    const topicLabel   = btn.closest('.vid-accord').querySelector('.vid-accord-topic').textContent;
 
-    if(npTitle) npTitle.textContent = (titleEl ? titleEl.textContent : '') + ' — ' + topicName;
+    if(npTitle) npTitle.textContent = (nameEl ? nameEl.textContent : topicLabel) + ' · ' + (badgeEl ? badgeEl.textContent : '');
     if(nowPlaying) nowPlaying.style.display = 'flex';
 
     if(vidSrc){
-      // Show embed
       placeholder.classList.add('hide');
       playerEmbed.classList.remove('hide');
-      // Build iframe (YouTube or direct URL)
       let iframeSrc = vidSrc;
       if(vidSrc.includes('youtube.com/watch?v=')){
         const yid = new URL(vidSrc).searchParams.get('v');
@@ -5497,23 +5638,21 @@ function renderVideos(){
       }
       playerEmbed.innerHTML = `<iframe src="${iframeSrc}" allow="autoplay; encrypted-media" allowfullscreen></iframe>`;
 
-      // Listen for video end via postMessage (YouTube IFrame API)
       window.onmessage = function(ev){
         try{
           const data = JSON.parse(ev.data);
-          // YouTube playerState 0 = ended
-          if(data.event === 'onStateChange' && data.info === 0){
-            markVideoComplete(vidId);
-          }
+          if(data.event === 'onStateChange' && data.info === 0) markVideoComplete(vidId);
         }catch(ex){}
       };
     } else {
-      // No URL yet — show placeholder with "coming soon" message
       playerEmbed.classList.add('hide');
       placeholder.classList.remove('hide');
       placeholder.innerHTML = `
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="vid-placeholder-icon"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-        <span style="text-align:center">Video coming soon — add the URL to the<br><code>data-vid-src</code> attribute of this button.</span>
+        <div class="vid-ph-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="vid-placeholder-icon"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+        </div>
+        <p class="vid-ph-text">Video coming soon</p>
+        <p class="vid-ph-hint">Add the URL to the <code>data-vid-src</code> attribute</p>
       `;
     }
   });
