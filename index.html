@@ -3956,7 +3956,13 @@ document.addEventListener('click', e=>{
 });
 window.addEventListener('hashchange', ()=>{
   const h = (location.hash||'').replace('#','');
-  navigate(h||'home');
+  if(routes.includes(h) || h === ''){
+    navigate(h||'home');
+  } else {
+    // In-page anchor (e.g. notes TOC link) — scroll to element
+    const el = document.getElementById(h);
+    if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
+  }
 });
 
 /* ==================== PRACTICE MODE ==================== */
